@@ -81,6 +81,17 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0
 .marqhead .rate{font-family:"Fraunces",serif;font-size:22px;color:var(--copper-lt)}
 .marqhead .st{color:var(--copper);letter-spacing:2px;font-size:14px}
 .marqhead .n{font-size:14px;color:var(--dim)}
+.gmk{width:18px;height:18px;flex-shrink:0;align-self:center}
+.marqhead .vf{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#5FC98B;
+  border:1px solid rgba(95,201,139,.34);background:rgba(95,201,139,.11);padding:3px 9px;border-radius:2px;align-self:center}
+@media(max-width:640px){.marqhead .vf{display:none}}
+.trust{border-top:1px solid var(--line);background:#080706}
+.trustin{display:flex;flex-wrap:wrap;align-items:center;gap:16px 40px;padding:26px 0}
+.tb{display:flex;align-items:center;gap:11px}
+.tb svg{width:22px;height:22px;flex-shrink:0}
+.tb .tt{font-size:14.5px;color:var(--cream);line-height:1.25}
+.tb .tt span{display:block;font-size:12.5px;color:var(--dimmer)}
+.tb .stars{color:var(--copper);letter-spacing:2px;font-size:13px}
 .mask{overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
@@ -254,13 +265,44 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
 
   <div class="marq">
     <div class="marqhead">
+      <svg class="gmk" viewBox="0 0 48 48" aria-label="Google">
+        <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12.1c-.2 1.9-1.6 4.8-4.5 6.7l-.1.3 6.5 5 .5.1c4.1-3.8 6.6-9.4 6.6-15.4z"/>
+        <path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-.3.02-6.8 5.2-.1.3C7.9 41.1 15.4 46 24 46z"/>
+        <path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4v-.3l-6.9-5.3-.2.1A22 22 0 0 0 2 24c0 3.5.9 6.9 2.4 9.9l7.1-5.5z"/>
+        <path fill="#EA4335" d="M24 10.5c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.3 29.9 2 24 2 15.4 2 7.9 6.9 4.4 14.1l7.1 5.5c1.8-5.3 6.7-9.1 12.5-9.1z"/>
+      </svg>
       <span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
       <span class="rate">5.0</span>
       <span class="n">from 29 reviews on Google</span>
+      <span class="vf">Verified</span>
     </div>
     <div class="mask"><div class="track" id="track"></div></div>
   </div>
 </div>
+
+<div class="trust"><div class="wrap"><div class="trustin">
+  <div class="tb">
+    <svg viewBox="0 0 48 48" aria-label="Google">
+      <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12.1c-.2 1.9-1.6 4.8-4.5 6.7l-.1.3 6.5 5 .5.1c4.1-3.8 6.6-9.4 6.6-15.4z"/>
+      <path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-.3.02-6.8 5.2-.1.3C7.9 41.1 15.4 46 24 46z"/>
+      <path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4v-.3l-6.9-5.3-.2.1A22 22 0 0 0 2 24c0 3.5.9 6.9 2.4 9.9l7.1-5.5z"/>
+      <path fill="#EA4335" d="M24 10.5c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.3 29.9 2 24 2 15.4 2 7.9 6.9 4.4 14.1l7.1 5.5c1.8-5.3 6.7-9.1 12.5-9.1z"/>
+    </svg>
+    <div class="tt"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 on Google<span>29 reviews, every one five stars</span></div>
+  </div>
+  <div class="tb">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#C68C4E" stroke-width="1.6"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg>
+    <div class="tt">We close at a local title company<span>Every purchase, no exceptions</span></div>
+  </div>
+  <div class="tb">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#C68C4E" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <div class="tt">Ten years buying in Florida<span>Hundreds of homeowners helped</span></div>
+  </div>
+  <div class="tb">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#C68C4E" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+    <div class="tt">We use our own capital<span>Not a listing, not a lead broker</span></div>
+  </div>
+</div></div></div>
 
 <section id="ways"><div class="wrap">
   <h2 class="lead">We find out what your house is worth to three different buyers.</h2>
