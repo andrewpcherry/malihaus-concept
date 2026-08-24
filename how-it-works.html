@@ -144,8 +144,12 @@ h1,h2{font-family:"Fraunces",Georgia,serif;font-weight:500;
   font-family:"Karla",sans-serif;font-size:13.5px;padding:8px 13px;border-radius:15px;transition:.18s;animation:pop .3s ease both}
 .chip:hover{background:var(--copper);color:#160E05}
 .wfoot{flex-shrink:0;padding:11px 14px;border-top:1px solid var(--line);display:flex;gap:9px;align-items:center}
-.wfoot .fld{flex:1;font-size:13.5px;color:var(--dimmer)}
-.wfoot .snd{color:var(--copper);font-size:16px}
+.wtext{flex:1;min-width:0;background:transparent;border:0;color:var(--cream);
+  font-family:"Karla",sans-serif;font-size:14.5px;padding:6px 0}
+.wtext::placeholder{color:var(--dimmer)}
+.wtext:focus{outline:none}
+.wsend{background:none;border:0;color:var(--copper);font-size:16px;cursor:pointer;padding:4px 2px;line-height:1}
+.wsend:hover{color:var(--copper-lt)}
 
 .closer{padding:96px 0;border-top:1px solid var(--line)}
 .closer h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin:0 0 22px;max-width:22ch}
@@ -218,7 +222,10 @@ footer{border-top:1px solid var(--line);padding:32px 0;font-size:14px;color:var(
           <button class="x" id="wclose" aria-label="Close">&times;</button></div>
         <div class="wbody" id="wbody"></div>
         <div class="chips" id="chips"></div>
-        <div class="wfoot"><div class="fld">Type a message&hellip;</div><div class="snd">&#10148;</div></div>
+        <div class="wfoot">
+          <input id="winput" class="wtext" type="text" placeholder="Type anything…" aria-label="Type a message" autocomplete="off">
+          <button id="wsend" class="wsend" aria-label="Send">&#10148;</button>
+        </div>
       </div>
     </div>
   </div>
@@ -325,46 +332,8 @@ document.getElementById('rp3').addEventListener('click',phone3);
 new IntersectionObserver((e,o)=>e.forEach(x=>{if(x.isIntersecting){o.disconnect();phone3();}}),
   {threshold:.3}).observe(ib3);
 
-/* 02 widget */
-const wid=document.getElementById('wid'),wbody=document.getElementById('wbody'),
-chips=document.getElementById('chips'),launch=document.getElementById('launch');
-const SCRIPT=[
- {a:["Hi, MaliHaus here. Anything I can help with about selling a property?"],
-  c:["I inherited a house","I'm behind on payments","Just looking"]},
- {a:["Sorry to hear that, we deal with a lot of those. Whereabouts is the house?"],
-  c:["Delray Beach","Boca Raton","Lake Worth"]},
- {a:["Thank you. Is anyone living in it at the moment?"],
-  c:["No, it's empty","A tenant is in it","I'm still in it"]},
- {a:["Understood. Anything you already know it needs?"],
-  c:["The roof is old","Kitchen and baths are dated","I haven't been inside"]},
- {a:["None of that has to be fixed, we buy it as it stands.",
-     "Empty and needing a roof is usually where our buyer network beats a straight cash offer, so I will have both priced."],
-  c:["What happens next?"]},
- {a:["George calls you with both numbers and the sales he based them on. When suits you?"],
-  c:["Tomorrow morning","Tomorrow afternoon"]},
- {a:["Booked for 10am tomorrow. You will not be asked anything you have already told me."],
-  c:["Thanks"]},
- {a:["Any time. Speak tomorrow."],c:[]}
-];
-let step=0,busy=false;
-function wadd(cls,txt){const d=document.createElement('div');d.className='wb '+cls;d.textContent=txt;
-  wbody.appendChild(d);wbody.scrollTop=wbody.scrollHeight;}
-async function agent(){
-  busy=true;chips.innerHTML='';
-  for(const line of SCRIPT[step].a){
-    const t=document.createElement('div');t.className='wtyp';t.innerHTML='<i></i><i></i><i></i>';
-    wbody.appendChild(t);wbody.scrollTop=wbody.scrollHeight;
-    await wait(Math.min(1400,480+line.length*7));t.remove();wadd('a',line);await wait(300);
-  }
-  SCRIPT[step].c.forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;
-    b.addEventListener('click',()=>{if(busy)return;wadd('u',c);chips.innerHTML='';step++;
-      if(step<SCRIPT.length)setTimeout(agent,400);});chips.appendChild(b);});
-  busy=false;
-}
-launch.addEventListener('click',()=>{wid.classList.add('open');
-  launch.style.opacity='0';launch.style.pointerEvents='none';if(!wbody.children.length)agent();});
-document.getElementById('wclose').addEventListener('click',()=>{wid.classList.remove('open');
-  launch.style.opacity='1';launch.style.pointerEvents='auto';});
 </script>
+<script src="chat.js"></script>
+
 </body>
 </html>

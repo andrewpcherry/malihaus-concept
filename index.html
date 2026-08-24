@@ -507,8 +507,12 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
   animation:wpop .3s ease both}
 .chip:hover{background:var(--copper);color:#160E05}
 .wfoot{flex-shrink:0;padding:12px 15px;border-top:1px solid var(--line);display:flex;gap:9px;align-items:center}
-.wfoot .fld{flex:1;font-size:14px;color:var(--dimmer)}
-.wfoot .snd{color:var(--copper);font-size:17px}
+.wtext{flex:1;min-width:0;background:transparent;border:0;color:var(--cream);
+  font-family:"Karla",sans-serif;font-size:15px;padding:6px 0}
+.wtext::placeholder{color:var(--dimmer)}
+.wtext:focus{outline:none}
+.wsend{background:none;border:0;color:var(--copper);font-size:17px;cursor:pointer;padding:4px 2px;line-height:1}
+.wsend:hover{color:var(--copper-lt)}
 @media(max-width:820px){
   .launch{bottom:70px;right:18px;width:56px;height:56px}
   .nudge{display:none}
@@ -530,138 +534,13 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
   </div>
   <div class="wbody" id="wbody"></div>
   <div class="chips" id="chips"></div>
-  <div class="wfoot"><div class="fld">Type a message&hellip;</div><div class="snd">&#10148;</div></div>
+  <div class="wfoot">
+    <input id="winput" class="wtext" type="text" placeholder="Type anything…" aria-label="Type a message" autocomplete="off">
+    <button id="wsend" class="wsend" aria-label="Send">&#10148;</button>
+  </div>
 </div>
 
-<script>
-(function(){
-const wait=ms=>new Promise(r=>setTimeout(r,ms));
-const wid=document.getElementById('wid'),wbody=document.getElementById('wbody'),
-chips=document.getElementById('chips'),launch=document.getElementById('launch'),
-nudge=document.getElementById('nudge');
-const SCRIPT=[
- {a:["Hi, MaliHaus here. Anything I can help with about selling a property?"],
-  c:["I inherited a house","I'm behind on payments","I'm done being a landlord"]},
- {a:["Sorry to hear that, we deal with a lot of those. Whereabouts is the house?"],
-  c:["Delray Beach","Boca Raton","Lake Worth"]},
- {a:["Thank you. Is anyone living in it at the moment?"],
-  c:["No, it's empty","A tenant is in it","I'm still in it"]},
- {a:["Understood. Anything you already know it needs?"],
-  c:["The roof is old","Kitchen and baths are dated","I haven't been inside"]},
- {a:["None of that has to be fixed, we buy it as it stands.",
-     "That is usually the shape where our buyer network beats a straight cash offer, so we will price both routes for you."],
-  c:["What happens next?"]},
- {a:["Someone calls you with both numbers and the recent sales they are based on. When suits you?"],
-  c:["Tomorrow morning","Tomorrow afternoon"]},
- {a:["Booked for tomorrow morning. You will not be asked anything you have already told me."],
-  c:["Thanks"]},
- {a:["Any time. Speak tomorrow."],c:[]}
-];
-let step=0,busy=false;
-function add(cls,txt){const d=document.createElement('div');d.className='wb '+cls;d.textContent=txt;
-  wbody.appendChild(d);wbody.scrollTop=wbody.scrollHeight;}
-async function agent(){
-  busy=true;chips.innerHTML='';
-  for(const line of SCRIPT[step].a){
-    const t=document.createElement('div');t.className='wtyp';t.innerHTML='<i></i><i></i><i></i>';
-    wbody.appendChild(t);wbody.scrollTop=wbody.scrollHeight;
-    await wait(Math.min(1400,480+line.length*7));t.remove();add('a',line);await wait(300);
-  }
-  SCRIPT[step].c.forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;
-    b.addEventListener('click',()=>{if(busy)return;add('u',c);chips.innerHTML='';step++;
-      if(step<SCRIPT.length)setTimeout(agent,400);});chips.appendChild(b);});
-  busy=false;
-}
-function open_(){wid.classList.add('open');nudge.classList.remove('on');
-  launch.style.opacity='0';launch.style.pointerEvents='none';if(!wbody.children.length)agent();}
-launch.addEventListener('click',open_);
-nudge.addEventListener('click',open_);
-document.getElementById('wclose').addEventListener('click',()=>{wid.classList.remove('open');
-  launch.style.opacity='1';launch.style.pointerEvents='auto';});
-setTimeout(()=>{if(!wid.classList.contains('open'))nudge.classList.add('on');},4200);
-setTimeout(()=>nudge.classList.remove('on'),13000);
-})();
-</script>
+<script src="chat.js"></script>
 
-<script>
-const REVIEWS=[
- ["Great experience! The team was professional, honest, and made the entire process quick and stress-free.","Saugold Services","two months ago"],
- ["We had to sell our property fast. From the very beginning I felt comfortable with our choice.","Robert Krupp","eight months ago"],
- ["George and Tom are the best. Always upfront, honest, and great people overall.","Zion Bar","nine months ago"],
- ["Five stars, no question. Tom went above and beyond to get my property sold.","Cleveland Smith","a year ago"],
- ["They made the entire process of selling my property so smooth and stress-free.","Mohamed Magdy","a year ago"],
- ["Extremely professional, detail-oriented, and genuinely helpful throughout the entire process.","Grits Wald","four months ago"],
- ["They communicated well, kept their promises, and closed on time.","Saugold Services","two months ago"],
- ["He didn't just meet expectations, he exceeded them at every step.","Cleveland Smith","a year ago"]
-];
-const track=document.getElementById('track');
-const card=r=>`<div class="rev"><q>&ldquo;${r[0]}&rdquo;</q><div class="by"><b>${r[1]}</b> &middot; ${r[2]}</div></div>`;
-track.innerHTML=(REVIEWS.map(card).join('')).repeat(2);
-
-const S=[
-{t:"9:14 PM",m:[
-["u","My mother passed in March and I have her house in Delray. I live in Georgia and I don't know where to start."],
-["b","I'm sorry about your mother. Out of state makes this easier than most people expect, not harder. What's the address in Delray?"],
-["u","1140 SW 8th Ave. It's been empty since March."],
-["b","Thank you. Has probate been opened, or is that still ahead of you?"],
-["u","My attorney filed in May. He says a few more weeks."],
-["b","Good, that's usually the part that holds everything up and yours is nearly through. Anything you already know the house needs?"],
-["u","The roof is original, maybe 20 years. Kitchen and bathrooms are 1990s."],
-["b","None of that has to be fixed, we buy it as is. Vacant, out of state and needing a roof is the shape where our national buyers often beat a straight cash number, so we'll price both."],
-["u","I'd rather it was just done. I can't keep flying down."],
-["b","Understood. Someone can call you tomorrow with both numbers and the sales we based them on. Morning or afternoon?"],
-["u","Morning."],
-["b","Ten o'clock. You won't be asked anything you've already told me."]]},
-{t:"7:38 AM",m:[
-["u","I'm three payments behind and the bank sent something last week. Is it too late to sell?"],
-["b","Almost certainly not, and three behind is early rather than late. Do you have the letter to hand? The wording tells us how much time you actually have."],
-["u","It says notice of default. Boca Raton, off Palmetto Park."],
-["b","A notice of default is not a sale date, so you have room. Roughly what is owed including the arrears?"],
-["u","About 240 with the missed payments."],
-["b","Thank you. Are you still living there, and is the house in reasonable shape?"],
-["u","We're still in it. Tidy, nothing broken, just dated."],
-["b","That's good news, it means the renovation buyers are open to you and not only a cash offer. Do you need time after closing to find somewhere?"],
-["u","Maybe a month."],
-["b","That is normally arrangeable and it shouldn't cost you on price. Given the letter I'd rather someone called you today than tomorrow. Two o'clock?"],
-["u","Two is fine."],
-["b","Two o'clock. We'll have your payoff position and the timeline mapped before we call."]]},
-{t:"11:52 PM",m:[
-["u","I have a rental in Lake Worth I'm done with. Tenant is still in there with 5 months left."],
-["b","A tenant in place isn't a problem, it can be worth more that way. What's the address and what are they paying?"],
-["u","826 N K St. They pay 2,100."],
-["b","Thank you. Is the rent paid on time?"],
-["u","Always. That isn't the issue, I'm just tired of the maintenance calls."],
-["b","That matters. A paying tenant on a current lease makes this an income property rather than a fixer, which brings a different and usually better set of buyers."],
-["u","So I don't have to make them leave?"],
-["b","No. Buyers holding for income would rather they stayed. It's one of the few cases where the house is worth more exactly as it is."],
-["u","That's a relief."],
-["b","We'll want the lease and the rent roll before we price it. Send them over whenever and we'll call you tomorrow afternoon."]]}];
-
-const stream=document.getElementById('stream'),clock=document.getElementById('clock');
-let seq=0,timers=[],cur=0;
-function play(i){
-  timers.forEach(clearTimeout);timers=[];const mine=++seq;cur=i;
-  const s=S[i];stream.innerHTML='';clock.textContent=s.t;let d=350;
-  s.m.forEach(([w,t])=>{
-    if(w==='b'){const tf=Math.min(1400,400+t.length*8);
-      timers.push(setTimeout(()=>{if(mine!==seq)return;
-        const e=document.createElement('div');e.className='ty';e.id='ty';e.innerHTML='<i></i><i></i><i></i>';
-        stream.appendChild(e);stream.scrollTop=stream.scrollHeight;},d));d+=tf;}
-    timers.push(setTimeout(()=>{if(mine!==seq)return;
-      const y=document.getElementById('ty');if(y)y.remove();
-      const e=document.createElement('div');e.className='m '+w;e.textContent=t;
-      stream.appendChild(e);stream.scrollTop=stream.scrollHeight;},d));
-    d+=w==='b'?1450:1200;});
-}
-document.querySelectorAll('.pick button').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.pick button').forEach(x=>x.setAttribute('aria-pressed','false'));
-  b.setAttribute('aria-pressed','true');play(+b.dataset.s);}));
-let go=false;
-new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting&&!go){go=true;play(0);}}),{threshold:.2})
-  .observe(document.getElementById('ask'));
-
-const sticky=document.getElementById('sticky');
-addEventListener('scroll',()=>sticky.classList.toggle('on',scrollY>window.innerHeight*.9),{passive:true});
-</script>
 </body>
 </html>
