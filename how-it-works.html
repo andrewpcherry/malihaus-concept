@@ -4,169 +4,158 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>From Brochure to Operational</title>
-<meta name="description" content="What turns the MaliHaus website from a leaflet that takes messages into a system that answers, qualifies, books, follows up and gets paid.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="From Brochure to Operational">
-<meta property="og:description" content="Every part that answers, qualifies, books, chases, closes and reports. All of it running on this page.">
+<title>Never Losing a Lead</title>
+<meta name="description" content="Speed to lead, follow up, and waking up old leads. Three things, shown running.">
+<meta property="og:title" content="Never Losing a Lead">
+<meta property="og:description" content="Three things, shown running rather than described.">
 <link rel="icon" href="img/cropped-Untitled-1-270x270.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Karla:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Karla:wght@300;400;500;600&display=swap">
 <style>
-:root{
-  --black:#07080A; --panel:#0E1114; --panel2:#151A1E; --line:#20272C; --line2:#2E383F;
-  --copper:#C68C4E; --copper-lt:#E8BC86; --cream:#EDF1F3; --dim:#94A0A8; --dimmer:#616E76;
-  --live:#5FC98B; --cold:#8A5A55;
-}
+:root{--black:#07080A;--panel:#0E1114;--panel2:#151A1E;--line:#20272C;--line2:#2E383F;
+  --copper:#C68C4E;--copper-lt:#E8BC86;--cream:#EDF1F3;--dim:#94A0A8;--dimmer:#616E76;--live:#5FC98B;
+  --imsg:#26262B;--iblue:#0B84FF}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{margin:0;background:var(--black);color:var(--cream);
-  font-family:"Karla",Helvetica,Arial,sans-serif;font-size:17px;line-height:1.66;
+  font-family:"Karla",Helvetica,Arial,sans-serif;font-size:17.5px;line-height:1.66;
   -webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
+a{color:inherit}
 :focus-visible{outline:2px solid var(--copper);outline-offset:3px}
-h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
-  font-variation-settings:"SOFT" 30,"WONK" 1;letter-spacing:-.015em;line-height:1.1}
-.wrap{max-width:1160px;margin:0 auto;padding:0 36px}
-.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+h1,h2{font-family:"Fraunces",Georgia,serif;font-weight:500;
+  font-variation-settings:"SOFT" 30,"WONK" 1;letter-spacing:-.015em;line-height:1.12}
+.wrap{max-width:1120px;margin:0 auto;padding:0 34px}
+.narrow{max-width:620px}
 
-.top{border-bottom:1px solid var(--line);padding:20px 0;background:#06070A;position:sticky;top:0;z-index:50}
+.top{border-bottom:1px solid var(--line);padding:18px 0;background:#06070A}
 .topin{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.top img{height:36px}
-.top .back{font-size:14.5px;color:var(--copper-lt)}
+.top img{height:34px}
+.top a{font-size:14.5px;color:var(--copper-lt);text-decoration:none}
 
-.head{padding:88px 0 76px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-.head:after{content:"";position:absolute;right:-200px;top:-180px;width:660px;height:660px;
-  background:radial-gradient(circle,rgba(198,140,78,.14),transparent 66%);pointer-events:none}
-.head h1{font-size:clamp(2.4rem,5.4vw,4rem);margin:0;max-width:16ch;position:relative;z-index:1}
-.head h1 i{font-style:italic;color:var(--copper-lt)}
-.head p{color:var(--dim);max-width:60ch;margin:26px 0 0;font-size:1.12rem;position:relative;z-index:1}
+.note{padding:78px 0 8px}
+.note h1{font-size:clamp(2rem,4.4vw,3rem);margin:0 0 26px;max-width:20ch}
+.note p{color:var(--dim);margin:0 0 1.15em}
+.note p.lead{color:var(--cream);font-size:1.15rem}
+.note b{color:var(--cream);font-weight:600}
 
-/* ledger */
-.ledger{padding:92px 0;border-bottom:1px solid var(--line)}
-.lhead{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:44px;border:1px solid var(--line);border-bottom:0}
-.lhead div{padding:16px 22px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
-  letter-spacing:.12em;text-transform:uppercase}
-.lhead .a{color:var(--cold);border-right:1px solid var(--line);background:#0C0A0A}
-.lhead .b{color:var(--live);background:#0A0E0C}
-.lrow{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-top:0}
-.lrow>div{padding:20px 22px;font-size:15.5px;line-height:1.55}
-.lrow .a{color:var(--dim);border-right:1px solid var(--line);background:#0A0A0B}
-.lrow .b{color:var(--cream);background:#0A0D0C}
-.lrow .ev{grid-column:1/-1;padding:13px 22px;background:var(--panel2);border-bottom:1px solid var(--line);
-  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper)}
-@media(max-width:720px){
-  .lhead{grid-template-columns:1fr}.lhead .a{border-right:0;border-bottom:1px solid var(--line)}
-  .lrow{grid-template-columns:1fr}.lrow .a{border-right:0;border-bottom:1px solid var(--line)}
-}
+.act{padding:66px 0}
+.act+.act{border-top:1px solid var(--line)}
+.g{display:grid;grid-template-columns:345px 1fr;gap:56px;align-items:center}
+.g.r{grid-template-columns:1fr 345px}
+@media(max-width:980px){.g,.g.r{grid-template-columns:1fr;gap:32px}.g.r .stage{order:-1}}
+.g.wide{grid-template-columns:1fr}
+.no{font-family:"Fraunces",serif;font-size:2.4rem;color:var(--copper);line-height:.85;
+  font-variation-settings:"SOFT" 60,"WONK" 1;margin-bottom:12px}
+.act h2{font-size:clamp(1.5rem,2.8vw,2rem);margin:0 0 14px;max-width:19ch}
+.act p{color:var(--dim);margin:0 0 .9em;max-width:44ch;font-size:16.5px}
+.act p:last-child{margin-bottom:0}
+.act p b{color:var(--cream);font-weight:600}
+.rp{margin-top:20px;background:transparent;border:1px solid var(--line2);color:var(--dim);cursor:pointer;
+  font-family:"Karla",sans-serif;font-size:14px;padding:10px 18px;transition:.2s}
+.rp:hover{border-color:var(--copper);color:var(--copper-lt)}
 
-/* part blocks */
-.part{padding:88px 0;border-bottom:1px solid var(--line)}
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.pgrid.flip .demo{order:-1}
-@media(max-width:960px){.pgrid{grid-template-columns:1fr;gap:34px}.pgrid.flip .demo{order:0}}
-.tag{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
-.tag .no{font-family:"Fraunces",Georgia,serif;font-size:2.7rem;line-height:.85;color:var(--copper);
-  font-variation-settings:"SOFT" 60,"WONK" 1}
-.tag .nm{font-family:"Fraunces",Georgia,serif;font-size:1.05rem;font-style:italic;color:var(--dim)}
-.part h2{font-size:clamp(1.65rem,3.1vw,2.25rem);margin:0 0 18px;max-width:20ch}
-.part p{color:var(--dim);margin:0 0 15px;max-width:52ch}
-.part p:last-child{margin-bottom:0}
-.part b{color:var(--cream);font-weight:600}
-.facts{margin:22px 0 0;padding:0;list-style:none}
-.facts li{padding:11px 0 11px 26px;border-top:1px solid var(--line);font-size:15.5px;position:relative;color:var(--dim)}
-.facts li:before{content:"";position:absolute;left:0;top:19px;width:9px;height:1px;background:var(--copper)}
-.facts li b{color:var(--cream)}
+/* iPhone */
+.iph{width:325px;margin:0 auto;background:#0A0A0C;border:1px solid #2A2E33;border-radius:46px;
+  padding:11px;box-shadow:0 50px 100px -50px #000,0 0 0 1px rgba(255,255,255,.04) inset}
+.scr{background:#000;border-radius:36px;overflow:hidden;height:610px;display:flex;flex-direction:column;position:relative}
+.island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:98px;height:27px;background:#000;border-radius:16px;z-index:5}
+.sbar{display:flex;justify-content:space-between;align-items:center;padding:15px 24px 6px;
+  font-size:13.5px;font-weight:600;color:#fff;flex-shrink:0}
+.sbar .ic{display:flex;gap:6px;align-items:center;font-size:10px}
+.bat{width:22px;height:11px;border:1px solid rgba(255,255,255,.55);border-radius:3px;position:relative;display:inline-block}
+.bat:before{content:"";position:absolute;inset:1.5px;right:6px;background:#fff;border-radius:1px}
+.ihead{display:flex;flex-direction:column;align-items:center;padding:8px 0 11px;
+  border-bottom:.5px solid #2C2C2E;background:rgba(28,28,30,.94);flex-shrink:0;position:relative}
+.ihead .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(160deg,#E8BC86,#7A4F26);
+  display:grid;place-items:center;font-size:14px;color:#1a1207;font-weight:700;margin-bottom:5px}
+.ihead .nm{font-size:12.5px;color:#fff}
+.ihead .bk{position:absolute;left:16px;top:26px;color:var(--iblue);font-size:23px;line-height:1}
+.ibody{flex:1;overflow-y:auto;padding:14px 12px 8px;display:flex;flex-direction:column;gap:2px;background:#000}
+.ibody::-webkit-scrollbar{width:0}
+.mcall{background:#1C1C1E;border-radius:14px;padding:11px 13px;display:flex;align-items:center;gap:10px;
+  margin-bottom:12px;animation:pop .3s ease both}
+.mcall .ph{width:30px;height:30px;border-radius:50%;background:#3A2321;display:grid;place-items:center;
+  color:#FF6B5A;font-size:13px;flex-shrink:0}
+.mcall .t1{font-size:13px;color:#fff;font-weight:600}
+.mcall .t2{font-size:11.5px;color:#8E8E93}
+.mcall .t3{margin-left:auto;font-size:11px;color:#8E8E93}
+.ib{max-width:75%;padding:8px 13px;border-radius:18px;font-size:14.5px;line-height:1.37;
+  animation:pop .3s ease both;word-wrap:break-word}
+.ib.them{align-self:flex-start;background:var(--imsg);color:#fff;border-bottom-left-radius:5px}
+.ib.me{align-self:flex-end;background:var(--iblue);color:#fff;border-bottom-right-radius:5px}
+.ib+.ib{margin-top:2px}
+.stamp{align-self:center;font-size:10.5px;color:#8E8E93;margin:10px 0 6px}
+.deliv{align-self:flex-end;font-size:10.5px;color:#8E8E93;margin:2px 4px 6px}
+.ityp{align-self:flex-start;background:var(--imsg);border-radius:18px;border-bottom-left-radius:5px;
+  padding:12px 14px;display:flex;gap:4px;animation:pop .25s ease both}
+.ityp i{width:7px;height:7px;border-radius:50%;background:#8E8E93;animation:bl 1.2s infinite}
+.ityp i:nth-child(2){animation-delay:.18s}.ityp i:nth-child(3){animation-delay:.36s}
+.ifoot{flex-shrink:0;padding:8px 12px 12px;background:rgba(28,28,30,.94);border-top:.5px solid #2C2C2E;
+  display:flex;align-items:center;gap:9px}
+.ifoot .fld{flex:1;border:1px solid #3A3A3C;border-radius:17px;padding:7px 13px;font-size:14px;color:#8E8E93}
+.ifoot .snd{width:29px;height:29px;border-radius:50%;background:var(--iblue);display:grid;place-items:center;color:#fff;font-size:14px}
+.hbar{width:120px;height:4px;background:#48484A;border-radius:2px;margin:0 auto 7px}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes bl{0%,60%,100%{opacity:.3}30%{opacity:1}}
 
-.handset{background:var(--panel);border:1px solid var(--line2);border-radius:22px;padding:24px 20px;
-  max-width:330px;margin:0 auto;box-shadow:0 40px 90px -50px #000}
-.missed{display:flex;align-items:center;gap:13px;padding:12px 0 16px;border-bottom:1px solid var(--line)}
-.missed .ic{width:34px;height:34px;border-radius:50%;border:1px solid #7d3a30;color:#e08b78;
-  display:grid;place-items:center;font-size:15px;flex-shrink:0}
-.missed .n{font-size:15px}.missed .m{font-size:12.5px;color:var(--dimmer)}
-.bub{margin-top:16px;background:rgba(198,140,78,.11);border:1px solid rgba(198,140,78,.26);
-  padding:13px 15px;font-size:14.5px;line-height:1.5;opacity:0;transform:translateY(8px);transition:.5s}
-.bub.on{opacity:1;transform:none}
-.bub .fr{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--dimmer);display:block;margin-bottom:6px}
-.tick{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--live)}
+/* browser + widget */
+.brw{border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:#0B0906;
+  box-shadow:0 50px 110px -55px #000;max-width:940px;margin:0 auto}
+.bbar{display:flex;align-items:center;gap:9px;padding:11px 14px;background:#16181B;border-bottom:1px solid var(--line)}
+.bbar .d{width:11px;height:11px;border-radius:50%}
+.url{flex:1;margin-left:8px;background:#0C0E10;border:1px solid var(--line);border-radius:6px;
+  padding:5px 13px;font-size:12.5px;color:var(--dim);text-align:center}
+.bview{position:relative;height:500px;overflow:hidden;background:#0B0906}
+.bview .shot{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.6}
+.bview:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,6,.25),rgba(8,8,6,.8))}
+.launch{position:absolute;right:22px;bottom:22px;z-index:6;width:60px;height:60px;border-radius:50%;
+  background:var(--copper);border:0;cursor:pointer;display:grid;place-items:center;
+  box-shadow:0 14px 34px -10px rgba(198,140,78,.7);transition:.25s}
+.launch:hover{transform:scale(1.06)}
+.launch svg{width:27px;height:27px;fill:#160E05}
+.launch .badge{position:absolute;top:-3px;right:-3px;width:20px;height:20px;border-radius:50%;
+  background:#E5484D;color:#fff;font-size:11.5px;font-weight:700;display:grid;place-items:center;border:2px solid #0B0906}
+.ping{position:absolute;inset:0;border-radius:50%;border:2px solid var(--copper);animation:ping 2.2s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.85}100%{transform:scale(1.75);opacity:0}}
+.wid{position:absolute;right:22px;bottom:22px;z-index:7;width:352px;max-width:calc(100% - 44px);
+  background:#101317;border:1px solid var(--line2);border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column;height:420px;box-shadow:0 34px 80px -30px rgba(0,0,0,.95);
+  opacity:0;transform:translateY(14px) scale(.97);pointer-events:none;transition:.28s cubic-bezier(.2,.8,.3,1)}
+.wid.open{opacity:1;transform:none;pointer-events:auto}
+.whead{padding:14px 16px;background:linear-gradient(135deg,#1B1409,#12161A);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:11px;flex-shrink:0}
+.whead .lg{width:34px;height:34px;border-radius:50%;background:linear-gradient(160deg,#E8BC86,#8A5A2C);
+  display:grid;place-items:center;font-size:12.5px;font-weight:700;color:#1a1207}
+.whead .n{font-size:14.5px;font-weight:600;line-height:1.2}
+.whead .s{font-size:11.5px;color:var(--live);display:flex;align-items:center;gap:5px}
+.whead .s:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--live)}
+.whead .x{margin-left:auto;background:none;border:0;color:var(--dimmer);font-size:19px;cursor:pointer;line-height:1}
+.wbody{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:9px}
+.wbody::-webkit-scrollbar{width:4px}.wbody::-webkit-scrollbar-thumb{background:var(--line2);border-radius:2px}
+.wb{max-width:82%;padding:10px 13px;border-radius:14px;font-size:14.5px;line-height:1.45;animation:pop .3s ease both}
+.wb.a{align-self:flex-start;background:#1A1F24;border-bottom-left-radius:4px}
+.wb.u{align-self:flex-end;background:var(--copper);color:#160E05;border-bottom-right-radius:4px;font-weight:500}
+.wtyp{align-self:flex-start;background:#1A1F24;border-radius:14px;border-bottom-left-radius:4px;padding:12px 14px;display:flex;gap:4px}
+.wtyp i{width:6px;height:6px;border-radius:50%;background:var(--copper);animation:bl 1.2s infinite}
+.wtyp i:nth-child(2){animation-delay:.18s}.wtyp i:nth-child(3){animation-delay:.36s}
+.chips{padding:0 14px 12px;display:flex;flex-wrap:wrap;gap:7px;flex-shrink:0}
+.chip{background:transparent;border:1px solid var(--copper);color:var(--copper-lt);cursor:pointer;
+  font-family:"Karla",sans-serif;font-size:13.5px;padding:8px 13px;border-radius:15px;transition:.18s;animation:pop .3s ease both}
+.chip:hover{background:var(--copper);color:#160E05}
+.wfoot{flex-shrink:0;padding:11px 14px;border-top:1px solid var(--line);display:flex;gap:9px;align-items:center}
+.wfoot .fld{flex:1;font-size:13.5px;color:var(--dimmer)}
+.wfoot .snd{color:var(--copper);font-size:16px}
 
-.dual{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:760px){.dual{grid-template-columns:1fr}}
-.box{background:var(--panel);border:1px solid var(--line);height:520px;display:flex;flex-direction:column;overflow:hidden}
-.boxtop{padding:14px 18px;border-bottom:1px solid var(--line);background:var(--panel2);flex-shrink:0;
-  display:flex;align-items:center;gap:10px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 9px var(--live)}
-.boxtop .t{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
-.boxtop .u{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--dimmer)}
-.stream{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:11px}
-.stream::-webkit-scrollbar,.recb::-webkit-scrollbar{width:4px}
-.stream::-webkit-scrollbar-thumb,.recb::-webkit-scrollbar-thumb{background:var(--line2)}
-.m{max-width:88%;padding:10px 13px;font-size:14.5px;line-height:1.5;animation:rise .32s ease both}
-.m.b{align-self:flex-start;background:var(--panel2);border:1px solid var(--line);border-left:2px solid var(--copper)}
-.m.u{align-self:flex-end;background:rgba(61,143,181,.14);border:1px solid rgba(61,143,181,.3)}
-.ty{align-self:flex-start;display:flex;gap:5px;padding:13px 14px;background:var(--panel2);border:1px solid var(--line)}
-.ty i{width:5px;height:5px;border-radius:50%;background:var(--copper);animation:bl 1.3s infinite}
-.ty i:nth-child(2){animation-delay:.2s}.ty i:nth-child(3){animation-delay:.4s}
-@keyframes bl{0%,60%,100%{opacity:.22}30%{opacity:1}}
-@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.recb{flex:1;overflow-y:auto;padding:4px 18px 18px}
-.row{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.row:last-child{border-bottom:0}
-.row .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dimmer)}
-.row .v{font-size:14px;opacity:0;transform:translateY(4px);transition:.4s}
-.row .v.on{opacity:1;transform:none}
-.row .v.pend{color:#4A555C;font-style:italic;opacity:1;transform:none}
-.pill{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.09em;
-  text-transform:uppercase;padding:3px 8px;background:rgba(95,201,139,.14);color:var(--live);
-  border:1px solid rgba(95,201,139,.3)}
-.pick{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 20px}
-.pick button{background:transparent;border:1px solid var(--line2);color:var(--dim);cursor:pointer;
-  font-family:"Karla",sans-serif;font-size:14px;padding:9px 16px;transition:.2s}
-.pick button:hover{border-color:var(--copper);color:var(--cream)}
-.pick button[aria-pressed="true"]{border-color:var(--copper);background:var(--copper);color:#0B0805;font-weight:600}
-.replay{margin-top:16px;background:transparent;border:1px solid var(--line2);color:var(--dim);cursor:pointer;
-  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;padding:10px 18px}
-.replay:hover{border-color:var(--copper);color:var(--copper-lt)}
-
-/* channel strip */
-.chans{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);
-  border:1px solid var(--line);margin-top:26px}
-.chans div{background:var(--panel);padding:18px 18px;font-size:14.5px;color:var(--dim)}
-.chans div b{display:block;color:var(--cream);font-size:15px;margin-bottom:3px}
-
-/* flow */
-.flow{margin-top:34px}
-.flow div{display:grid;grid-template-columns:44px 210px 1fr;gap:0 24px;align-items:baseline;
-  padding:22px 0;border-top:1px solid var(--line)}
-.flow div:last-child{border-bottom:1px solid var(--line)}
-.flow .n{font-family:"Fraunces",Georgia,serif;font-size:1.5rem;color:var(--copper);line-height:1}
-.flow .h{font-family:"Fraunces",Georgia,serif;font-size:1.18rem;color:var(--cream)}
-.flow .d{font-size:15.5px;color:var(--dim);line-height:1.58;max-width:52ch}
-@media(max-width:820px){.flow div{grid-template-columns:38px 1fr;gap:4px 18px}
-  .flow .d{grid-column:2}}
-
-.report{background:var(--panel);border:1px solid var(--line)}
-.rtop{padding:14px 20px;border-bottom:1px solid var(--line);background:var(--panel2);
-  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
-.rbody{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line)}
-.rbody div{background:var(--panel);padding:22px 20px}
-.rbody .n{font-family:"Fraunces",serif;font-size:1.9rem;color:var(--copper-lt);line-height:1;display:block;margin-bottom:7px}
-.rbody .l{font-size:13.5px;color:var(--dim)}
-
-.closer{padding:110px 0;text-align:center}
-.closer h2{font-size:clamp(1.9rem,4vw,2.9rem);margin:0 auto 22px;max-width:20ch}
-.closer p{color:var(--dim);max-width:54ch;margin:0 auto 34px}
-.btn{display:inline-block;font-weight:600;font-size:15px;padding:16px 32px;transition:.2s}
-.btn.solid{background:var(--copper);color:#0B0805}
-.btn.solid:hover{background:var(--copper-lt)}
-.btn.ghost{border:1px solid var(--line2);color:var(--copper-lt)}
-.btn.ghost:hover{border-color:var(--copper)}
-footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(--dimmer);background:#06070A}
-@media(max-width:760px){.wrap{padding:0 22px}.part{padding:62px 0}.head{padding:56px 0 48px}
-  .box{height:460px}.ledger{padding:64px 0}}
+.closer{padding:96px 0;border-top:1px solid var(--line)}
+.closer h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin:0 0 22px;max-width:22ch}
+.closer p{color:var(--dim);max-width:56ch;margin:0 0 1.1em}
+.closer p b{color:var(--cream);font-weight:600}
+.sig{margin-top:34px;font-size:15px;color:var(--dimmer)}
+.sig b{display:block;color:var(--cream);font-weight:600}
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:14px;color:var(--dimmer);background:#06070A}
+@media(max-width:760px){.wrap{padding:0 20px}.act{padding:48px 0}.note{padding:48px 0 8px}
+  .bview{height:430px}.wid{height:360px;right:14px;bottom:14px}.launch{right:16px;bottom:16px}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important}}
 </style>
 </head>
@@ -174,348 +163,206 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 
 <div class="top"><div class="wrap"><div class="topin">
   <img src="img/logo-copper.png" alt="MaliHaus Capital">
-  <a class="back" href="./">&larr; Back to the page itself</a>
+  <a href="./">&larr; Back to the site</a>
 </div></div></div>
 
-<div class="head"><div class="wrap">
-  <h1>Right now your website is a leaflet. <i>This makes it staff.</i></h1>
-  <p>A leaflet can be handed to someone. It cannot answer a question at nine at night, ask what condition the roof is in, put the appointment in your calendar, chase the seller who went quiet for six weeks, send the paperwork, take the money, or ask for the review afterwards. Everything below does. All of it is running on this page, so press the buttons rather than take my word for it.</p>
+<div class="note"><div class="wrap narrow">
+  <h1>A brochure, or a website that works for you around the clock?</h1>
+  <p class="lead">George, this is separate from what we already discussed and entirely optional. Everything we talked about stands on its own.</p>
+  <p>A brochure sits there and takes messages. The same website can be built to <b>work your leads 24 hours a day</b>, so that nothing falls through the cracks while you are asleep, driving, or standing in somebody's kitchen.</p>
+  <p>It comes down to one thing. A motivated seller rings two or three buyers in an evening and goes with whoever gets back to him first. Not the best offer. The first answer.</p>
+  <p>So there are three things worth showing you, and nothing else. <b>Answering instantly. Chasing so nobody drops. And waking up the ones who went quiet months ago.</b> All three are running below, so have a play with them.</p>
 </div></div>
 
-<!-- LEDGER -->
-<div class="ledger"><div class="wrap">
-  <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem);margin:0;max-width:20ch">The same week, run twice.</h2>
-  <p style="color:var(--dim);max-width:56ch;margin:20px 0 0">Nothing on the left is a criticism. It is simply what a website that can only take a message is able to do.</p>
-
-  <div class="lhead"><div class="a">Your site today</div><div class="b">The same site, operational</div></div>
-
-  <div class="lrow"><div class="ev mono">Tuesday 6:42pm &nbsp;&middot;&nbsp; a seller calls, you are on a walkthrough</div>
-    <div class="a">Rings out. Voicemail. He calls the next buyer on his list and one of them picks up.</div>
-    <div class="b">Text out in eleven seconds from your own number. He replies. By the time you are back in the car there is an address and a reason on your phone.</div></div>
-
-  <div class="lrow"><div class="ev mono">Tuesday 9:14pm &nbsp;&middot;&nbsp; a woman reads your page about her late mother's house</div>
-    <div class="a">Eight required fields, a state dropdown, then a promise that someone will be in touch. She closes the tab.</div>
-    <div class="b">She asks one question and gets an answer. Ten minutes later probate stage, condition, motivation and timeline are on the record and Wednesday at ten is booked.</div></div>
-
-  <div class="lrow"><div class="ev mono">Wednesday &nbsp;&middot;&nbsp; three enquiries land while you are at a closing</div>
-    <div class="a">Three form emails in an inbox with everything else. You get to them Thursday. One has already sold.</div>
-    <div class="b">All three answered inside a minute, qualified, scored, and sorted so the urgent one is at the top when you look.</div></div>
-
-  <div class="lrow"><div class="ev mono">Thursday &nbsp;&middot;&nbsp; a seller from March goes quiet again</div>
-    <div class="a">He sits in a spreadsheet. Nobody has the appetite to work an old list.</div>
-    <div class="b">He is in a sequence built for his situation. Text, then email, then a voicemail. It stops the moment he answers.</div></div>
-
-  <div class="lrow"><div class="ev mono">Friday &nbsp;&middot;&nbsp; you agree a price on the phone</div>
-    <div class="a">Print it, scan it, email it, wait, remind him, wait.</div>
-    <div class="b">The agreement goes to his phone, he signs it there, and the invoice raises itself the moment he does.</div></div>
-
-  <div class="lrow"><div class="ev mono">Two weeks later &nbsp;&middot;&nbsp; it closes</div>
-    <div class="a">You mean to ask for a review. You are already on the next house.</div>
-    <div class="b">The request goes out while he still feels good about it, one tap to your Google listing, and it appears on your home page on its own.</div></div>
-
-  <div class="lrow"><div class="ev mono">End of the month &nbsp;&middot;&nbsp; what did any of it produce</div>
-    <div class="a">No analytics, no tracking, no call records. Nothing to look at.</div>
-    <div class="b">One page: calls, answered and missed, conversations, appointments, deals, reviews, and what each lead cost.</div></div>
-</div></div>
-
-<!-- 01 PHONE -->
-<section class="part"><div class="wrap"><div class="pgrid">
+<!-- 01 -->
+<div class="act"><div class="wrap"><div class="g">
+  <div class="stage">
+    <div class="iph"><div class="scr">
+      <div class="island"></div>
+      <div class="sbar"><span>6:42</span><span class="ic">&#9679;&#9679;&#9679;&#9679; <span class="bat"></span></span></div>
+      <div class="ihead"><span class="bk">&#8249;</span><div class="av">MH</div>
+        <div class="nm">MaliHaus Capital &nbsp;&#8250;</div></div>
+      <div class="ibody" id="ib1"></div>
+      <div class="ifoot"><div class="fld">iMessage</div><div class="snd">&#8593;</div></div>
+      <div class="hbar"></div>
+    </div></div>
+  </div>
   <div>
-    <div class="tag"><span class="no">01</span><span class="nm">The phone</span></div>
-    <h2>Every call gets answered, including the ones you cannot take.</h2>
-    <p>Two things sit on your number. The first is <b>missed call text back</b>: the instant a call goes unanswered, a text goes out and the conversation carries on without you.</p>
-    <p>The second is a <b>voice agent that actually answers</b>. It picks up in a human sounding voice, asks about the property, and books straight into your calendar. It does not read a menu and it does not take a message.</p>
-    <ul class="facts">
-      <li>Fires on <b>every</b> unanswered call, nights, weekends, holidays</li>
-      <li>Comes from <b>your own number</b>, so replies land where you expect</li>
-      <li>Every call <b>tracked and recorded</b>, so you know which ones came from where</li>
-      <li>Stops the second a human joins the thread</li>
-    </ul>
+    <div class="no">01</div>
+    <h2>He rang at 6:42 and you were on a walkthrough.</h2>
+    <p>This is <b>his</b> phone, not yours. Today he gets a voicemail beep and rings the next company on his list.</p>
+    <p>Watch what he gets instead.</p>
+    <button class="rp" id="rp1">Play it again</button>
   </div>
-  <div class="demo">
-    <div class="handset">
-      <div class="missed"><span class="ic">&#8600;</span>
-        <div><div class="n">Missed call</div><div class="m">(561) 555 0148 &nbsp;&middot;&nbsp; 6:42 PM</div></div></div>
-      <div class="bub" id="bub"><span class="fr">MaliHaus Capital &middot; 6:42 PM</span>
-        Sorry we missed you, this is MaliHaus. Are you calling about selling a property? Give me the address and I can start looking at it right now.</div>
-      <div class="tick mono" id="tick">waiting</div>
-    </div>
+</div></div></div>
+
+<!-- 02 -->
+<div class="act"><div class="wrap">
+  <div class="narrow" style="margin-bottom:34px">
+    <div class="no">02</div>
+    <h2>Nine at night, on your own website.</h2>
+    <p style="max-width:52ch">Click the button in the corner and have the conversation yourself. Answer the way one of your sellers would.</p>
   </div>
-</div></div></section>
-
-<!-- 02 CONVERSATION -->
-<section class="part"><div class="wrap">
-  <div class="tag"><span class="no">02</span><span class="nm">The conversation</span></div>
-  <h2>It does the first ten minutes of the call for you, at whatever hour the seller turns up.</h2>
-  <p style="max-width:66ch">Not a menu, and not a form with a chat bubble around it. It asks what you would ask, in the order you would ask it, it knows how to handle probate differently from a notice of default, and it stops when it has enough. Choose a seller and watch both halves at once.</p>
-
-  <div style="margin-top:32px">
-    <div class="pick" role="group" aria-label="Choose a seller">
-      <button data-s="0" aria-pressed="true">Inherited, out of state, 9:14 PM</button>
-      <button data-s="1" aria-pressed="false">Notice of default, 7:38 AM</button>
-      <button data-s="2" aria-pressed="false">Tenanted rental, 11:52 PM</button>
-    </div>
-    <div class="dual">
-      <div class="box">
-        <div class="boxtop"><span class="dot"></span><span class="t">What the seller sees</span><span class="u mono" id="clock">9:14 PM</span></div>
-        <div class="stream" id="stream"></div>
-      </div>
-      <div class="box">
-        <div class="boxtop"><span class="t">What lands on your desk</span><span class="u mono" id="rsub">building</span></div>
-        <div class="recb" id="recb"></div>
+  <div class="brw">
+    <div class="bbar"><span class="d" style="background:#FF5F57"></span><span class="d" style="background:#FEBC2E"></span>
+      <span class="d" style="background:#28C840"></span><div class="url">malihaus.com</div></div>
+    <div class="bview">
+      <img class="shot" src="img/hero-goldenhour.jpg" alt="The MaliHaus website">
+      <button class="launch" id="launch" aria-label="Open chat"><span class="ping"></span>
+        <svg viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.8 2 11.5c0 2.4 1.2 4.6 3.1 6.1-.1 1.2-.6 2.7-1.6 3.9 0 0 2.9-.4 5-2 1.1.3 2.3.5 3.5.5 5.5 0 10-3.8 10-8.5S17.5 3 12 3z"/></svg>
+        <span class="badge">1</span></button>
+      <div class="wid" id="wid">
+        <div class="whead"><div class="lg">MH</div>
+          <div><div class="n">MaliHaus Capital</div><div class="s">Replies in seconds</div></div>
+          <button class="x" id="wclose" aria-label="Close">&times;</button></div>
+        <div class="wbody" id="wbody"></div>
+        <div class="chips" id="chips"></div>
+        <div class="wfoot"><div class="fld">Type a message&hellip;</div><div class="snd">&#10148;</div></div>
       </div>
     </div>
-    <button class="replay" id="replay">Run it again</button>
-  </div>
-
-  <p style="margin-top:40px;max-width:66ch"><b>And it is the same conversation wherever the seller starts it.</b> Chat on your website, a text to your number, a Facebook or Instagram message, WhatsApp, or a message through your Google listing all arrive in one place, in one thread, against one seller. You never have five inboxes and you never ask the same question twice.</p>
-  <div class="chans">
-    <div><b>Website chat</b>The widget on your own pages</div>
-    <div><b>Text message</b>To the number on your signs</div>
-    <div><b>Facebook &amp; Instagram</b>Messages and comments</div>
-    <div><b>WhatsApp</b>For the ones who prefer it</div>
-    <div><b>Google listing</b>Messages straight off your profile</div>
-    <div><b>Email</b>In the same thread as the rest</div>
-  </div>
-</div></section>
-
-<!-- 03 RECORD -->
-<section class="part"><div class="wrap"><div class="pgrid flip">
-  <div>
-    <div class="tag"><span class="no">03</span><span class="nm">The record</span></div>
-    <h2>Every seller arrives already sorted, scored and in the right column.</h2>
-    <p>What you saw building on the right hand side is a real record. It carries the address, the situation, the condition, the payoff, the timeline, the motivation and the route you would take, plus every message either way and every call recording.</p>
-    <p>Sellers are <b>scored and ranked</b>, so the notice of default sits above the man who is thinking about it next spring. They move through <b>your own pipeline</b>, whatever stages you actually use, and the pipeline moves them on its own as things happen.</p>
-    <ul class="facts">
-      <li>One record per seller, not a form email in an inbox</li>
-      <li><b>Lead scoring</b> so the urgent ones surface without you sorting</li>
-      <li>Pipeline stages that <b>advance themselves</b> when a seller books, signs or pays</li>
-      <li>Everything on <b>your phone</b>, including calling and texting from your business number</li>
-    </ul>
-  </div>
-  <div class="demo">
-    <div class="report">
-      <div class="rtop">Sorted before you look</div>
-      <div class="rbody">
-        <div><span class="n">01</span><span class="l">Notice of default, Boca Raton, today</span></div>
-        <div><span class="n">02</span><span class="l">Inherited, vacant, Delray, tomorrow 10am</span></div>
-        <div><span class="n">03</span><span class="l">Tenanted rental, Lake Worth, docs coming</span></div>
-        <div><span class="n">04</span><span class="l">Relocating, no date set, nurturing</span></div>
-      </div>
-    </div>
-  </div>
-</div></div></section>
-
-<!-- 04 FOLLOW UP -->
-<section class="part"><div class="wrap"><div class="pgrid">
-  <div>
-    <div class="tag"><span class="no">04</span><span class="nm">Nothing goes cold</span></div>
-    <h2>The ones who did not answer are worth more than the ones who did.</h2>
-    <p>Most of the money in a book like yours is sitting in people who enquired months ago and were never chased, because chasing is boring and there is always something more urgent.</p>
-    <p>Follow up runs itself, and it branches on what the seller told you. Someone weeks from a foreclosure date is worked differently from someone thinking about next year. <b>It stops the second they reply.</b></p>
-    <p>The same machine can be pointed at <b>the list you already own</b>. Every old enquiry, every dead lead, every seller who said not yet, worked in the background without a single call block.</p>
-    <ul class="facts">
-      <li>Separate sequences for <b>urgent, warm and long term</b></li>
-      <li>Text, email and <b>voicemail dropped straight to their phone</b> without ringing</li>
-      <li><b>Database reactivation</b> across your whole existing list</li>
-      <li>Appointment reminders, so the booked ones actually turn up</li>
-    </ul>
-  </div>
-  <div class="demo">
-    <div class="report">
-      <div class="rtop">Sequence, notice of default</div>
-      <div class="rbody">
-        <div><span class="n">11s</span><span class="l">First text out</span></div>
-        <div><span class="n">2m</span><span class="l">Call back attempted</span></div>
-        <div><span class="n">Day 1</span><span class="l">Email with the comparables</span></div>
-        <div><span class="n">Day 2</span><span class="l">Voicemail drop</span></div>
-        <div><span class="n">Day 4</span><span class="l">Text, timeline check</span></div>
-        <div><span class="n">Stop</span><span class="l">The moment they reply</span></div>
-      </div>
-    </div>
-  </div>
-</div></div></section>
-
-<!-- 05 PAPERWORK -->
-<section class="part"><div class="wrap">
-  <div class="tag"><span class="no">05</span><span class="nm">Getting it under contract</span></div>
-  <h2>A seller who says yes on Friday and signs nothing by Monday has had a weekend to change his mind.</h2>
-  <p style="max-width:66ch">That gap is where houses get lost, and it is almost always paperwork rather than price. This closes it to minutes, on the seller's phone, while you are still on the call with him.</p>
-  <div class="flow" style="margin-top:34px">
-    <div><div class="n">1</div><div class="h">Contract built and sent</div><div class="d">Your purchase agreement, your terms, your letterhead, generated from what is already on his record so nothing gets retyped.</div></div>
-    <div><div class="n">2</div><div class="h">Signed where he stands</div><div class="d">He signs on his phone. No printer, no scanner, no attachment he cannot open, no waiting until he is home.</div></div>
-    <div><div class="n">3</div><div class="h">Title gets it the same hour</div><div class="d">The signed contract goes straight to the title company and the deal moves itself into your next pipeline stage.</div></div>
-    <div><div class="n">4</div><div class="h">The clock starts running</div><div class="d">Inspection window, deadlines and closing date all tracked, with the reminders going out on their own.</div></div>
-  </div>
-</div></section>
-
-<!-- 06 BUYERS -->
-<section class="part"><div class="wrap">
-  <div class="tag"><span class="no">06</span><span class="nm">The other half of your business</span></div>
-  <h2>Everything above gets houses in. This is the side that gets them back out.</h2>
-  <p style="max-width:66ch">You run properties through your own capital, through local renovators and through national buyer platforms. That means a buyer list, and a buyer list is worth exactly as much as your ability to reach the right part of it quickly.</p>
-  <p style="max-width:66ch">The same system holds your buyers as well as your sellers, and it knows which of them buys what. <b>A new property goes out only to the ones who buy that zip code, that price band and that condition</b>, by text and email at the same time, and you see who opened it and who is asking questions while the message is still going out.</p>
-  <ul class="facts" style="max-width:60ch">
-    <li>Buyers segmented by <b>market, price band, condition and how they pay</b></li>
-    <li>A property goes out in one action, to the right slice, not the whole list</li>
-    <li><b>You see who opened, who clicked and who replied</b>, in order</li>
-    <li>Assignment paperwork signed on a phone the same way the purchase agreement was</li>
-    <li>Buyers who never take anything drop out of the list on their own</li>
-  </ul>
-  <p style="margin-top:24px;max-width:66ch;color:var(--dim)">This is also the answer to the slowest part of a wholesale deal, which is not finding the house. It is working out which twelve people out of four hundred actually want it.</p>
-</div></section>
-
-<!-- 06 REVIEWS -->
-<section class="part"><div class="wrap">
-  <div class="tag"><span class="no">07</span><span class="nm">Reviews</span></div>
-  <h2>Twenty nine five star reviews, working for you instead of sitting on Google.</h2>
-  <p style="max-width:66ch">They go onto the website and keep syncing, so new ones appear without anyone touching the site. Then the machine that produces more of them runs on its own, and the replies write themselves for you to approve.</p>
-  <div class="flow" style="margin-top:34px">
-    <div><div class="n">1</div><div class="h">Asked at the right moment</div><div class="d">The request goes out when the closing lands, not two weeks later when the goodwill has gone.</div></div>
-    <div><div class="n">2</div><div class="h">One tap to leave it</div><div class="d">Straight to your Google listing. No account hunting, no instructions, no friction.</div></div>
-    <div><div class="n">3</div><div class="h">Answered the same day</div><div class="d">A reply is drafted for every review and waits for your approval. Google counts that, and so do the people reading.</div></div>
-    <div><div class="n">4</div><div class="h">Out into the world</div><div class="d">It appears on your home page on its own, and gets posted to your social accounts as proof.</div></div>
-  </div>
-  <p style="margin-top:26px;max-width:66ch"><b>Video reviews too, where a seller will give you one.</b> A thirty second clip of somebody saying you did what you said you would is worth more than any paragraph either of us could write.</p>
-</div></section>
-
-<!-- 07 FOUND -->
-<section class="part"><div class="wrap"><div class="pgrid flip">
-  <div>
-    <div class="tag"><span class="no">08</span><span class="nm">Being found</span></div>
-    <h2>Sellers now ask an assistant before they open a search page.</h2>
-    <p>Somebody types "how do I sell an inherited house in Florida without doing repairs" into ChatGPT and gets an answer assembled from pages that address that exact question in plain language.</p>
-    <p>Your site has nothing for that to draw on, and ten footer links that all lead back to the same Boca Raton page. <b>That gets rebuilt as real pages</b>, one per situation, each ending in the same place.</p>
-    <ul class="facts">
-      <li>Your Google listing corrected and completed, with the right categories</li>
-      <li><b>One phone number</b> everywhere, instead of the three currently in public</li>
-      <li>Situation pages marked up so assistants can quote them</li>
-      <li>Posts going out to your social accounts on a schedule, without you writing them</li>
-      <li>Real market pages for the counties you genuinely work</li>
-    </ul>
-  </div>
-  <div class="demo">
-    <div class="box" style="height:auto">
-      <div class="boxtop"><span class="t">Asked of an assistant</span></div>
-      <div style="padding:22px 20px">
-        <div class="m u" style="max-width:100%;margin-bottom:14px">I inherited my mother's house in Delray Beach. It needs a roof. Can I sell it without fixing it?</div>
-        <div class="m b" style="max-width:100%">Yes. Several Florida companies buy inherited property in as is condition, including through probate. <span style="color:var(--copper-lt)">MaliHaus Capital in Boca Raton</span> works across Palm Beach and Broward and does not require repairs or inspections before purchase&hellip;</div>
-        <p style="color:var(--dimmer);font-size:13px;margin:16px 0 0">An illustration of the outcome the situation pages are built to produce. Not a screenshot.</p>
-      </div>
-    </div>
-  </div>
-</div></div></section>
-
-<!-- 08 REPORTING -->
-<section class="part"><div class="wrap">
-  <div class="tag"><span class="no">09</span><span class="nm">What you see</span></div>
-  <h2>None of this is measured today, which is the part that limits everything else.</h2>
-  <p style="max-width:66ch">There is no analytics, no tag manager, no advertising pixel and no call tracking anywhere on malihaus.com right now. So there is no way to know how many people arrive, what they do, or what a lead costs you. That goes in first, before anything else changes, so every change after it can be judged against a real number rather than a feeling.</p>
-  <div class="report" style="margin-top:34px">
-    <div class="rtop">One page, every week</div>
-    <div class="rbody">
-      <div><span class="n">&bull;</span><span class="l">Visits, and where from</span></div>
-      <div><span class="n">&bull;</span><span class="l">Calls, answered and missed</span></div>
-      <div><span class="n">&bull;</span><span class="l">Conversations started</span></div>
-      <div><span class="n">&bull;</span><span class="l">Appointments booked and kept</span></div>
-      <div><span class="n">&bull;</span><span class="l">Deals in each stage</span></div>
-      <div><span class="n">&bull;</span><span class="l">New reviews</span></div>
-      <div><span class="n">&bull;</span><span class="l">Cost per lead</span></div>
-      <div><span class="n">&bull;</span><span class="l">Which source produced the deal</span></div>
-    </div>
-  </div>
-  <p style="color:var(--dimmer);font-size:13.5px;margin-top:16px">Blank because there is nothing to fill them with yet. That is rather the point.</p>
-</div></section>
-
-<div class="closer"><div class="wrap">
-  <h2>Once it is running, none of it asks anything of you.</h2>
-  <p>You keep doing the part you are good at, which is looking at houses, working out what they are worth and making offers. The website answers, asks, writes it down, books the time, chases the quiet ones, sends the paperwork, asks for the review and tells you what happened.</p>
-  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-    <a class="btn solid" href="./">See the page it sits behind</a>
-    <a class="btn ghost" href="https://andrewpcherry.github.io/malihaus-review/">Read the full review of the site</a>
   </div>
 </div></div>
 
-<footer><div class="wrap">Prepared for MaliHaus Capital by Andrew Cherry, RequityAI &nbsp;&middot;&nbsp; andrew@requityai.com</div></footer>
+<!-- 03 -->
+<div class="act"><div class="wrap"><div class="g r">
+  <div>
+    <div class="no">03</div>
+    <h2>And the ones from March that went quiet.</h2>
+    <p>You have a list of people who called once, were not ready, and were never rung again. Not because you did not want to. Because there is always a house in front of you.</p>
+    <p>This one first called <b>five months ago</b>. Nobody touched him since.</p>
+    <button class="rp" id="rp3">Play it again</button>
+  </div>
+  <div class="stage">
+    <div class="iph"><div class="scr">
+      <div class="island"></div>
+      <div class="sbar"><span>10:15</span><span class="ic">&#9679;&#9679;&#9679;&#9679; <span class="bat"></span></span></div>
+      <div class="ihead"><span class="bk">&#8249;</span><div class="av">MH</div>
+        <div class="nm">MaliHaus Capital &nbsp;&#8250;</div></div>
+      <div class="ibody" id="ib3"></div>
+      <div class="ifoot"><div class="fld">iMessage</div><div class="snd">&#8593;</div></div>
+      <div class="hbar"></div>
+    </div></div>
+  </div>
+</div></div></div>
+
+<div class="closer"><div class="wrap narrow">
+  <h2>That is the whole idea. A website that never clocks off.</h2>
+  <p>Answer first, keep answering, and stop losing the ones who went cold. There is a great deal more that could be bolted on and I have deliberately left it out, because none of it matters next to being the one who got back to him.</p>
+  <p><b>This sits alongside what we already discussed, it does not replace any of it.</b> If it is not of interest, that is genuinely fine and we carry on as planned. If it is, I will put some numbers together and we can look at it properly.</p>
+  <div class="sig"><b>Andrew Cherry</b>RequityAI &nbsp;&middot;&nbsp; andrew@requityai.com</div>
+</div></div>
+
+<footer><div class="wrap">Prepared for MaliHaus Capital</div></footer>
 
 <script>
-const bub=document.getElementById('bub'),tick=document.getElementById('tick');
-new IntersectionObserver((e,o)=>e.forEach(x=>{if(!x.isIntersecting)return;o.disconnect();
-  let n=0;const t=setInterval(()=>{n++;tick.textContent='+ '+n+'s';
-    if(n===3)bub.classList.add('on');
-    if(n>=11){clearInterval(t);tick.textContent='sent 11s after the missed call';}},170);
-}),{threshold:.5}).observe(tick);
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function maker(el){return h=>{const d=document.createElement('div');d.innerHTML=h;
+  const e=d.firstElementChild;el.appendChild(e);el.scrollTop=el.scrollHeight;return e;};}
 
-const S=[
-{t:"9:14 PM",s:"inherited, out of state",m:[
-["u","My mother passed in March and I have her house in Delray. I live in Georgia and I don't know where to start."],
-["b","I'm sorry about your mother. Out of state makes this easier than most people expect. What's the address in Delray?",{Situation:"Inherited, seller out of state"}],
-["u","1140 SW 8th Ave. It's been empty since March."],
-["b","Thank you. Has probate been opened, or is that still ahead of you?",{Property:"1140 SW 8th Ave, Delray Beach",Occupancy:"Vacant since March"}],
-["u","My attorney filed in May. He says a few more weeks."],
-["b","Good, that's usually what holds things up and yours is nearly through. Anything you already know the house needs?",{Probate:"Filed May, weeks from clearing"}],
-["u","Roof is original, maybe 20 years. Kitchen and baths are 1990s."],
-["b","None of that has to be fixed. Is this about the number, or about being finished with it?",{Condition:"Roof ~20yrs, dated interior, as is"}],
-["u","Both, but I'd rather it was done. I can't keep flying down."],
-["b","That changes which route suits you. Vacant, out of state and needing a roof is where the national network usually beats a straight cash number.",{Motivation:"Wants closure over maximum price",Route:"National network first, cash as floor"}],
-["b","Someone can call tomorrow with both numbers. Morning or afternoon?"],
-["u","Morning."],
-["b","Ten o'clock. You won't be asked anything you've already told me.",{Appointment:"Tomorrow 10:00 AM",Status:"<span class='pill'>Booked &middot; qualified</span>"}]]},
-{t:"7:38 AM",s:"notice of default",m:[
-["u","I'm three payments behind and the bank sent something last week. Is it too late to sell?"],
-["b","Almost certainly not, and three behind is early rather than late. Do you have the letter to hand?",{Situation:"3 payments behind, lender letter"}],
-["u","It says notice of default. Boca Raton, off Palmetto Park."],
-["b","A notice of default is not a sale date, so there's room. Roughly what's owed including arrears?",{Property:"Boca Raton, Palmetto Park Rd",Stage:"Notice of default, no sale date"}],
-["u","About 240 with the missed payments."],
-["b","Thank you. Still living there, and is the house in reasonable shape?",{Payoff:"~$240,000 incl. arrears"}],
-["u","We're still in it. Tidy, nothing broken, just dated."],
-["b","Good, that opens the renovation buyers and not just a cash offer. Do you need time after closing?",{Occupancy:"Owner occupied, dated but sound"}],
-["u","Maybe a month."],
-["b","Normally arrangeable and it shouldn't cost you on price. Given the letter, today rather than tomorrow. Two o'clock?",{Timing:"~30 days post closing",Route:"Renovator network, cash backstop"}],
-["u","Two is fine."],
-["b","Two o'clock today.",{Appointment:"Today 2:00 PM",Status:"<span class='pill'>Booked &middot; time sensitive</span>"}]]},
-{t:"11:52 PM",s:"tenanted rental",m:[
-["u","I have a rental in Lake Worth I'm done with. Tenant has 5 months left."],
-["b","A tenant in place isn't a problem, it can be worth more that way. Address, and what are they paying?",{Situation:"Landlord exiting, tenant in place"}],
-["u","826 N K St. They pay 2,100."],
-["b","Thank you. Is the rent paid on time?",{Property:"826 N K St, Lake Worth",Rent:"$2,100/mo, 5 months left"}],
-["u","Always. I'm just tired of the maintenance calls."],
-["b","That matters. A paying tenant on a current lease makes this an income property rather than a fixer.",{Payment:"On time, no arrears"}],
-["u","So I don't have to make them leave?"],
-["b","No. Buyers holding for income would rather they stayed.",{Route:"National network, income positioning"}],
-["b","We'll want the lease and rent roll before pricing it. Send them over and we'll call tomorrow afternoon."],
-["u","I'll send it in the morning."],
-["b","Three o'clock tomorrow.",{Appointment:"Tomorrow 3:00 PM",Status:"<span class='pill'>Booked &middot; docs requested</span>"}]]}];
+/* 01 missed call */
+const ib1=document.getElementById('ib1');let r1=0;
+async function phone1(){
+  const me=++r1;ib1.innerHTML='';const add=maker(ib1);
+  await wait(350);if(me!==r1)return;
+  add('<div class="stamp">Today 6:42 PM</div>');
+  add('<div class="mcall"><span class="ph">&#9742;</span><div><div class="t1">Missed call</div>'+
+      '<div class="t2">MaliHaus Capital</div></div><span class="t3">6:42 PM</span></div>');
+  await wait(900);if(me!==r1)return;
+  let t=add('<div class="ityp"><i></i><i></i><i></i></div>');
+  await wait(1200);if(me!==r1)return;t.remove();
+  add('<div class="ib them">Sorry we missed you, this is MaliHaus. Are you calling about selling a property?</div>');
+  await wait(600);if(me!==r1)return;
+  add('<div class="ib them">If you give me the address I can start looking at it now.</div>');
+  await wait(2300);if(me!==r1)return;
+  add('<div class="ib me">yeah my mums place in delray. she passed and im in georgia</div>');
+  await wait(900);if(me!==r1)return;
+  t=add('<div class="ityp"><i></i><i></i><i></i></div>');
+  await wait(1400);if(me!==r1)return;t.remove();
+  add('<div class="ib them">I\'m sorry about your mother. Being out of state makes this easier than most people expect. What\'s the address?</div>');
+  await wait(2200);if(me!==r1)return;
+  add('<div class="ib me">1140 SW 8th Ave. empty since march</div>');
+  await wait(900);if(me!==r1)return;
+  t=add('<div class="ityp"><i></i><i></i><i></i></div>');
+  await wait(1300);if(me!==r1)return;t.remove();
+  add('<div class="ib them">Thank you. George can call you tomorrow with a number. Would 10am suit?</div>');
+  await wait(1900);if(me!==r1)return;
+  add('<div class="ib me">yes thats fine</div>');
+  add('<div class="deliv">Delivered</div>');
+}
+document.getElementById('rp1').addEventListener('click',phone1);
+new IntersectionObserver((e,o)=>e.forEach(x=>{if(x.isIntersecting){o.disconnect();phone1();}}),
+  {threshold:.3}).observe(ib1);
 
-const ORDER=["Property","Situation","Occupancy","Probate","Stage","Payoff","Rent","Payment","Condition","Motivation","Timing","Route","Appointment","Status"];
-const stream=document.getElementById('stream'),recb=document.getElementById('recb'),
-clock=document.getElementById('clock'),rsub=document.getElementById('rsub');
-let seq=0,timers=[],cur=0;
-function build(sc){recb.innerHTML='';const u=new Set();
-  sc.m.forEach(x=>x[2]&&Object.keys(x[2]).forEach(k=>u.add(k)));
-  ORDER.filter(k=>u.has(k)).forEach(k=>{const r=document.createElement('div');r.className='row';
-    r.innerHTML='<div class="k">'+k+'</div><div class="v pend" data-f="'+k+'">waiting</div>';recb.appendChild(r);});}
-function set(k,v){const e=recb.querySelector('[data-f="'+CSS.escape(k)+'"]');if(!e)return;
-  e.classList.remove('pend');e.innerHTML=v;requestAnimationFrame(()=>e.classList.add('on'));}
-function play(i){timers.forEach(clearTimeout);timers=[];const mine=++seq;cur=i;
-  const sc=S[i];stream.innerHTML='';clock.textContent=sc.t;rsub.textContent=sc.s;build(sc);let d=350;
-  sc.m.forEach(([w,t,f])=>{
-    if(w==='b'){const tf=Math.min(1350,380+t.length*8);
-      timers.push(setTimeout(()=>{if(mine!==seq)return;const e=document.createElement('div');
-        e.className='ty';e.id='ty';e.innerHTML='<i></i><i></i><i></i>';
-        stream.appendChild(e);stream.scrollTop=stream.scrollHeight;},d));d+=tf;}
-    timers.push(setTimeout(()=>{if(mine!==seq)return;const y=document.getElementById('ty');if(y)y.remove();
-      const e=document.createElement('div');e.className='m '+w;e.textContent=t;
-      stream.appendChild(e);stream.scrollTop=stream.scrollHeight;
-      if(f)Object.entries(f).forEach(([k,v])=>set(k,v));},d));
-    d+=w==='b'?1400:1150;});}
-document.querySelectorAll('.pick button').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.pick button').forEach(x=>x.setAttribute('aria-pressed','false'));
-  b.setAttribute('aria-pressed','true');play(+b.dataset.s);}));
-document.getElementById('replay').addEventListener('click',()=>play(cur));
-let go=false;
-new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting&&!go){go=true;play(0);}}),{threshold:.2})
-  .observe(document.getElementById('stream'));
+/* 03 reactivation */
+const ib3=document.getElementById('ib3');let r3=0;
+async function phone3(){
+  const me=++r3;ib3.innerHTML='';const add=maker(ib3);
+  await wait(350);if(me!==r3)return;
+  add('<div class="stamp">March 14</div>');
+  add('<div class="ib them">Thanks for calling today. Whenever you are ready, we are here.</div>');
+  await wait(1400);if(me!==r3)return;
+  add('<div class="stamp">Today 10:15 AM</div>');
+  let t=add('<div class="ityp"><i></i><i></i><i></i></div>');
+  await wait(1300);if(me!==r3)return;t.remove();
+  add('<div class="ib them">Morning Dale, it\'s MaliHaus. We spoke back in March about the house on Hibiscus. Did you end up selling it?</div>');
+  await wait(2600);if(me!==r3)return;
+  add('<div class="ib me">no still sat there. tenant moved out in june</div>');
+  await wait(1000);if(me!==r3)return;
+  t=add('<div class="ityp"><i></i><i></i><i></i></div>');
+  await wait(1400);if(me!==r3)return;t.remove();
+  add('<div class="ib them">Empty since June changes things, it usually means a better number now than in March. Worth ten minutes?</div>');
+  await wait(2200);if(me!==r3)return;
+  add('<div class="ib me">go on then. after 2 today</div>');
+  await wait(900);if(me!==r3)return;
+  t=add('<div class="ityp"><i></i><i></i><i></i></div>');
+  await wait(1100);if(me!==r3)return;t.remove();
+  add('<div class="ib them">Booked for 2:30. George will have the recent sales on Hibiscus in front of him.</div>');
+  add('<div class="deliv">Delivered</div>');
+}
+document.getElementById('rp3').addEventListener('click',phone3);
+new IntersectionObserver((e,o)=>e.forEach(x=>{if(x.isIntersecting){o.disconnect();phone3();}}),
+  {threshold:.3}).observe(ib3);
+
+/* 02 widget */
+const wid=document.getElementById('wid'),wbody=document.getElementById('wbody'),
+chips=document.getElementById('chips'),launch=document.getElementById('launch');
+const SCRIPT=[
+ {a:["Hi, MaliHaus here. Anything I can help with about selling a property?"],
+  c:["I inherited a house","I'm behind on payments","Just looking"]},
+ {a:["Sorry to hear that, we deal with a lot of those. Whereabouts is the house?"],
+  c:["Delray Beach","Boca Raton","Lake Worth"]},
+ {a:["Thank you. Is anyone living in it at the moment?"],
+  c:["No, it's empty","A tenant is in it","I'm still in it"]},
+ {a:["Understood. Anything you already know it needs?"],
+  c:["The roof is old","Kitchen and baths are dated","I haven't been inside"]},
+ {a:["None of that has to be fixed, we buy it as it stands.",
+     "Empty and needing a roof is usually where our buyer network beats a straight cash offer, so I will have both priced."],
+  c:["What happens next?"]},
+ {a:["George calls you with both numbers and the sales he based them on. When suits you?"],
+  c:["Tomorrow morning","Tomorrow afternoon"]},
+ {a:["Booked for 10am tomorrow. You will not be asked anything you have already told me."],
+  c:["Thanks"]},
+ {a:["Any time. Speak tomorrow."],c:[]}
+];
+let step=0,busy=false;
+function wadd(cls,txt){const d=document.createElement('div');d.className='wb '+cls;d.textContent=txt;
+  wbody.appendChild(d);wbody.scrollTop=wbody.scrollHeight;}
+async function agent(){
+  busy=true;chips.innerHTML='';
+  for(const line of SCRIPT[step].a){
+    const t=document.createElement('div');t.className='wtyp';t.innerHTML='<i></i><i></i><i></i>';
+    wbody.appendChild(t);wbody.scrollTop=wbody.scrollHeight;
+    await wait(Math.min(1400,480+line.length*7));t.remove();wadd('a',line);await wait(300);
+  }
+  SCRIPT[step].c.forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;
+    b.addEventListener('click',()=>{if(busy)return;wadd('u',c);chips.innerHTML='';step++;
+      if(step<SCRIPT.length)setTimeout(agent,400);});chips.appendChild(b);});
+  busy=false;
+}
+launch.addEventListener('click',()=>{wid.classList.add('open');
+  launch.style.opacity='0';launch.style.pointerEvents='none';if(!wbody.children.length)agent();});
+document.getElementById('wclose').addEventListener('click',()=>{wid.classList.remove('open');
+  launch.style.opacity='1';launch.style.pointerEvents='auto';});
 </script>
 </body>
 </html>
