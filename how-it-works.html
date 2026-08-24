@@ -67,9 +67,10 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .pgrid.flip .demo{order:-1}
 @media(max-width:960px){.pgrid{grid-template-columns:1fr;gap:34px}.pgrid.flip .demo{order:0}}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;color:var(--copper);
-  display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.tag:before{content:"";width:28px;height:1px;background:var(--copper)}
+.tag{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
+.tag .no{font-family:"Fraunces",Georgia,serif;font-size:2.7rem;line-height:.85;color:var(--copper);
+  font-variation-settings:"SOFT" 60,"WONK" 1}
+.tag .nm{font-family:"Fraunces",Georgia,serif;font-size:1.05rem;font-style:italic;color:var(--dim)}
 .part h2{font-size:clamp(1.65rem,3.1vw,2.25rem);margin:0 0 18px;max-width:20ch}
 .part p{color:var(--dim);margin:0 0 15px;max-width:52ch}
 .part p:last-child{margin-bottom:0}
@@ -137,12 +138,15 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
 .chans div b{display:block;color:var(--cream);font-size:15px;margin-bottom:3px}
 
 /* flow */
-.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-@media(max-width:820px){.flow{grid-template-columns:1fr 1fr}}
-.flow div{background:var(--panel);padding:24px 20px}
-.flow .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--copper);letter-spacing:.12em;margin-bottom:10px}
-.flow .h{font-size:15.5px;color:var(--cream);margin-bottom:7px;font-weight:600}
-.flow .d{font-size:14px;color:var(--dim);line-height:1.5}
+.flow{margin-top:34px}
+.flow div{display:grid;grid-template-columns:44px 210px 1fr;gap:0 24px;align-items:baseline;
+  padding:22px 0;border-top:1px solid var(--line)}
+.flow div:last-child{border-bottom:1px solid var(--line)}
+.flow .n{font-family:"Fraunces",Georgia,serif;font-size:1.5rem;color:var(--copper);line-height:1}
+.flow .h{font-family:"Fraunces",Georgia,serif;font-size:1.18rem;color:var(--cream)}
+.flow .d{font-size:15.5px;color:var(--dim);line-height:1.58;max-width:52ch}
+@media(max-width:820px){.flow div{grid-template-columns:38px 1fr;gap:4px 18px}
+  .flow .d{grid-column:2}}
 
 .report{background:var(--panel);border:1px solid var(--line)}
 .rtop{padding:14px 20px;border-bottom:1px solid var(--line);background:var(--panel2);
@@ -217,7 +221,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 <!-- 01 PHONE -->
 <section class="part"><div class="wrap"><div class="pgrid">
   <div>
-    <div class="tag mono">01 &nbsp;/&nbsp; The phone</div>
+    <div class="tag"><span class="no">01</span><span class="nm">The phone</span></div>
     <h2>Every call gets answered, including the ones you cannot take.</h2>
     <p>Two things sit on your number. The first is <b>missed call text back</b>: the instant a call goes unanswered, a text goes out and the conversation carries on without you.</p>
     <p>The second is a <b>voice agent that actually answers</b>. It picks up in a human sounding voice, asks about the property, and books straight into your calendar. It does not read a menu and it does not take a message.</p>
@@ -241,7 +245,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 
 <!-- 02 CONVERSATION -->
 <section class="part"><div class="wrap">
-  <div class="tag mono">02 &nbsp;/&nbsp; The conversation</div>
+  <div class="tag"><span class="no">02</span><span class="nm">The conversation</span></div>
   <h2>It does the first ten minutes of the call for you, at whatever hour the seller turns up.</h2>
   <p style="max-width:66ch">Not a menu, and not a form with a chat bubble around it. It asks what you would ask, in the order you would ask it, it knows how to handle probate differently from a notice of default, and it stops when it has enough. Choose a seller and watch both halves at once.</p>
 
@@ -278,7 +282,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 <!-- 03 RECORD -->
 <section class="part"><div class="wrap"><div class="pgrid flip">
   <div>
-    <div class="tag mono">03 &nbsp;/&nbsp; The record</div>
+    <div class="tag"><span class="no">03</span><span class="nm">The record</span></div>
     <h2>Every seller arrives already sorted, scored and in the right column.</h2>
     <p>What you saw building on the right hand side is a real record. It carries the address, the situation, the condition, the payoff, the timeline, the motivation and the route you would take, plus every message either way and every call recording.</p>
     <p>Sellers are <b>scored and ranked</b>, so the notice of default sits above the man who is thinking about it next spring. They move through <b>your own pipeline</b>, whatever stages you actually use, and the pipeline moves them on its own as things happen.</p>
@@ -305,7 +309,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 <!-- 04 FOLLOW UP -->
 <section class="part"><div class="wrap"><div class="pgrid">
   <div>
-    <div class="tag mono">04 &nbsp;/&nbsp; Nothing goes cold</div>
+    <div class="tag"><span class="no">04</span><span class="nm">Nothing goes cold</span></div>
     <h2>The ones who did not answer are worth more than the ones who did.</h2>
     <p>Most of the money in a book like yours is sitting in people who enquired months ago and were never chased, because chasing is boring and there is always something more urgent.</p>
     <p>Follow up runs itself, and it branches on what the seller told you. Someone weeks from a foreclosure date is worked differently from someone thinking about next year. <b>It stops the second they reply.</b></p>
@@ -334,20 +338,20 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 
 <!-- 05 PAPERWORK -->
 <section class="part"><div class="wrap">
-  <div class="tag mono">05 &nbsp;/&nbsp; Getting it under contract</div>
+  <div class="tag"><span class="no">05</span><span class="nm">Getting it under contract</span></div>
   <h2>A seller who says yes on Friday and signs nothing by Monday has had a weekend to change his mind.</h2>
   <p style="max-width:66ch">That gap is where houses get lost, and it is almost always paperwork rather than price. This closes it to minutes, on the seller's phone, while you are still on the call with him.</p>
   <div class="flow" style="margin-top:34px">
-    <div><div class="n mono">STEP 01</div><div class="h">Contract built and sent</div><div class="d">Your purchase agreement, your terms, your letterhead, generated from what is already on his record so nothing gets retyped.</div></div>
-    <div><div class="n mono">STEP 02</div><div class="h">Signed where he stands</div><div class="d">He signs on his phone. No printer, no scanner, no attachment he cannot open, no waiting until he is home.</div></div>
-    <div><div class="n mono">STEP 03</div><div class="h">Title gets it the same hour</div><div class="d">The signed contract goes straight to the title company and the deal moves itself into your next pipeline stage.</div></div>
-    <div><div class="n mono">STEP 04</div><div class="h">The clock starts running</div><div class="d">Inspection window, deadlines and closing date all tracked, with the reminders going out on their own.</div></div>
+    <div><div class="n">1</div><div class="h">Contract built and sent</div><div class="d">Your purchase agreement, your terms, your letterhead, generated from what is already on his record so nothing gets retyped.</div></div>
+    <div><div class="n">2</div><div class="h">Signed where he stands</div><div class="d">He signs on his phone. No printer, no scanner, no attachment he cannot open, no waiting until he is home.</div></div>
+    <div><div class="n">3</div><div class="h">Title gets it the same hour</div><div class="d">The signed contract goes straight to the title company and the deal moves itself into your next pipeline stage.</div></div>
+    <div><div class="n">4</div><div class="h">The clock starts running</div><div class="d">Inspection window, deadlines and closing date all tracked, with the reminders going out on their own.</div></div>
   </div>
 </div></section>
 
 <!-- 06 BUYERS -->
 <section class="part"><div class="wrap">
-  <div class="tag mono">06 &nbsp;/&nbsp; The other half of your business</div>
+  <div class="tag"><span class="no">06</span><span class="nm">The other half of your business</span></div>
   <h2>Everything above gets houses in. This is the side that gets them back out.</h2>
   <p style="max-width:66ch">You run properties through your own capital, through local renovators and through national buyer platforms. That means a buyer list, and a buyer list is worth exactly as much as your ability to reach the right part of it quickly.</p>
   <p style="max-width:66ch">The same system holds your buyers as well as your sellers, and it knows which of them buys what. <b>A new property goes out only to the ones who buy that zip code, that price band and that condition</b>, by text and email at the same time, and you see who opened it and who is asking questions while the message is still going out.</p>
@@ -363,14 +367,14 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 
 <!-- 06 REVIEWS -->
 <section class="part"><div class="wrap">
-  <div class="tag mono">07 &nbsp;/&nbsp; Reviews</div>
+  <div class="tag"><span class="no">07</span><span class="nm">Reviews</span></div>
   <h2>Twenty nine five star reviews, working for you instead of sitting on Google.</h2>
   <p style="max-width:66ch">They go onto the website and keep syncing, so new ones appear without anyone touching the site. Then the machine that produces more of them runs on its own, and the replies write themselves for you to approve.</p>
   <div class="flow" style="margin-top:34px">
-    <div><div class="n mono">STEP 01</div><div class="h">Asked at the right moment</div><div class="d">The request goes out when the closing lands, not two weeks later when the goodwill has gone.</div></div>
-    <div><div class="n mono">STEP 02</div><div class="h">One tap to leave it</div><div class="d">Straight to your Google listing. No account hunting, no instructions, no friction.</div></div>
-    <div><div class="n mono">STEP 03</div><div class="h">Answered the same day</div><div class="d">A reply is drafted for every review and waits for your approval. Google counts that, and so do the people reading.</div></div>
-    <div><div class="n mono">STEP 04</div><div class="h">Out into the world</div><div class="d">It appears on your home page on its own, and gets posted to your social accounts as proof.</div></div>
+    <div><div class="n">1</div><div class="h">Asked at the right moment</div><div class="d">The request goes out when the closing lands, not two weeks later when the goodwill has gone.</div></div>
+    <div><div class="n">2</div><div class="h">One tap to leave it</div><div class="d">Straight to your Google listing. No account hunting, no instructions, no friction.</div></div>
+    <div><div class="n">3</div><div class="h">Answered the same day</div><div class="d">A reply is drafted for every review and waits for your approval. Google counts that, and so do the people reading.</div></div>
+    <div><div class="n">4</div><div class="h">Out into the world</div><div class="d">It appears on your home page on its own, and gets posted to your social accounts as proof.</div></div>
   </div>
   <p style="margin-top:26px;max-width:66ch"><b>Video reviews too, where a seller will give you one.</b> A thirty second clip of somebody saying you did what you said you would is worth more than any paragraph either of us could write.</p>
 </div></section>
@@ -378,7 +382,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 <!-- 07 FOUND -->
 <section class="part"><div class="wrap"><div class="pgrid flip">
   <div>
-    <div class="tag mono">08 &nbsp;/&nbsp; Being found</div>
+    <div class="tag"><span class="no">08</span><span class="nm">Being found</span></div>
     <h2>Sellers now ask an assistant before they open a search page.</h2>
     <p>Somebody types "how do I sell an inherited house in Florida without doing repairs" into ChatGPT and gets an answer assembled from pages that address that exact question in plain language.</p>
     <p>Your site has nothing for that to draw on, and ten footer links that all lead back to the same Boca Raton page. <b>That gets rebuilt as real pages</b>, one per situation, each ending in the same place.</p>
@@ -404,7 +408,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 
 <!-- 08 REPORTING -->
 <section class="part"><div class="wrap">
-  <div class="tag mono">09 &nbsp;/&nbsp; What you see</div>
+  <div class="tag"><span class="no">09</span><span class="nm">What you see</span></div>
   <h2>None of this is measured today, which is the part that limits everything else.</h2>
   <p style="max-width:66ch">There is no analytics, no tag manager, no advertising pixel and no call tracking anywhere on malihaus.com right now. So there is no way to know how many people arrive, what they do, or what a lead costs you. That goes in first, before anything else changes, so every change after it can be judged against a real number rather than a feeling.</p>
   <div class="report" style="margin-top:34px">
