@@ -79,23 +79,23 @@ var SIT=[
 ];
 
 var QA=[
- {re:/how much|what.*worth|price|offer|number|value|ballpark|lowball/i,
+ {re:/how much|what.*worth|price|offer|number|value|ballpark|lowball|pay me|give me for/i,
   a:["I cannot put a number on it in a chat window and I would not trust anyone who did.",
      "What happens is that we look at what has actually sold near you, run the house through all three of our routes, then come back with a figure and the sales it is based on. If one route beats our own offer, we tell you."]},
- {re:/fee|commission|cost|charge|closing cost|pay anything|catch|hidden/i,
+ {re:/fee|commission|cost|charge|pay\s+(you\s+)?anything|owe\s+(you\s+)?anything|do i pay|what.s the catch|catch\b|hidden|free\b/i,
   a:["Nothing. No fees, no commission, and we cover the closing costs. You do not spend a dollar to sell to us and you owe nothing if you walk away."]},
  {re:/repair|fix|clean|paint|roof|renovat|condition|as is|inspection|tidy/i,
   a:["Nothing needs fixing, cleaning or painting. We buy it exactly as it stands, and there is no inspection contingency to fall through."]},
  {re:/how fast|how quick|how long|when could|timeline|close by|days|week/i,
   a:["Two to three weeks is typical because there is no lender involved. If you need longer, you pick the date instead, and if you need to stay on for a few weeks after closing that can usually be arranged."]},
- {re:/who are you|are you real|legit|scam|trust|bbb|reviews|how do i know/i,
+ {re:/who are you|are you real|legit|scam|trust|bbb|review|how do i know|are you a company|is this real/i,
   a:["Fair question. We are MaliHaus Capital, based in Boca Raton, and we have been buying in Florida for over ten years.",
      "We close at a local title company every time, never in a kitchen, so there is an independent third party holding the money."]},
  {re:/agent|realtor|list it|listing|do i need an agent/i,
   a:["You do not need one for this. We are the buyer, not a middleman, so there is no listing agreement and nobody takes a percentage."]},
  {re:/proof of funds|cash|financ|mortgage.*you|where.*money|bank/i,
   a:["We use our own capital, so there is no loan approval to wait on. We are happy to show proof of funds before you commit to anything."]},
- {re:/obligat|commit|sign|contract|binding|pressure/i,
+ {re:/obligat|commit|sign|contract|binding|pressure|back out|change my mind/i,
   a:["None at all. You can hear the number and say no. Nothing is signed until you decide you want to go ahead."]},
  {re:/still owe|mortgage|payoff|underwater|negative equity|owe more/i,
   a:["That is fine and it is very common. The mortgage gets paid off out of the sale at closing. If the numbers are tight we will tell you straight rather than waste your time."]},
@@ -195,9 +195,12 @@ async function handle(text){
   }
 
   if(!lines.length){
-    /* nothing matched, stay useful rather than clueless */
-    if(text.length<4) lines.push("Understood.");
-    else lines.push("Thank you, that is noted and it will be in front of whoever calls you.");
+    if(text.length<4){ lines.push("Understood."); }
+    else if(/\?\s*$/.test(text) || /^(what|how|when|why|who|where|can|could|do|does|is|are|will|would|should)\b/i.test(text)){
+      lines.push("That is a fair question, and I would rather you got a straight answer on the call than a vague one from me here. I have flagged it so it gets covered.");
+    } else {
+      lines.push("Thank you, that is noted and it will be in front of whoever calls you.");
+    }
   }
 
   var slot=nextSlot();
