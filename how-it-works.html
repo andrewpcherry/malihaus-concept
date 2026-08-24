@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>What Runs Behind the MaliHaus Page</title>
+<meta name="description" content="The working parts behind the MaliHaus home page concept: missed call text back, the conversation, the record it builds, reviews and reporting.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Runs Behind the MaliHaus Page">
+<meta property="og:description" content="Not a brochure. The parts that actually answer, qualify, book and follow up.">
+<link rel="icon" href="img/cropped-Untitled-1-270x270.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Karla:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --black:#07080A; --panel:#0E1114; --panel2:#151A1E; --line:#20272C; --line2:#2E383F;
+  --copper:#C68C4E; --copper-lt:#E8BC86; --cream:#EDF1F3; --dim:#94A0A8; --dimmer:#616E76;
+  --live:#5FC98B; --wire:#3D8FB5;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--cream);
+  font-family:"Karla",Helvetica,Arial,sans-serif;font-size:17px;line-height:1.66;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
+  font-variation-settings:"SOFT" 30,"WONK" 1;letter-spacing:-.015em;line-height:1.1}
+.wrap{max-width:1160px;margin:0 auto;padding:0 36px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+.top{border-bottom:1px solid var(--line);padding:22px 0;background:#06070A}
+.topin{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.top img{height:38px}
+.top .back{font-size:14.5px;color:var(--copper-lt)}
+
+.head{padding:86px 0 70px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.head:after{content:"";position:absolute;right:-180px;top:-160px;width:620px;height:620px;
+  background:radial-gradient(circle,rgba(198,140,78,.13),transparent 66%);pointer-events:none}
+.head h1{font-size:clamp(2.4rem,5.4vw,4rem);margin:0;max-width:17ch}
+.head h1 i{font-style:italic;color:var(--copper-lt)}
+.head p{color:var(--dim);max-width:58ch;margin:26px 0 0;font-size:1.12rem}
+
+/* numbered part blocks */
+.part{padding:92px 0;border-bottom:1px solid var(--line)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.pgrid.flip .demo{order:-1}
+@media(max-width:960px){.pgrid{grid-template-columns:1fr;gap:36px}.pgrid.flip .demo{order:0}}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;color:var(--copper);
+  display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.tag:before{content:"";width:28px;height:1px;background:var(--copper)}
+.part h2{font-size:clamp(1.7rem,3.2vw,2.35rem);margin:0 0 18px;max-width:19ch}
+.part p{color:var(--dim);margin:0 0 15px;max-width:50ch}
+.part p:last-child{margin-bottom:0}
+.part b{color:var(--cream);font-weight:600}
+.facts{margin:22px 0 0;padding:0;list-style:none}
+.facts li{padding:11px 0 11px 26px;border-top:1px solid var(--line);font-size:15.5px;position:relative;color:var(--dim)}
+.facts li:before{content:"";position:absolute;left:0;top:19px;width:9px;height:1px;background:var(--copper)}
+.facts li b{color:var(--cream)}
+
+/* phone */
+.handset{background:var(--panel);border:1px solid var(--line2);border-radius:22px;padding:24px 20px;
+  max-width:330px;margin:0 auto;box-shadow:0 40px 90px -50px #000}
+.missed{display:flex;align-items:center;gap:13px;padding:12px 0 16px;border-bottom:1px solid var(--line)}
+.missed .ic{width:34px;height:34px;border-radius:50%;border:1px solid #7d3a30;color:#e08b78;
+  display:grid;place-items:center;font-size:15px;flex-shrink:0}
+.missed .n{font-size:15px}.missed .m{font-size:12.5px;color:var(--dimmer)}
+.bub{margin-top:16px;background:rgba(198,140,78,.11);border:1px solid rgba(198,140,78,.26);
+  padding:13px 15px;font-size:14.5px;line-height:1.5;opacity:0;transform:translateY(8px);transition:.5s}
+.bub.on{opacity:1;transform:none}
+.bub .fr{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dimmer);display:block;margin-bottom:6px}
+.tick{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--live)}
+
+/* chat + record */
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.dual{grid-template-columns:1fr}}
+.box{background:var(--panel);border:1px solid var(--line);height:520px;display:flex;flex-direction:column;overflow:hidden}
+.boxtop{padding:14px 18px;border-bottom:1px solid var(--line);background:var(--panel2);flex-shrink:0;
+  display:flex;align-items:center;gap:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 9px var(--live)}
+.boxtop .t{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+.boxtop .u{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--dimmer)}
+.stream{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:11px}
+.stream::-webkit-scrollbar,.recb::-webkit-scrollbar{width:4px}
+.stream::-webkit-scrollbar-thumb,.recb::-webkit-scrollbar-thumb{background:var(--line2)}
+.m{max-width:88%;padding:10px 13px;font-size:14.5px;line-height:1.5;animation:rise .32s ease both}
+.m.b{align-self:flex-start;background:var(--panel2);border:1px solid var(--line);border-left:2px solid var(--copper)}
+.m.u{align-self:flex-end;background:rgba(61,143,181,.14);border:1px solid rgba(61,143,181,.3)}
+.ty{align-self:flex-start;display:flex;gap:5px;padding:13px 14px;background:var(--panel2);border:1px solid var(--line)}
+.ty i{width:5px;height:5px;border-radius:50%;background:var(--copper);animation:bl 1.3s infinite}
+.ty i:nth-child(2){animation-delay:.2s}.ty i:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,60%,100%{opacity:.22}30%{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.recb{flex:1;overflow-y:auto;padding:4px 18px 18px}
+.row{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.row:last-child{border-bottom:0}
+.row .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dimmer)}
+.row .v{font-size:14px;opacity:0;transform:translateY(4px);transition:.4s}
+.row .v.on{opacity:1;transform:none}
+.row .v.pend{color:#4A555C;font-style:italic;opacity:1;transform:none}
+.pill{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.09em;
+  text-transform:uppercase;padding:3px 8px;background:rgba(95,201,139,.14);color:var(--live);
+  border:1px solid rgba(95,201,139,.3)}
+.pick{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 20px}
+.pick button{background:transparent;border:1px solid var(--line2);color:var(--dim);cursor:pointer;
+  font-family:"Karla",sans-serif;font-size:14px;padding:9px 16px;transition:.2s}
+.pick button:hover{border-color:var(--copper);color:var(--cream)}
+.pick button[aria-pressed="true"]{border-color:var(--copper);background:var(--copper);color:#0B0805;font-weight:600}
+.replay{margin-top:16px;background:transparent;border:1px solid var(--line2);color:var(--dim);cursor:pointer;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;padding:10px 18px}
+.replay:hover{border-color:var(--copper);color:var(--copper-lt)}
+
+/* review engine */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+@media(max-width:820px){.flow{grid-template-columns:1fr 1fr}}
+.flow div{background:var(--panel);padding:24px 20px}
+.flow .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--copper);letter-spacing:.12em;margin-bottom:10px}
+.flow .h{font-size:15.5px;color:var(--cream);margin-bottom:7px;font-weight:600}
+.flow .d{font-size:14px;color:var(--dim);line-height:1.5}
+
+/* report */
+.report{background:var(--panel);border:1px solid var(--line)}
+.rtop{padding:14px 20px;border-bottom:1px solid var(--line);background:var(--panel2);
+  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
+.rbody{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line)}
+.rbody div{background:var(--panel);padding:22px 20px}
+.rbody .n{font-family:"Fraunces",serif;font-size:2rem;color:var(--copper-lt);line-height:1;display:block;margin-bottom:7px}
+.rbody .l{font-size:13.5px;color:var(--dim)}
+
+.closer{padding:110px 0;text-align:center}
+.closer h2{font-size:clamp(1.9rem,4vw,2.9rem);margin:0 auto 22px;max-width:20ch}
+.closer p{color:var(--dim);max-width:52ch;margin:0 auto 34px}
+.btn{display:inline-block;font-weight:600;font-size:15px;padding:16px 32px;transition:.2s}
+.btn.solid{background:var(--copper);color:#0B0805}
+.btn.solid:hover{background:var(--copper-lt)}
+.btn.ghost{border:1px solid var(--line2);color:var(--copper-lt)}
+.btn.ghost:hover{border-color:var(--copper)}
+footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(--dimmer);background:#06070A}
+@media(max-width:760px){.wrap{padding:0 22px}.part{padding:64px 0}.head{padding:56px 0 48px}.box{height:460px}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap"><div class="topin">
+  <img src="img/logo-copper.png" alt="MaliHaus Capital">
+  <a class="back" href="./">&larr; Back to the page itself</a>
+</div></div></div>
+
+<div class="head"><div class="wrap">
+  <h1>The page is the easy part. <i>This is what makes it work.</i></h1>
+  <p>A new website on its own just moves the same problem somewhere prettier. What follows are the working parts sitting behind it: what answers when you cannot, what it asks, what it writes down, and what arrives on your phone afterwards. Everything on this page runs. Press the buttons.</p>
+</div></div>
+
+<!-- 01 MISSED CALL -->
+<section class="part"><div class="wrap"><div class="pgrid">
+  <div>
+    <div class="tag mono">01 &nbsp;/&nbsp; Missed calls</div>
+    <h2>A missed call becomes a text message before they dial the next buyer.</h2>
+    <p>A seller in the middle of something calls two or three companies in one evening and goes with whoever answers. Right now, when you are on a walkthrough or asleep, that call becomes a voicemail nobody listens to.</p>
+    <p>The moment a call to your number goes unanswered, <b>a text goes out automatically</b> and the conversation carries on without you. If the seller replies, it keeps going.</p>
+    <ul class="facts">
+      <li>Fires on <b>every</b> unanswered call, day or night, weekends included</li>
+      <li>Comes from <b>your own number</b>, so replies land where you expect</li>
+      <li>Stops the moment a human joins the thread</li>
+    </ul>
+  </div>
+  <div class="demo">
+    <div class="handset">
+      <div class="missed">
+        <span class="ic">&#8600;</span>
+        <div><div class="n">Missed call</div><div class="m">(561) 555 0148 &nbsp;&middot;&nbsp; 6:42 PM</div></div>
+      </div>
+      <div class="bub" id="bub">
+        <span class="fr">MaliHaus Capital &middot; 6:42 PM</span>
+        Sorry we missed you, this is MaliHaus. Are you calling about selling a property? Give me the address and I can start looking at it right now.
+      </div>
+      <div class="tick mono" id="tick">waiting</div>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- 02 CONVERSATION -->
+<section class="part"><div class="wrap">
+  <div class="tag mono">02 &nbsp;/&nbsp; The conversation</div>
+  <h2>It does the first ten minutes of the call for you, at whatever hour the seller turns up.</h2>
+  <p style="max-width:64ch">It is not a menu and it is not a form with a chat bubble around it. It asks what you would ask, in the order you would ask it, and it stops when it has enough. Choose a seller and watch both halves at once: what they see on the left, what is being written down on the right.</p>
+
+  <div style="margin-top:32px">
+    <div class="pick" role="group" aria-label="Choose a seller">
+      <button data-s="0" aria-pressed="true">Inherited, out of state, 9:14 PM</button>
+      <button data-s="1" aria-pressed="false">Notice of default, 7:38 AM</button>
+      <button data-s="2" aria-pressed="false">Tenanted rental, 11:52 PM</button>
+    </div>
+    <div class="dual">
+      <div class="box">
+        <div class="boxtop"><span class="dot"></span><span class="t">What the seller sees</span><span class="u mono" id="clock">9:14 PM</span></div>
+        <div class="stream" id="stream"></div>
+      </div>
+      <div class="box">
+        <div class="boxtop"><span class="t">What lands on your desk</span><span class="u mono" id="rsub">building</span></div>
+        <div class="recb" id="recb"></div>
+      </div>
+    </div>
+    <button class="replay" id="replay">Run it again</button>
+  </div>
+</div></section>
+
+<!-- 03 WHAT HAPPENS NEXT -->
+<section class="part"><div class="wrap"><div class="pgrid flip">
+  <div>
+    <div class="tag mono">03 &nbsp;/&nbsp; Nothing goes cold</div>
+    <h2>The ones who do not answer are worth more than the ones who do.</h2>
+    <p>Most of the money in a list like yours is sitting in people who enquired months ago and were never chased, because chasing is boring and there is always something more urgent.</p>
+    <p>Follow up runs on its own, in a sequence that changes depending on what the seller told you. Somebody weeks from a foreclosure date is treated differently from somebody thinking about it next year. <b>It stops the second they reply</b>, and it never sends twice in a way that looks automated.</p>
+    <ul class="facts">
+      <li>Different sequences for <b>urgent, warm and long term</b></li>
+      <li>Text, email and voicemail, not the same channel over and over</li>
+      <li><b>Old leads reactivated</b> from the list you already own, without a call block</li>
+      <li>Everything logged against the seller, so nothing is asked twice</li>
+    </ul>
+  </div>
+  <div class="demo">
+    <div class="report">
+      <div class="rtop">Sequence, notice of default</div>
+      <div class="rbody">
+        <div><span class="n">11s</span><span class="l">First text out</span></div>
+        <div><span class="n">2m</span><span class="l">Call back attempted</span></div>
+        <div><span class="n">Day 1</span><span class="l">Email with the comparables</span></div>
+        <div><span class="n">Day 2</span><span class="l">Voicemail drop</span></div>
+        <div><span class="n">Day 4</span><span class="l">Text, timeline check</span></div>
+        <div><span class="n">Stop</span><span class="l">The moment they reply</span></div>
+      </div>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- 04 REVIEWS -->
+<section class="part"><div class="wrap">
+  <div class="tag mono">04 &nbsp;/&nbsp; Reviews</div>
+  <h2>Twenty nine five star reviews, working for you instead of sitting on Google.</h2>
+  <p style="max-width:64ch">They go onto the website and keep syncing, so new ones appear without anyone touching the site. Then the flow that produces more of them runs on its own.</p>
+  <div class="flow" style="margin-top:34px">
+    <div><div class="n mono">STEP 01</div><div class="h">Closing lands</div><div class="d">The request goes out at the right moment, not two weeks later when the goodwill has gone.</div></div>
+    <div><div class="n mono">STEP 02</div><div class="h">One tap to leave it</div><div class="d">Straight to your Google listing. No account hunting, no instructions.</div></div>
+    <div><div class="n mono">STEP 03</div><div class="h">Answered same day</div><div class="d">Every review gets a reply. Google counts that, and so do the people reading them.</div></div>
+    <div><div class="n mono">STEP 04</div><div class="h">Onto the site</div><div class="d">It appears on the home page on its own, and the stars show in search results.</div></div>
+  </div>
+</div></section>
+
+<!-- 05 VISIBILITY -->
+<section class="part"><div class="wrap"><div class="pgrid">
+  <div>
+    <div class="tag mono">05 &nbsp;/&nbsp; Being found</div>
+    <h2>Sellers now ask an assistant before they open a search page.</h2>
+    <p>Somebody types "how do I sell an inherited house in Florida without doing repairs" into ChatGPT and gets an answer built out of pages that address that exact question in plain language.</p>
+    <p>Your site currently has nothing for that to draw on, and ten footer links that all lead back to the same Boca Raton page. <b>That gets rebuilt as real pages</b>, one per situation, each written for one circumstance and each ending in the same place.</p>
+    <ul class="facts">
+      <li>Your Google listing corrected and completed, with the right categories</li>
+      <li><b>One phone number</b> everywhere instead of the three currently in public</li>
+      <li>Situation pages marked up so assistants can quote them</li>
+      <li>Real market pages for the counties you actually work</li>
+    </ul>
+  </div>
+  <div class="demo">
+    <div class="box" style="height:auto">
+      <div class="boxtop"><span class="t">Asked of an assistant</span></div>
+      <div style="padding:22px 20px">
+        <div class="m u" style="max-width:100%;margin-bottom:14px">I inherited my mother's house in Delray Beach. It needs a roof. Can I sell it without fixing it?</div>
+        <div class="m b" style="max-width:100%">Yes. Several Florida companies buy inherited property in as is condition, including through probate. <span style="color:var(--copper-lt)">MaliHaus Capital in Boca Raton</span> works across Palm Beach and Broward and does not require repairs or inspections before purchase&hellip;</div>
+        <p style="color:var(--dimmer);font-size:13px;margin:16px 0 0">An illustration of the outcome the situation pages are built to produce. Not a screenshot.</p>
+      </div>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- 06 REPORTING -->
+<section class="part"><div class="wrap">
+  <div class="tag mono">06 &nbsp;/&nbsp; What you see</div>
+  <h2>Right now none of this is measured, which is the part that limits everything else.</h2>
+  <p style="max-width:64ch">There is no analytics, no tag manager, no advertising pixel and no call tracking anywhere on malihaus.com today. So there is no way to know how many people arrive, what they do, or what a lead costs. That goes in first, before anything else is changed, so that every change after it can be judged against a real number.</p>
+  <div class="report" style="margin-top:34px">
+    <div class="rtop">One report, every week</div>
+    <div class="rbody">
+      <div><span class="n">&bull;</span><span class="l">Visits and where from</span></div>
+      <div><span class="n">&bull;</span><span class="l">Calls, answered and missed</span></div>
+      <div><span class="n">&bull;</span><span class="l">Conversations started</span></div>
+      <div><span class="n">&bull;</span><span class="l">Appointments booked</span></div>
+      <div><span class="n">&bull;</span><span class="l">New reviews</span></div>
+      <div><span class="n">&bull;</span><span class="l">Cost per lead</span></div>
+    </div>
+  </div>
+  <p style="color:var(--dimmer);font-size:13.5px;margin-top:16px">Blank because there is nothing to fill them with yet. That is the point.</p>
+</div></section>
+
+<div class="closer"><div class="wrap">
+  <h2>None of this asks anything of you once it is running.</h2>
+  <p>You keep doing the part you are good at, which is looking at houses and making offers. The rest of it answers, asks, writes it down, books the time and tells you what happened.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a class="btn solid" href="./">See the page it sits behind</a>
+    <a class="btn ghost" href="https://andrewpcherry.github.io/malihaus-review/">Read the full review of the site</a>
+  </div>
+</div></div>
+
+<footer><div class="wrap">Prepared for MaliHaus Capital by Andrew Cherry, RequityAI &nbsp;&middot;&nbsp; andrew@requityai.com</div></footer>
+
+<script>
+/* missed call timer */
+const bub=document.getElementById('bub'),tick=document.getElementById('tick');
+new IntersectionObserver((e,o)=>e.forEach(x=>{if(!x.isIntersecting)return;o.disconnect();
+  let n=0;const t=setInterval(()=>{n++;tick.textContent='+ '+n+'s';
+    if(n===3)bub.classList.add('on');
+    if(n>=11){clearInterval(t);tick.textContent='sent 11s after the missed call';}},170);
+}),{threshold:.5}).observe(tick);
+
+/* conversation */
+const S=[
+{t:"9:14 PM",s:"inherited, out of state",m:[
+["u","My mother passed in March and I have her house in Delray. I live in Georgia and I don't know where to start."],
+["b","I'm sorry about your mother. Out of state makes this easier than most people expect. What's the address in Delray?",{Situation:"Inherited, seller out of state"}],
+["u","1140 SW 8th Ave. It's been empty since March."],
+["b","Thank you. Has probate been opened, or is that still ahead of you?",{Property:"1140 SW 8th Ave, Delray Beach",Occupancy:"Vacant since March"}],
+["u","My attorney filed in May. He says a few more weeks."],
+["b","Good, that's usually what holds things up and yours is nearly through. Anything you already know the house needs?",{Probate:"Filed May, weeks from clearing"}],
+["u","Roof is original, maybe 20 years. Kitchen and baths are 1990s."],
+["b","None of that has to be fixed. Is this about the number, or about being finished with it?",{Condition:"Roof ~20yrs, dated interior, as is"}],
+["u","Both, but I'd rather it was done. I can't keep flying down."],
+["b","That changes which route suits you. Vacant, out of state and needing a roof is where the national network usually beats a straight cash number.",{Motivation:"Wants closure over maximum price",Route:"National network first, cash as floor"}],
+["b","Someone can call tomorrow with both numbers. Morning or afternoon?"],
+["u","Morning."],
+["b","Ten o'clock. You won't be asked anything you've already told me.",{Appointment:"Tomorrow 10:00 AM",Status:"<span class='pill'>Booked &middot; qualified</span>"}]]},
+{t:"7:38 AM",s:"notice of default",m:[
+["u","I'm three payments behind and the bank sent something last week. Is it too late to sell?"],
+["b","Almost certainly not, and three behind is early rather than late. Do you have the letter to hand?",{Situation:"3 payments behind, lender letter"}],
+["u","It says notice of default. Boca Raton, off Palmetto Park."],
+["b","A notice of default is not a sale date, so there's room. Roughly what's owed including arrears?",{Property:"Boca Raton, Palmetto Park Rd",Stage:"Notice of default, no sale date"}],
+["u","About 240 with the missed payments."],
+["b","Thank you. Still living there, and is the house in reasonable shape?",{Payoff:"~$240,000 incl. arrears"}],
+["u","We're still in it. Tidy, nothing broken, just dated."],
+["b","Good, that opens the renovation buyers and not just a cash offer. Do you need time after closing?",{Occupancy:"Owner occupied, dated but sound"}],
+["u","Maybe a month."],
+["b","Normally arrangeable and it shouldn't cost you on price. Given the letter, today rather than tomorrow. Two o'clock?",{Timing:"~30 days post closing",Route:"Renovator network, cash backstop"}],
+["u","Two is fine."],
+["b","Two o'clock today.",{Appointment:"Today 2:00 PM",Status:"<span class='pill'>Booked &middot; time sensitive</span>"}]]},
+{t:"11:52 PM",s:"tenanted rental",m:[
+["u","I have a rental in Lake Worth I'm done with. Tenant has 5 months left."],
+["b","A tenant in place isn't a problem, it can be worth more that way. Address, and what are they paying?",{Situation:"Landlord exiting, tenant in place"}],
+["u","826 N K St. They pay 2,100."],
+["b","Thank you. Is the rent paid on time?",{Property:"826 N K St, Lake Worth",Rent:"$2,100/mo, 5 months left"}],
+["u","Always. I'm just tired of the maintenance calls."],
+["b","That matters. A paying tenant on a current lease makes this an income property rather than a fixer.",{Payment:"On time, no arrears"}],
+["u","So I don't have to make them leave?"],
+["b","No. Buyers holding for income would rather they stayed.",{Route:"National network, income positioning"}],
+["b","We'll want the lease and rent roll before pricing it. Send them over and we'll call tomorrow afternoon."],
+["u","I'll send it in the morning."],
+["b","Three o'clock tomorrow.",{Appointment:"Tomorrow 3:00 PM",Status:"<span class='pill'>Booked &middot; docs requested</span>"}]]}];
+
+const ORDER=["Property","Situation","Occupancy","Probate","Stage","Payoff","Rent","Payment","Condition","Motivation","Timing","Route","Appointment","Status"];
+const stream=document.getElementById('stream'),recb=document.getElementById('recb'),
+clock=document.getElementById('clock'),rsub=document.getElementById('rsub');
+let seq=0,timers=[],cur=0;
+function build(sc){recb.innerHTML='';const u=new Set();
+  sc.m.forEach(x=>x[2]&&Object.keys(x[2]).forEach(k=>u.add(k)));
+  ORDER.filter(k=>u.has(k)).forEach(k=>{const r=document.createElement('div');r.className='row';
+    r.innerHTML='<div class="k">'+k+'</div><div class="v pend" data-f="'+k+'">waiting</div>';recb.appendChild(r);});}
+function set(k,v){const e=recb.querySelector('[data-f="'+CSS.escape(k)+'"]');if(!e)return;
+  e.classList.remove('pend');e.innerHTML=v;requestAnimationFrame(()=>e.classList.add('on'));}
+function play(i){timers.forEach(clearTimeout);timers=[];const mine=++seq;cur=i;
+  const sc=S[i];stream.innerHTML='';clock.textContent=sc.t;rsub.textContent=sc.s;build(sc);let d=350;
+  sc.m.forEach(([w,t,f])=>{
+    if(w==='b'){const tf=Math.min(1350,380+t.length*8);
+      timers.push(setTimeout(()=>{if(mine!==seq)return;const e=document.createElement('div');
+        e.className='ty';e.id='ty';e.innerHTML='<i></i><i></i><i></i>';
+        stream.appendChild(e);stream.scrollTop=stream.scrollHeight;},d));d+=tf;}
+    timers.push(setTimeout(()=>{if(mine!==seq)return;const y=document.getElementById('ty');if(y)y.remove();
+      const e=document.createElement('div');e.className='m '+w;e.textContent=t;
+      stream.appendChild(e);stream.scrollTop=stream.scrollHeight;
+      if(f)Object.entries(f).forEach(([k,v])=>set(k,v));},d));
+    d+=w==='b'?1400:1150;});}
+document.querySelectorAll('.pick button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.pick button').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true');play(+b.dataset.s);}));
+document.getElementById('replay').addEventListener('click',()=>play(cur));
+let go=false;
+new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting&&!go){go=true;play(0);}}),{threshold:.2})
+  .observe(document.getElementById('stream'));
+</script>
+</body>
+</html>
