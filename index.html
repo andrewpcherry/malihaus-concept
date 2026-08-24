@@ -242,7 +242,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
     <h1>Three ways to sell your house. <i>Not one.</i></h1>
     <p class="herop">Most cash buyers hand you a single number and call it an offer. We run your house through our own capital, our local renovators and a national buyer network, then tell you which one pays you most.</p>
     <div class="act" id="start">
-      <form class="addr" onsubmit="event.preventDefault();document.getElementById('ways').scrollIntoView();">
+      <form class="addr" onsubmit="event.preventDefault();var a=this.querySelector('input').value.trim();
+        location.href='https://andrewpcherry.github.io/malihaus-funnel/'+(a?'?address='+encodeURIComponent(a):'');">
         <input type="text" placeholder="Your property address" aria-label="Your property address">
         <button type="submit">See my options</button>
       </form>
