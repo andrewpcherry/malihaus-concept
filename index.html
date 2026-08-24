@@ -4,450 +4,412 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>MaliHaus Capital Home Page Concept</title>
-<meta name="description" content="A proposed home page for MaliHaus Capital, showing the seller conversation, the three routes and the response layer.">
+<title>Sell Your House in Boca Raton | MaliHaus Capital</title>
+<meta name="description" content="Sell your Florida house as is, with no repairs, no fees and no commission. Three ways to sell, not one.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="MaliHaus Capital Home Page Concept">
-<meta property="og:description" content="What the MaliHaus home page could do. Built by Andrew Cherry, RequityAI.">
+<meta property="og:title" content="Sell Your House in Boca Raton | MaliHaus Capital">
+<meta property="og:description" content="Three ways to sell your house, not one. No repairs, no fees, no commission.">
 <link rel="icon" href="img/cropped-Untitled-1-270x270.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Karla:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@300;400;500;600&display=swap">
 <style>
 :root{
-  --black:#050504; --panel:#0C0B09; --panel-2:#121110; --line:#252119; --line-2:#393126;
-  --copper:#C68C4E; --copper-lt:#E8BC86; --copper-dk:#8A5A2C;
-  --cream:#F4EFE7; --dim:#9C9389; --dimmer:#6A635B; --green:#63B37A;
+  --black:#080806; --panel:#100E0B; --panel2:#171410; --line:#2A241C; --line2:#3E3427;
+  --copper:#C68C4E; --copper-lt:#E8BC86; --cream:#F5F0E8; --dim:#A29889; --dimmer:#6F675C;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--black);color:var(--cream);
-  font-family:"Karla",Helvetica,Arial,sans-serif;font-size:17px;line-height:1.68;
+  font-family:"Karla",Helvetica,Arial,sans-serif;font-size:17.5px;line-height:1.66;
   -webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
-h1,h2,h3,.jost{font-family:"Jost",Helvetica,Arial,sans-serif;font-weight:300;letter-spacing:-.012em}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--copper);outline-offset:3px}
-.wrap{max-width:1200px;margin:0 auto;padding:0 34px}
-.label{font-family:"Jost",sans-serif;font-size:11px;font-weight:400;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--copper)}
+h1,h2,h3,.fr{font-family:"Fraunces",Georgia,serif;font-weight:500;
+  font-variation-settings:"SOFT" 30,"WONK" 1;letter-spacing:-.015em;line-height:1.08}
+.wrap{max-width:1240px;margin:0 auto;padding:0 36px}
 
-/* demo strip */
-.demobar{background:#0A0908;border-bottom:1px solid var(--line);font-size:12.5px;
-  color:var(--dim);text-align:center;padding:9px 24px}
-.demobar b{color:var(--copper-lt);font-weight:500}
+/* ------- buttons ------- */
+.btn{display:inline-block;font-family:"Karla",sans-serif;font-weight:600;font-size:15px;
+  padding:15px 28px;border-radius:1px;transition:.2s;white-space:nowrap;letter-spacing:.01em}
+.btn.solid{background:var(--copper);color:#0B0805}
+.btn.solid:hover{background:var(--copper-lt)}
+.btn.ghost{border:1px solid var(--line2);color:var(--copper-lt)}
+.btn.ghost:hover{border-color:var(--copper);background:rgba(198,140,78,.07)}
 
-/* nav */
-.navbar{position:absolute;left:0;right:0;top:33px;z-index:20}
-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
-.logo{height:44px;width:auto}
-.navlinks{display:flex;gap:36px;font-size:14px;color:#CFC7BC;font-family:"Jost",sans-serif;letter-spacing:.05em}
+/* ------- nav ------- */
+.navbar{position:absolute;left:0;right:0;top:0;z-index:20}
+nav{display:flex;align-items:center;justify-content:space-between;padding:26px 0;gap:20px}
+.logo{height:46px}
+.navlinks{display:flex;gap:32px;font-size:15px;color:#D3CABE}
 .navlinks a:hover{color:var(--copper-lt)}
-.navcall{font-family:"Jost",sans-serif;font-size:14.5px;letter-spacing:.06em;
-  border:1px solid rgba(232,188,134,.45);color:var(--copper-lt);padding:11px 21px;
-  border-radius:2px;transition:.25s;backdrop-filter:blur(6px);background:rgba(5,5,4,.3)}
-.navcall:hover{background:var(--copper);color:#0C0904;border-color:var(--copper)}
-@media(max-width:900px){.navlinks{display:none}}
+.navr{display:flex;align-items:center;gap:12px}
+.navtel{font-family:"Fraunces",serif;font-size:19px;color:var(--copper-lt)}
+@media(max-width:1000px){.navlinks{display:none}}
+@media(max-width:640px){.navtel{display:none}}
 
-/* hero */
-.hero{position:relative;min-height:min(94vh,900px);display:flex;align-items:flex-end;
-  padding:190px 0 76px;overflow:hidden;background:#0A0806}
+/* ------- hero ------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;
+  justify-content:flex-end;overflow:hidden;background:#0B0906}
 .hero .bg{position:absolute;inset:0;z-index:0}
-.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:52% 42%;
-  animation:slowzoom 26s ease-out forwards}
-@keyframes slowzoom{from{transform:scale(1.07)}to{transform:scale(1)}}
-.hero .scrim{position:absolute;inset:0;z-index:1;
-  background:
-    linear-gradient(90deg,rgba(5,5,4,.95) 0%,rgba(5,5,4,.82) 38%,rgba(5,5,4,.28) 78%,rgba(5,5,4,.5) 100%),
-    linear-gradient(180deg,rgba(5,5,4,.9) 0%,rgba(5,5,4,.14) 32%,rgba(5,5,4,.55) 78%,var(--black) 100%)}
-.hero .wrap{position:relative;z-index:2;width:100%}
-.hero h1{font-size:clamp(2.6rem,6.1vw,4.7rem);line-height:1.02;margin:24px 0 0;
-  font-weight:200;max-width:14ch;text-wrap:balance}
-.hero h1 em{font-style:normal;color:var(--copper-lt)}
-.herosub{font-size:1.14rem;color:#CDC5BB;max-width:46ch;margin:26px 0 0;line-height:1.6}
-.stars{display:flex;align-items:center;gap:12px;margin-top:30px;font-size:14.5px;color:#BDB4A9}
-.stars .s{color:var(--copper);letter-spacing:3px;font-size:16px}
-.stars b{color:#fff;font-weight:600;font-family:"Jost",sans-serif;font-size:17px}
-.entry{margin-top:38px;max-width:566px}
-.entryrow{display:flex;border:1px solid rgba(232,188,134,.32);border-radius:2px;
-  overflow:hidden;background:rgba(8,7,6,.72);backdrop-filter:blur(10px)}
-.entryrow input{flex:1;background:transparent;border:0;color:var(--cream);
-  font-family:"Karla",sans-serif;font-size:16px;padding:20px 21px;min-width:0}
-.entryrow input::placeholder{color:#8B837A}
-.entryrow input:focus{outline:none}
-.entryrow button{background:var(--copper);color:#0C0904;border:0;cursor:pointer;
-  font-family:"Jost",sans-serif;font-size:14.5px;letter-spacing:.08em;font-weight:500;
-  padding:0 30px;white-space:nowrap;transition:.2s}
-.entryrow button:hover{background:var(--copper-lt)}
-.entrynote{font-size:13px;color:#8B837A;margin-top:13px}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:56% 44%}
+.hero .scrim{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(88deg,rgba(8,8,6,.96) 4%,rgba(8,8,6,.8) 40%,rgba(8,8,6,.24) 76%,rgba(8,8,6,.46) 100%),
+  linear-gradient(180deg,rgba(8,8,6,.86) 0%,rgba(8,8,6,.1) 30%,rgba(8,8,6,.72) 80%,var(--black) 100%)}
+.heroin{position:relative;z-index:2;padding:150px 0 0}
+.hero h1{font-size:clamp(2.9rem,6.6vw,5.3rem);margin:0;max-width:13ch;
+  font-weight:500;font-variation-settings:"SOFT" 40,"WONK" 1}
+.hero h1 i{font-style:italic;color:var(--copper-lt)}
+.herop{font-size:1.2rem;color:#CFC6B9;max-width:44ch;margin:28px 0 0}
+.act{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px;max-width:620px}
+.addr{display:flex;flex:1 1 380px;border:1px solid rgba(232,188,134,.34);
+  background:rgba(9,8,6,.68);backdrop-filter:blur(9px)}
+.addr input{flex:1;background:transparent;border:0;color:var(--cream);
+  font-family:"Karla",sans-serif;font-size:16px;padding:17px 19px;min-width:0}
+.addr input::placeholder{color:#8E8578}
+.addr input:focus{outline:none}
+.addr button{background:var(--copper);color:#0B0805;border:0;cursor:pointer;font-weight:600;
+  font-family:"Karla",sans-serif;font-size:15px;padding:0 26px}
+.addr button:hover{background:var(--copper-lt)}
+.small{font-size:14px;color:#8E8578;margin-top:14px}
 
-/* ticker strip */
-.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#080706}
-.stripin{display:flex;flex-wrap:wrap}
-.stripin div{flex:1 1 165px;padding:22px 26px;border-right:1px solid var(--line);
-  font-family:"Jost",sans-serif;font-size:14px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
-.stripin div:last-child{border-right:0}
-.stripin b{display:block;color:var(--copper-lt);font-size:1.55rem;font-weight:300;
-  letter-spacing:0;text-transform:none;margin-bottom:2px}
+/* review marquee, inside the hero */
+.marq{position:relative;z-index:2;margin-top:56px;
+  border-top:1px solid rgba(232,188,134,.17);background:rgba(6,6,5,.42);backdrop-filter:blur(6px)}
+.marqhead{display:flex;align-items:baseline;gap:12px;max-width:1240px;margin:0 auto;padding:13px 36px 0}
+.marqhead .rate{font-family:"Fraunces",serif;font-size:22px;color:var(--copper-lt)}
+.marqhead .st{color:var(--copper);letter-spacing:2px;font-size:14px}
+.marqhead .n{font-size:14px;color:var(--dim)}
+.mask{overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.track{display:flex;width:max-content;animation:marq 96s linear infinite;padding:13px 0 20px}
+.marq:hover .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+.rev{flex:0 0 auto;width:390px;padding:0 26px;border-right:1px solid rgba(232,188,134,.12)}
+.rev q{display:block;quotes:none;font-size:15px;line-height:1.55;color:#DDD4C7}
+.rev .by{font-size:13px;color:var(--dimmer);margin-top:9px}
+.rev .by b{color:var(--copper-lt);font-weight:600}
 
-section{padding:110px 0;border-top:1px solid var(--line)}
-.shead{max-width:680px;margin-bottom:56px}
-.shead h2{font-size:clamp(1.95rem,3.8vw,2.85rem);line-height:1.11;margin:18px 0 0;font-weight:200;text-wrap:balance}
-.shead p{color:var(--dim);margin:20px 0 0;font-size:1.06rem}
+/* ------- sections ------- */
+section{padding:118px 0}
+.rule{border-top:1px solid var(--line)}
+.lead{font-size:clamp(1.95rem,4.1vw,3.1rem);max-width:19ch;margin:0}
+.sub{color:var(--dim);font-size:1.08rem;max-width:52ch;margin:22px 0 0}
 
-/* conversation */
-.picker{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:26px}
-.picker button{background:transparent;border:1px solid var(--line-2);color:var(--dim);
-  font-family:"Jost",sans-serif;font-size:13px;letter-spacing:.05em;padding:10px 18px;
-  border-radius:2px;cursor:pointer;transition:.2s}
-.picker button:hover{border-color:var(--copper-dk);color:var(--cream)}
-.picker button[aria-pressed="true"]{border-color:var(--copper);color:var(--copper-lt);background:rgba(198,140,78,.1)}
-.convo{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-@media(max-width:960px){.convo{grid-template-columns:1fr}}
-.phone,.record{background:var(--panel);border:1px solid var(--line);border-radius:5px;
-  height:600px;display:flex;flex-direction:column;overflow:hidden}
-.phonetop,.rectop{padding:16px 20px;border-bottom:1px solid var(--line);background:var(--panel-2);flex-shrink:0}
-.phonetop{display:flex;align-items:center;gap:11px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);flex-shrink:0}
-.phonetop .t,.rectop .t{font-family:"Jost",sans-serif;font-size:14.5px;letter-spacing:.04em}
-.phonetop .u{font-size:11.5px;color:var(--dimmer);margin-left:auto;font-family:"Jost",sans-serif;letter-spacing:.1em}
-.rectop .s{font-size:11.5px;color:var(--dimmer);margin-top:2px}
-.stream{flex:1;overflow-y:auto;padding:22px 20px;display:flex;flex-direction:column;gap:13px;scroll-behavior:smooth}
-.stream::-webkit-scrollbar,.recbody::-webkit-scrollbar{width:4px}
-.stream::-webkit-scrollbar-thumb,.recbody::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:2px}
-.msg{max-width:84%;padding:11px 15px;border-radius:3px;font-size:15px;line-height:1.55;animation:rise .34s ease both}
-.msg.them{align-self:flex-start;background:var(--panel-2);border:1px solid var(--line);border-left:2px solid var(--copper-dk)}
-.msg.you{align-self:flex-end;background:rgba(198,140,78,.13);border:1px solid rgba(198,140,78,.26)}
-.msg .who{display:block;font-family:"Jost",sans-serif;font-size:9.5px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--dimmer);margin-bottom:5px}
-.typing{align-self:flex-start;display:flex;gap:5px;padding:14px 15px;background:var(--panel-2);
-  border:1px solid var(--line);border-radius:3px}
-.typing i{width:5px;height:5px;border-radius:50%;background:var(--copper-dk);animation:blink 1.3s infinite}
-.typing i:nth-child(2){animation-delay:.2s}
-.typing i:nth-child(3){animation-delay:.4s}
-@keyframes blink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+/* routes, editorial not cards */
+.routes{margin-top:66px;display:grid;grid-template-columns:1fr 430px;gap:60px;align-items:start}
+@media(max-width:1080px){.routes{grid-template-columns:1fr}.rpic{display:none}}
+.r{display:grid;grid-template-columns:72px 1fr;gap:8px 26px;padding:34px 0;border-top:1px solid var(--line)}
+.r:last-child{border-bottom:1px solid var(--line)}
+.r .num{font-family:"Fraunces",serif;font-size:2.9rem;color:var(--copper);line-height:.9;
+  font-variation-settings:"SOFT" 60,"WONK" 1}
+.r h3{font-size:1.62rem;margin:0 0 10px}
+.r p{color:var(--dim);margin:0;font-size:16.5px;max-width:48ch}
+.r .when{margin-top:14px;color:var(--copper-lt);font-size:15px}
+.rpic{position:sticky;top:40px;overflow:hidden}
+.rpic img{width:100%;height:560px;object-fit:cover}
+.rpic figcaption{color:var(--dim);font-size:14.5px;margin-top:14px}
+
+/* pull quote */
+.pull{padding:110px 0;background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pull blockquote{margin:0;font-family:"Fraunces",serif;font-size:clamp(1.6rem,3.4vw,2.5rem);
+  line-height:1.24;max-width:22ch;font-weight:400;font-variation-settings:"SOFT" 60,"WONK" 1}
+.pullgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+@media(max-width:900px){.pullgrid{grid-template-columns:1fr;gap:34px}}
+.pull .who{color:var(--copper-lt);margin-top:24px;font-size:15px}
+.pull .who span{color:var(--dimmer);display:block;margin-top:3px}
+
+/* chat */
+.chatgrid{display:grid;grid-template-columns:1fr 480px;gap:64px;align-items:center;margin-top:56px}
+@media(max-width:1000px){.chatgrid{grid-template-columns:1fr;gap:38px}}
+.pick{display:flex;gap:9px;flex-wrap:wrap;margin:26px 0 0}
+.pick button{background:transparent;border:1px solid var(--line2);color:var(--dim);cursor:pointer;
+  font-family:"Karla",sans-serif;font-size:14.5px;padding:10px 18px;border-radius:1px;transition:.2s}
+.pick button:hover{border-color:var(--copper);color:var(--cream)}
+.pick button[aria-pressed="true"]{border-color:var(--copper);color:#0B0805;background:var(--copper);font-weight:600}
+.chat{background:var(--panel);border:1px solid var(--line);height:560px;display:flex;flex-direction:column}
+.chattop{display:flex;align-items:center;gap:11px;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--panel2)}
+.dot{width:8px;height:8px;border-radius:50%;background:#63B37A;box-shadow:0 0 10px #63B37A}
+.chattop .t{font-family:"Fraunces",serif;font-size:16px}
+.chattop .u{margin-left:auto;font-size:12.5px;color:var(--dimmer)}
+.stream{flex:1;overflow-y:auto;padding:22px 20px;display:flex;flex-direction:column;gap:13px}
+.stream::-webkit-scrollbar{width:4px}
+.stream::-webkit-scrollbar-thumb{background:var(--line2)}
+.m{max-width:85%;padding:12px 16px;font-size:15.5px;line-height:1.55;animation:rise .34s ease both}
+.m.b{align-self:flex-start;background:var(--panel2);border:1px solid var(--line);border-left:2px solid var(--copper)}
+.m.u{align-self:flex-end;background:rgba(198,140,78,.14);border:1px solid rgba(198,140,78,.28)}
+.ty{align-self:flex-start;display:flex;gap:5px;padding:15px 16px;background:var(--panel2);border:1px solid var(--line)}
+.ty i{width:5px;height:5px;border-radius:50%;background:var(--copper);animation:bl 1.3s infinite}
+.ty i:nth-child(2){animation-delay:.2s}.ty i:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,60%,100%{opacity:.22}30%{opacity:1}}
 @keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
-.recbody{flex:1;overflow-y:auto;padding:6px 21px 21px}
-.row{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:13px 0;
-  border-bottom:1px solid var(--line);align-items:baseline}
-.row:last-child{border-bottom:0}
-.row .k{font-family:"Jost",sans-serif;font-size:10.5px;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--dimmer)}
-.row .v{font-size:14.5px;opacity:0;transform:translateY(5px);transition:.45s}
-.row .v.on{opacity:1;transform:none}
-.row .v.pending{color:var(--dimmer);font-style:italic;opacity:1;transform:none}
-.v .tag{display:inline-block;font-family:"Jost",sans-serif;font-size:10.5px;letter-spacing:.11em;
-  text-transform:uppercase;padding:3px 9px;border-radius:2px;background:rgba(99,179,122,.14);
-  color:var(--green);border:1px solid rgba(99,179,122,.3)}
-.v .tag.warm{background:rgba(198,140,78,.14);color:var(--copper-lt);border-color:rgba(198,140,78,.32)}
-.replay{margin-top:22px;background:transparent;border:1px solid var(--line-2);color:var(--dim);
-  font-family:"Jost",sans-serif;font-size:13px;letter-spacing:.08em;padding:11px 22px;
-  border-radius:2px;cursor:pointer;transition:.2s}
-.replay:hover{border-color:var(--copper);color:var(--copper-lt)}
 
-/* routes with photo */
-.routewrap{display:grid;grid-template-columns:1fr 400px;gap:44px;align-items:stretch}
-@media(max-width:1040px){.routewrap{grid-template-columns:1fr}.routephoto{display:none}}
-.routes{display:flex;flex-direction:column;gap:18px}
-.route{background:var(--panel);border:1px solid var(--line);border-radius:4px;
-  padding:30px 32px;display:grid;grid-template-columns:64px 1fr;gap:26px;
-  align-items:start;transition:.3s}
-.route:hover{border-color:var(--copper-dk);background:var(--panel-2)}
-.bars{display:flex;align-items:flex-end;gap:5px;height:52px}
-.bars i{width:12px;background:linear-gradient(180deg,var(--copper-lt),var(--copper-dk));
-  border-radius:1px 1px 0 0;display:block}
-.route h3{font-size:1.34rem;margin:0 0 9px;font-weight:300}
-.route p{color:var(--dim);font-size:15.5px;margin:0}
-.route .out{margin-top:16px;font-size:13px;color:var(--copper-lt);
-  font-family:"Jost",sans-serif;letter-spacing:.06em;text-transform:uppercase}
-.routephoto{position:relative;border-radius:4px;overflow:hidden;border:1px solid var(--line);min-height:520px}
-.routephoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.routephoto .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 26px 22px;z-index:2;
-  background:linear-gradient(180deg,transparent,rgba(5,5,4,.93));font-size:14.5px;color:#D6CEC3}
-.routephoto .cap b{display:block;font-family:"Jost",sans-serif;color:var(--copper-lt);
-  font-size:11px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:7px;font-weight:400}
+/* reviews full */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0 56px;margin-top:56px}
+.rq{padding:34px 0;border-top:1px solid var(--line)}
+.rq .st{color:var(--copper);letter-spacing:2px;font-size:14px;margin-bottom:12px}
+.rq q{quotes:none;display:block;font-family:"Fraunces",serif;font-size:1.16rem;line-height:1.44;font-weight:400}
+.rq .by{color:var(--dimmer);font-size:14px;margin-top:14px}
+.rq .by b{color:var(--copper-lt);font-weight:600}
 
-/* missed call */
-.mc{display:grid;grid-template-columns:.8fr 1fr;gap:60px;align-items:center}
-@media(max-width:900px){.mc{grid-template-columns:1fr;gap:40px}}
-.handset{background:var(--panel);border:1px solid var(--line-2);border-radius:20px;
-  padding:26px 21px;max-width:320px;box-shadow:0 34px 80px -46px #000}
-.missed{display:flex;align-items:center;gap:13px;padding:14px 0 17px;border-bottom:1px solid var(--line)}
-.missed .ic{width:34px;height:34px;border-radius:50%;border:1px solid #7d3a30;color:#e08b78;
-  display:grid;place-items:center;font-size:15px;flex-shrink:0}
-.missed .n{font-family:"Jost",sans-serif;font-size:15px}
-.missed .m{font-size:12px;color:var(--dimmer)}
-.sms{margin-top:17px;background:rgba(198,140,78,.11);border:1px solid rgba(198,140,78,.25);
-  border-radius:3px;padding:13px 15px;font-size:14.5px;line-height:1.5}
-.sms .from{font-family:"Jost",sans-serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--dimmer);display:block;margin-bottom:6px}
-.timer{margin-top:14px;font-family:"Jost",sans-serif;font-size:12px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--green)}
+/* situations */
+.sits{margin-top:50px}
+.sit{display:flex;justify-content:space-between;align-items:baseline;gap:24px;
+  padding:24px 0;border-top:1px solid var(--line);transition:.2s}
+.sit:last-child{border-bottom:1px solid var(--line)}
+.sit:hover{padding-left:12px}
+.sit .q{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:400}
+.sit .a{color:var(--copper-lt);font-size:15px;white-space:nowrap}
 
-/* proof */
-.proofgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
-@media(max-width:960px){.proofgrid{grid-template-columns:1fr}}
-.proof{display:flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;flex-wrap:wrap}
-.proof div{flex:1 1 46%;padding:30px 26px;border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);background:var(--panel)}
-.proof .n{font-family:"Jost",sans-serif;font-size:2.35rem;font-weight:200;color:var(--copper-lt);
-  line-height:1;display:block;margin-bottom:8px}
-.proof .l{font-size:13.5px;color:var(--dim)}
-.proofphoto{border-radius:4px;overflow:hidden;border:1px solid var(--line);height:420px;position:relative}
-.proofphoto img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
-
-/* situation pages */
-.pages{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:1px;
-  background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
-.pages a{background:var(--panel);padding:26px;display:block;transition:.25s}
-.pages a:hover{background:var(--panel-2)}
-.pages .q{font-size:15px;line-height:1.45}
-.pages .p{font-size:12px;color:var(--dimmer);margin-top:10px;font-family:"Jost",sans-serif;
-  letter-spacing:.14em;text-transform:uppercase}
+/* cta band */
+.band{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;
+  margin-top:56px;padding:32px 34px;background:linear-gradient(96deg,rgba(198,140,78,.11),rgba(198,140,78,.02));
+  border:1px solid var(--line2)}
+.band p{margin:0;font-family:"Fraunces",serif;font-size:1.32rem;font-weight:400}
+.band .b{display:flex;gap:11px;flex-wrap:wrap}
 
 /* closer */
-.closer{position:relative;padding:150px 0;text-align:center;overflow:hidden;border-top:1px solid var(--line)}
+.closer{position:relative;padding:160px 0;overflow:hidden;text-align:center}
 .closer .bg{position:absolute;inset:0;z-index:0}
 .closer .bg img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
 .closer .scrim{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg,var(--black) 0%,rgba(5,5,4,.82) 40%,rgba(5,5,4,.9) 100%)}
+  background:linear-gradient(180deg,var(--black),rgba(8,8,6,.84) 42%,rgba(8,8,6,.93))}
 .closer .wrap{position:relative;z-index:2}
-.closer h2{font-size:clamp(2rem,4.5vw,3.3rem);font-weight:200;margin:0 0 22px;line-height:1.1;
-  max-width:18ch;margin-inline:auto;text-wrap:balance}
-.closer p{color:#CBC3B9;max-width:52ch;margin:0 auto 38px}
-.cta{display:inline-block;background:var(--copper);color:#0C0904;font-family:"Jost",sans-serif;
-  font-size:15px;letter-spacing:.09em;font-weight:500;padding:18px 42px;border-radius:2px;transition:.2s}
-.cta:hover{background:var(--copper-lt)}
+.closer h2{font-size:clamp(2.1rem,4.8vw,3.5rem);margin:0 auto 24px;max-width:17ch}
+.closer p{color:#CBC2B5;max-width:50ch;margin:0 auto 36px}
 
-footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:var(--dimmer);background:#080706}
+footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:var(--dimmer);background:#070605}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot a{color:var(--copper-lt)}
 
-.callbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:none;
-  border-top:1px solid var(--line-2);background:rgba(8,7,6,.97);backdrop-filter:blur(8px)}
-.callbar a{flex:1;text-align:center;padding:15px 8px;font-family:"Jost",sans-serif;
-  font-size:14px;letter-spacing:.06em}
-.callbar a:first-child{color:#0C0904;background:var(--copper);font-weight:500}
-.callbar a:last-child{color:var(--copper-lt)}
-@media(max-width:780px){
-  .callbar{display:flex}
-  body{padding-bottom:54px}
-  .wrap{padding:0 22px}
-  section{padding:78px 0}
-  .hero{padding:150px 0 60px;min-height:auto}
-  .phone,.record{height:500px}
-  .route{grid-template-columns:1fr;gap:16px}
-  .closer{padding:100px 0}
+/* sticky bar */
+.sticky{position:fixed;top:0;left:0;right:0;z-index:60;transform:translateY(-101%);
+  transition:transform .3s ease;background:rgba(9,8,6,.97);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line2)}
+.sticky.on{transform:none}
+.sin{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:11px 0}
+.sin img{height:34px}
+.sin .mid{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--dim)}
+.sin .mid .st{color:var(--copper);letter-spacing:2px;font-size:13px}
+.sin .btn{padding:11px 21px;font-size:14px}
+@media(max-width:820px){.sticky{display:none}}
+
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;border-top:1px solid var(--line2)}
+.callbar a{flex:1;text-align:center;padding:16px 8px;font-weight:600;font-size:15px}
+.callbar a:first-child{background:var(--copper);color:#0B0805}
+.callbar a:last-child{background:rgba(9,8,6,.97);color:var(--copper-lt);backdrop-filter:blur(8px)}
+@media(max-width:820px){
+  .callbar{display:flex}body{padding-bottom:56px}
+  .wrap{padding:0 22px}section{padding:80px 0}
+  .marqhead{padding-left:22px}.heroin{padding-top:118px}
+  .chat{height:490px}.r{grid-template-columns:1fr;gap:6px}
+  .closer{padding:104px 0}.pull{padding:78px 0}
 }
-@media (prefers-reduced-motion:reduce){
-  *{animation-duration:.001s!important;transition-duration:.001s!important}
-  html{scroll-behavior:auto}
-}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<div class="demobar">
-  <b>Concept page for MaliHaus Capital.</b> The conversation and the example records are illustrative, built to show how it works. Your own reviews, photographs and numbers replace them.
-</div>
-
-<div class="navbar">
-  <div class="wrap">
-    <nav>
-      <a href="#top"><img class="logo" src="img/logo-copper.png" alt="MaliHaus Capital"></a>
-      <div class="navlinks">
-        <a href="#how">How it works</a>
-        <a href="#routes">Your options</a>
-        <a href="#proof">Reviews</a>
-        <a href="#pages">Situations</a>
-      </div>
-      <a class="navcall" href="tel:3214612550">(321) 461-2550</a>
-    </nav>
+<div class="sticky" id="sticky"><div class="wrap"><div class="sin">
+  <img src="img/logo-copper.png" alt="MaliHaus Capital">
+  <div class="mid"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 from 29 Google reviews</div>
+  <div style="display:flex;gap:10px">
+    <a class="btn ghost" href="tel:3214612550">(321) 461-2550</a>
+    <a class="btn solid" href="#start">Get my offer</a>
   </div>
-</div>
+</div></div></div>
+
+<div class="navbar"><div class="wrap"><nav>
+  <a href="#top"><img class="logo" src="img/logo-copper.png" alt="MaliHaus Capital"></a>
+  <div class="navlinks">
+    <a href="#ways">Three ways to sell</a>
+    <a href="#ask">Ask a question</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#situations">Situations</a>
+  </div>
+  <div class="navr">
+    <a class="navtel" href="tel:3214612550">(321) 461-2550</a>
+    <a class="btn solid" href="#start">Get my offer</a>
+  </div>
+</nav></div></div>
 
 <div class="hero" id="top">
-  <div class="bg"><img src="img/hero-goldenhour.jpg" alt="South Florida home at sunset"></div>
+  <div class="bg"><img src="img/hero-goldenhour.jpg" alt="A home in South Florida at sunset"></div>
   <div class="scrim"></div>
-  <div class="wrap">
-    <div class="label">Boca Raton &nbsp;&middot;&nbsp; Palm Beach &nbsp;&middot;&nbsp; Broward</div>
-    <h1>More than one way to <em>sell your house.</em></h1>
-    <p class="herosub">Most cash buyers make you one offer and that is the conversation. We use our own capital, a network of local renovators, and national buyer platforms, so your house gets competition instead of a single number.</p>
-    <div class="stars">
-      <span class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <span><b>5.0</b> from 29 reviews on Google</span>
-    </div>
-    <div class="entry">
-      <form class="entryrow" onsubmit="event.preventDefault();document.getElementById('how').scrollIntoView();">
-        <input type="text" placeholder="Enter your property address" aria-label="Property address">
+  <div class="heroin"><div class="wrap">
+    <h1>Three ways to sell your house. <i>Not one.</i></h1>
+    <p class="herop">Most cash buyers hand you a single number and call it an offer. We run your house through our own capital, our local renovators and a national buyer network, then tell you which one pays you most.</p>
+    <div class="act" id="start">
+      <form class="addr" onsubmit="event.preventDefault();document.getElementById('ways').scrollIntoView();">
+        <input type="text" placeholder="Your property address" aria-label="Your property address">
         <button type="submit">See my options</button>
       </form>
-      <p class="entrynote">One field to start. No repairs, no fees, no commission, and nothing owed if you walk away.</p>
+      <a class="btn ghost" href="tel:3214612550">Or just call us</a>
     </div>
-  </div>
-</div>
-
-<div class="strip">
-  <div class="wrap"><div class="stripin">
-    <div><b>$0</b>Repairs</div>
-    <div><b>$0</b>Commission</div>
-    <div><b>$0</b>Closing costs</div>
-    <div><b>14 days</b>Typical close</div>
-    <div><b>10+ years</b>Buying in Florida</div>
+    <p class="small">No repairs. No fees. No commission. Nothing owed if you walk away.</p>
   </div></div>
+
+  <div class="marq">
+    <div class="marqhead">
+      <span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span class="rate">5.0</span>
+      <span class="n">from 29 reviews on Google</span>
+    </div>
+    <div class="mask"><div class="track" id="track"></div></div>
+  </div>
 </div>
 
-<section id="how">
-  <div class="wrap">
-    <div class="shead">
-      <div class="label">The part nobody else has</div>
-      <h2>Ask a question at nine in the evening and get an answer at nine in the evening.</h2>
-      <p>Pick a situation and watch both sides at once. The seller has a conversation. You get a qualified record and a booked appointment without lifting a finger.</p>
-    </div>
-    <div class="picker" role="group" aria-label="Choose a seller situation">
-      <button data-s="0" aria-pressed="true">Inherited a house</button>
-      <button data-s="1" aria-pressed="false">Behind on payments</button>
-      <button data-s="2" aria-pressed="false">Tired of the rental</button>
-    </div>
-    <div class="convo">
-      <div class="phone">
-        <div class="phonetop">
-          <span class="dot"></span><span class="t">MaliHaus Capital</span>
-          <span class="u" id="clock">9:14 PM</span>
-        </div>
-        <div class="stream" id="stream"></div>
-      </div>
-      <div class="record">
-        <div class="rectop">
-          <div class="t">What lands on your desk</div>
-          <div class="s" id="recsub">Building as the conversation happens</div>
-        </div>
-        <div class="recbody" id="recbody"></div>
-      </div>
-    </div>
-    <button class="replay" id="replay">Play it again</button>
-  </div>
-</section>
+<section id="ways"><div class="wrap">
+  <h2 class="lead">We find out what your house is worth to three different buyers.</h2>
+  <p class="sub">Every house gets run against all three before anyone quotes you a number. If a route beats our own offer, we say so, even when it means we are not the ones buying it.</p>
 
-<section id="routes">
-  <div class="wrap">
-    <div class="shead">
-      <div class="label">Three ways out, not one</div>
-      <h2>We work out which route pays you most, then tell you why.</h2>
-      <p>Every house is run against all three before anyone quotes a number. If one of them beats a cash offer, we say so, even when that means we are not the buyer.</p>
-    </div>
-    <div class="routewrap">
-      <div class="routes">
-        <div class="route">
-          <div class="bars"><i style="height:22px"></i><i style="height:40px"></i><i style="height:30px"></i></div>
-          <div>
-            <h3>Our own capital</h3>
-            <p>We buy it ourselves, as is, no repairs and no inspection contingency. You pick the closing date and we cover the closing costs.</p>
-            <div class="out">Fastest, and certain</div>
-          </div>
-        </div>
-        <div class="route">
-          <div class="bars"><i style="height:30px"></i><i style="height:22px"></i><i style="height:44px"></i></div>
-          <div>
-            <h3>Local renovators</h3>
-            <p>Florida renovation buyers who want exactly this kind of house and will compete for it, with us running the process on your behalf.</p>
-            <div class="out">Competition on price, still no repairs</div>
-          </div>
-        </div>
-        <div class="route">
-          <div class="bars"><i style="height:44px"></i><i style="height:32px"></i><i style="height:24px"></i></div>
-          <div>
-            <h3>National buyer network</h3>
-            <p>Auction and off market platforms where investors across the country bid on the property. The right house here can beat every local number.</p>
-            <div class="out">Widest reach, best on unusual homes</div>
-          </div>
+  <div class="routes">
+    <div>
+      <div class="r">
+        <div class="num">01</div>
+        <div>
+          <h3>We buy it ourselves</h3>
+          <p>Our own capital, your house exactly as it stands. No repairs, no inspection contingency, no financing to fall through. You choose the closing date and we cover the closing costs.</p>
+          <div class="when">Best when you want it certain and you want it done.</div>
         </div>
       </div>
-      <div class="routephoto">
-        <img src="img/mansion-palms.jpg" alt="Home in Boca Raton, Florida">
-        <div class="cap"><b>Boca Raton</b>We work Palm Beach, Broward and Miami Dade, and we know what a renovated comparable on your street actually sold for.</div>
+      <div class="r">
+        <div class="num">02</div>
+        <div>
+          <h3>Our renovation buyers compete for it</h3>
+          <p>Florida renovators who want this exact kind of house. We run the process, they bid against each other, and you still do not lift a paintbrush.</p>
+          <div class="when">Best when the house is dated but sound.</div>
+        </div>
+      </div>
+      <div class="r">
+        <div class="num">03</div>
+        <div>
+          <h3>The national buyer network sees it</h3>
+          <p>Auction and off market platforms where investors across the country bid. An unusual house, a tenanted rental or a property in the right pocket can beat every local number here.</p>
+          <div class="when">Best when your house is not like the ones next door.</div>
+        </div>
       </div>
     </div>
+    <figure class="rpic" style="margin:0">
+      <img src="img/mansion-palms.jpg" alt="A house in Boca Raton">
+      <figcaption>We work Palm Beach, Broward and Miami Dade, and we know what the renovated house on your street actually sold for.</figcaption>
+    </figure>
   </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <div class="mc">
-      <div class="handset">
-        <div class="missed">
-          <span class="ic">&#8600;</span>
-          <div><div class="n">Missed call</div><div class="m">(561) 555 0148, 6:42 PM</div></div>
-        </div>
-        <div class="sms">
-          <span class="from">MaliHaus Capital, 6:42 PM</span>
-          Sorry we missed you. This is MaliHaus. Are you calling about selling a property? Tell me the address and I can start looking at it right now.
-        </div>
-        <div class="timer" id="mctimer">Sent 11 seconds after the missed call</div>
-      </div>
-      <div>
-        <div class="label">Nothing goes to voicemail</div>
-        <h2 style="font-size:clamp(1.8rem,3.4vw,2.5rem);margin:18px 0 22px;font-weight:200;line-height:1.13">Every call you cannot take turns into a conversation instead of a lost lead.</h2>
-        <p style="color:var(--dim);margin:0 0 16px">A motivated seller calls two or three buyers in one evening and goes with whoever picks up. When you are on a walkthrough, driving, or asleep, the call still gets answered, by text, in seconds.</p>
-        <p style="color:var(--dim);margin:0">The reply is not a recording. It asks about the property, and if the seller keeps talking it keeps going, until there is enough on the record for you to call back knowing exactly what you are calling about.</p>
-      </div>
+  <div class="band">
+    <p>Find out which of the three pays you most.</p>
+    <div class="b">
+      <a class="btn solid" href="#start">Start with my address</a>
+      <a class="btn ghost" href="tel:3214612550">Call (321) 461-2550</a>
     </div>
   </div>
-</section>
+</div></section>
 
-<section id="proof">
-  <div class="wrap">
-    <div class="shead">
-      <div class="label">What people say</div>
-      <h2>Twenty nine reviews, and every one of them a five.</h2>
-      <p>They currently live on Google, where most of your sellers never look. Here they sit above the fold, they update themselves, and the stars show in search results too.</p>
-    </div>
-    <div class="proofgrid">
-      <div class="proof">
-        <div><span class="n">5.0</span><span class="l">Average rating on Google</span></div>
-        <div><span class="n">29</span><span class="l">Reviews, every one public</span></div>
-        <div><span class="n">10+</span><span class="l">Years buying in Florida</span></div>
-        <div><span class="n">3</span><span class="l">Routes run on every house</span></div>
-      </div>
-      <div class="proofphoto"><img src="img/beach-row.jpg" alt="Homes on the Florida coast"></div>
-    </div>
-    <p style="color:var(--dimmer);font-size:13.5px;margin-top:20px">On the live page this pulls your actual reviews, with each reviewer's name and words, and adds new ones on its own.</p>
+<div class="pull"><div class="wrap"><div class="pullgrid">
+  <blockquote>&ldquo;We had to sell our property fast. From the very beginning I felt comfortable with our choice.&rdquo;
+    <div class="who">Robert Krupp<span>Google review, eight months ago</span></div>
+  </blockquote>
+  <div>
+    <p style="color:var(--dim);margin:0 0 16px">Nobody sells a house for fun. People come to us in the middle of something: a parent has died, a job has moved, a tenant has worn them out, a lender has started writing letters.</p>
+    <p style="color:var(--dim);margin:0">What we can promise is that you will get a straight answer quickly, you will not be chased, and you will not be asked to spend a dollar on the house before you sell it.</p>
   </div>
-</section>
+</div></div></div>
 
-<section id="pages">
-  <div class="wrap">
-    <div class="shead">
-      <div class="label">And then the pages underneath it</div>
-      <h2>A page for every reason somebody sells.</h2>
-      <p>These are the things people type into Google and into ChatGPT. Each one becomes a page written for that single situation, and each one ends in the same place, a booked call with you.</p>
+<section id="ask"><div class="wrap">
+  <h2 class="lead">Ask us at nine at night. Get an answer at nine at night.</h2>
+  <p class="sub">You do not have to fill in a form and wait for someone to get back to you. Ask a question whenever it occurs to you, and pick up the conversation whenever suits.</p>
+
+  <div class="pick" role="group" aria-label="Choose a situation">
+    <button data-s="0" aria-pressed="true">I inherited a house</button>
+    <button data-s="1" aria-pressed="false">I am behind on payments</button>
+    <button data-s="2" aria-pressed="false">I am done being a landlord</button>
+  </div>
+
+  <div class="chatgrid">
+    <div>
+      <h3 style="font-size:1.5rem;margin:0 0 16px">However you start, it ends the same way</h3>
+      <p style="color:var(--dim);margin:0 0 14px">Tell us the address and roughly what is going on. That is genuinely all we need to begin. We look at what has sold near you, work out which of the three routes fits, and come back with a number and the reasoning behind it.</p>
+      <p style="color:var(--dim);margin:0 0 26px">If you would rather talk to a person, say so and one of us will call. If you would rather not talk at all until you have a number, that is fine too.</p>
+      <div style="display:flex;gap:11px;flex-wrap:wrap">
+        <a class="btn solid" href="#start">Get my offer</a>
+        <a class="btn ghost" href="sms:3214612550">Text us instead</a>
+      </div>
     </div>
-    <div class="pages">
-      <a href="#top"><div class="q">I inherited a house in Florida and I do not want to fix it up</div><div class="p">Probate and inherited</div></a>
-      <a href="#top"><div class="q">Can I still sell if I am behind on the mortgage</div><div class="p">Pre foreclosure</div></a>
-      <a href="#top"><div class="q">Selling a rental with a tenant still in it</div><div class="p">Tired landlords</div></a>
-      <a href="#top"><div class="q">Selling the house in a divorce, quickly and quietly</div><div class="p">Divorce</div></a>
-      <a href="#top"><div class="q">The house will not pass inspection. What now</div><div class="p">Condition</div></a>
-      <a href="#top"><div class="q">I am relocating and cannot wait for a listing</div><div class="p">Relocation</div></a>
+    <div class="chat">
+      <div class="chattop"><span class="dot"></span><span class="t">MaliHaus Capital</span><span class="u" id="clock">9:14 PM</span></div>
+      <div class="stream" id="stream"></div>
     </div>
   </div>
-</section>
+</div></section>
+
+<section id="reviews" class="rule"><div class="wrap">
+  <h2 class="lead">Twenty nine reviews. Every one of them five stars.</h2>
+  <p class="sub">These are real reviews left on our Google listing by people we have bought from and worked with.</p>
+  <div class="rgrid">
+    <div>
+      <div class="rq"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <q>Great experience! The team was professional, honest, and made the entire process quick and stress-free. They communicated well, kept their promises, and closed on time. I highly recommend them!</q>
+        <div class="by"><b>Saugold Services</b> &nbsp;&middot;&nbsp; two months ago</div></div>
+      <div class="rq"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <q>I have done multiple deals with them. George and Tom are the best. Always upfront, honest, and great people overall. Give them a chance, you wont be disappointed.</q>
+        <div class="by"><b>Zion Bar</b> &nbsp;&middot;&nbsp; nine months ago</div></div>
+      <div class="rq"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <q>Five stars, no question. Tom at Malihaus Capital went above and beyond to get my property sold. He didn't just meet expectations, he exceeded them at every step.</q>
+        <div class="by"><b>Cleveland Smith</b> &nbsp;&middot;&nbsp; a year ago</div></div>
+    </div>
+    <div>
+      <div class="rq"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <q>We had to sell our property fast. My wife and I contacted Malihaus Capital and from the very beginning I felt comfortable with our choice. Their reps were professional, friendly and effective.</q>
+        <div class="by"><b>Robert Krupp</b> &nbsp;&middot;&nbsp; eight months ago</div></div>
+      <div class="rq"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <q>Had an amazing experience. Their team was incredibly professional and made the entire process of selling my property so smooth and stress-free. They truly care about their clients.</q>
+        <div class="by"><b>Mohamed Magdy</b> &nbsp;&middot;&nbsp; a year ago</div></div>
+      <div class="rq"><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <q>I had an excellent experience working with MaliHaus Capital. George, Tom, and Mike were extremely professional, detail-oriented, and genuinely helpful throughout the entire process.</q>
+        <div class="by"><b>Grits Wald</b> &nbsp;&middot;&nbsp; four months ago</div></div>
+    </div>
+  </div>
+  <div class="band">
+    <p>See what your house is worth to all three buyers.</p>
+    <div class="b">
+      <a class="btn solid" href="#start">Start with my address</a>
+      <a class="btn ghost" href="tel:3214612550">Call (321) 461-2550</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="situations" class="rule"><div class="wrap">
+  <h2 class="lead">Whatever put you here, we have seen it before.</h2>
+  <p class="sub">Pick whichever is closest. None of them changes what we need from you to start, which is the address and a rough idea of the situation.</p>
+  <div class="sits">
+    <a class="sit" href="#start"><span class="q">I inherited a house and I do not want to fix it up</span><span class="a">Probate and inherited &rarr;</span></a>
+    <a class="sit" href="#start"><span class="q">I am behind on the mortgage and the letters have started</span><span class="a">Pre foreclosure &rarr;</span></a>
+    <a class="sit" href="#start"><span class="q">I want out of the rental, and the tenant is still in it</span><span class="a">Tired landlords &rarr;</span></a>
+    <a class="sit" href="#start"><span class="q">We are divorcing and the house has to go, quietly</span><span class="a">Divorce &rarr;</span></a>
+    <a class="sit" href="#start"><span class="q">The house will not pass an inspection</span><span class="a">Condition &rarr;</span></a>
+    <a class="sit" href="#start"><span class="q">I am relocating and cannot wait for a listing</span><span class="a">Relocation &rarr;</span></a>
+  </div>
+</div></section>
 
 <div class="closer">
-  <div class="bg"><img src="img/two-houses.jpg" alt="Florida homes at dusk"></div>
+  <div class="bg"><img src="img/two-houses.jpg" alt="Homes in Florida at dusk"></div>
   <div class="scrim"></div>
   <div class="wrap">
     <h2>Start with the address. That is the whole first step.</h2>
-    <p>You will hear back the same day, and usually within minutes. No repairs, no fees, no commission, and no obligation to take anything we put in front of you.</p>
-    <a class="cta" href="#top">Get my options</a>
+    <p>You will hear back the same day, usually a good deal sooner. No repairs, no fees, no commission, and no obligation to take anything we put in front of you.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a class="btn solid" href="#start">Get my offer</a>
+      <a class="btn ghost" href="tel:3214612550">Call (321) 461-2550</a>
+    </div>
   </div>
 </div>
 
-<footer>
-  <div class="wrap foot">
-    <span>MaliHaus Capital, 1515 S Federal Hwy Ste 156, Boca Raton, FL 33432</span>
-    <span>(321) 461-2550</span>
-  </div>
-</footer>
+<footer><div class="wrap foot">
+  <span>MaliHaus Capital &nbsp;&middot;&nbsp; 1515 S Federal Hwy Ste 156, Boca Raton, FL 33432</span>
+  <span><a href="tel:3214612550">(321) 461-2550</a></span>
+</div></footer>
 
 <div class="callbar">
   <a href="tel:3214612550">Call now</a>
@@ -455,86 +417,84 @@ footer{border-top:1px solid var(--line);padding:40px 0;font-size:13.5px;color:va
 </div>
 
 <script>
-const SCENARIOS=[
-{time:"9:14 PM",sub:"Inherited property, after hours",turns:[
-{w:"you",t:"My mother passed in March and I have her house in Delray. I live in Georgia. I honestly don't know where to start."},
-{w:"them",t:"I'm sorry about your mother. That situation is one we handle a lot, and being out of state makes it easier than most people expect. What's the address in Delray?",f:{Situation:"Inherited property, seller out of state"}},
-{w:"you",t:"1140 SW 8th Ave. It's been empty since March."},
-{w:"them",t:"Thank you. Empty since March tells me a lot already. Has probate been opened, or is that still ahead of you?",f:{Property:"1140 SW 8th Ave, Delray Beach",Occupancy:"Vacant since March"}},
-{w:"you",t:"My attorney filed in May. He says a few more weeks."},
-{w:"them",t:"Good, that's the part that usually holds things up and yours is nearly through. What sort of condition is it in? Anything you already know needs work?",f:{Probate:"Filed May, attorney engaged, weeks from closing"}},
-{w:"you",t:"The roof is original, maybe 20 years. Kitchen and bathrooms are 1990s. Nothing has been touched in a long time."},
-{w:"them",t:"Understood, and none of that has to be fixed. We buy as is. Roughly what does this house need to do for you? Is it about the number, or about being finished with it?",f:{Condition:"Roof approx 20 years, kitchen and baths 1990s"}},
-{w:"you",t:"Honestly both, but I'd rather it was done. I can't keep flying down."},
-{w:"them",t:"That's a clear answer and it changes which route suits you. Vacant, out of state and needing a roof is the shape where our national buyer network usually beats a straight cash number. I'll have both run before we speak.",f:{Motivation:"Wants it finished, cannot keep travelling",Route:"National network first, cash as the floor"}},
-{w:"them",t:"George can call you tomorrow. Is morning or afternoon better, and is this the best number for you?"},
-{w:"you",t:"Morning is better. This number is fine."},
-{w:"them",t:"Booked for 10:00 tomorrow morning. He'll have the comparable sales and both routes ready before he calls, so it won't be a fishing conversation.",f:{Appointment:"Tomorrow, 10:00 AM",Status:"<span class='tag'>Booked and qualified</span>"}}]},
-{time:"7:38 AM",sub:"Behind on payments, before office hours",turns:[
-{w:"you",t:"I'm three payments behind and the bank sent something last week. Is it too late to sell?"},
-{w:"them",t:"It is almost certainly not too late, and three behind is early rather than late. Do you have the letter to hand? The wording on it tells us how much time you actually have.",f:{Situation:"Three payments behind, lender letter received"}},
-{w:"you",t:"It says notice of default. Boca Raton, off Palmetto Park."},
-{w:"them",t:"A notice of default gives you room. That is not a sale date. Roughly what is owed on the mortgage, including the arrears?",f:{Property:"Boca Raton, near Palmetto Park Rd",Stage:"Notice of default, no sale date set"}},
-{w:"you",t:"About 240 with the missed payments."},
-{w:"them",t:"Thank you. Is anyone living there now, and is the house in reasonable shape?",f:{Payoff:"Approx $240,000 including arrears"}},
-{w:"you",t:"We're still in it. It's tidy, nothing broken, just dated."},
-{w:"them",t:"Occupied and tidy is good news, because it means the renovation buyers are open to you, not only a cash offer. Do you need to stay a while after closing, or are you ready to move?",f:{Occupancy:"Owner occupied, dated but sound"}},
-{w:"you",t:"We'd need maybe a month to find somewhere."},
-{w:"them",t:"That is normally arrangeable and it should not cost you anything on price. I'll flag it so nobody surprises you with a seven day close.",f:{Timing:"Needs approx 30 days after closing",Route:"Renovator network, cash as the backstop"}},
-{w:"them",t:"Given the letter, I'd rather George called you today than tomorrow. Does two o'clock work?"},
-{w:"you",t:"Yes, two is fine."},
-{w:"them",t:"Two o'clock today. He'll have your payoff position and the timeline mapped before he calls.",f:{Appointment:"Today, 2:00 PM",Status:"<span class='tag'>Booked, time sensitive</span>"}}]},
-{time:"11:52 PM",sub:"Tired landlord, late night",turns:[
-{w:"you",t:"I have a rental in Lake Worth I am done with. Tenant is still in there with 5 months left."},
-{w:"them",t:"A tenant in place is not a problem for us. It can actually be worth more that way. What is the address, and what are they paying?",f:{Situation:"Landlord exiting, tenant in place"}},
-{w:"you",t:"826 N K St. They pay 2,100."},
-{w:"them",t:"Thank you. Is the lease current and the rent paid on time?",f:{Property:"826 N K St, Lake Worth",Rent:"$2,100 per month, 5 months left"}},
-{w:"you",t:"Always on time, that isn't the issue. I'm just tired of the maintenance calls."},
-{w:"them",t:"That matters more than you might think. A paying tenant on a current lease turns this from a fixer sale into an income property, which brings a completely different set of buyers.",f:{Payment:"On time, no arrears"}},
-{w:"you",t:"So I don't have to make them leave?"},
-{w:"them",t:"No. Investors buying for income prefer the tenant to stay. It is one of the few cases where the house is worth more exactly as it stands.",f:{Route:"National network, income property positioning"}},
-{w:"them",t:"George will want the rent roll before he speaks to you. Would tomorrow afternoon suit, and can you send the lease over?"},
-{w:"you",t:"I can send it in the morning. Afternoon works."},
-{w:"them",t:"3:00 tomorrow afternoon, and I'll send you a link for the lease so it's on file before the call.",f:{Appointment:"Tomorrow, 3:00 PM",Status:"<span class='tag warm'>Booked, lease requested</span>"}}]}
+const REVIEWS=[
+ ["Great experience! The team was professional, honest, and made the entire process quick and stress-free.","Saugold Services","two months ago"],
+ ["We had to sell our property fast. From the very beginning I felt comfortable with our choice.","Robert Krupp","eight months ago"],
+ ["George and Tom are the best. Always upfront, honest, and great people overall.","Zion Bar","nine months ago"],
+ ["Five stars, no question. Tom went above and beyond to get my property sold.","Cleveland Smith","a year ago"],
+ ["They made the entire process of selling my property so smooth and stress-free.","Mohamed Magdy","a year ago"],
+ ["Extremely professional, detail-oriented, and genuinely helpful throughout the entire process.","Grits Wald","four months ago"],
+ ["They communicated well, kept their promises, and closed on time.","Saugold Services","two months ago"],
+ ["He didn't just meet expectations, he exceeded them at every step.","Cleveland Smith","a year ago"]
 ];
-const FIELDS=["Property","Situation","Occupancy","Probate","Stage","Payoff","Rent","Payment","Condition","Motivation","Timing","Route","Appointment","Status"];
-const stream=document.getElementById('stream'),recbody=document.getElementById('recbody'),
-recsub=document.getElementById('recsub'),clock=document.getElementById('clock');
-let current=0,timers=[],seq=0;
-function buildRecord(sc){recbody.innerHTML='';const used=new Set();
-  sc.turns.forEach(t=>t.f&&Object.keys(t.f).forEach(k=>used.add(k)));
-  FIELDS.filter(f=>used.has(f)).forEach(f=>{const r=document.createElement('div');r.className='row';
-    r.innerHTML='<div class="k">'+f+'</div><div class="v pending" data-f="'+f+'">waiting</div>';
-    recbody.appendChild(r);});}
-function setField(k,v){const el=recbody.querySelector('[data-f="'+CSS.escape(k)+'"]');if(!el)return;
-  el.classList.remove('pending');el.innerHTML=v;requestAnimationFrame(()=>el.classList.add('on'));}
-function play(i){timers.forEach(clearTimeout);timers=[];const mine=++seq;current=i;
-  const sc=SCENARIOS[i];stream.innerHTML='';clock.textContent=sc.time;recsub.textContent=sc.sub;buildRecord(sc);
-  let delay=400;
-  sc.turns.forEach(turn=>{
-    if(turn.w==='them'){const typeFor=Math.min(1500,420+turn.t.length*9);
-      timers.push(setTimeout(()=>{if(mine!==seq)return;const ty=document.createElement('div');
-        ty.className='typing';ty.id='ty';ty.innerHTML='<i></i><i></i><i></i>';
-        stream.appendChild(ty);stream.scrollTop=stream.scrollHeight;},delay));
-      delay+=typeFor;}
-    timers.push(setTimeout(()=>{if(mine!==seq)return;const ty=document.getElementById('ty');if(ty)ty.remove();
-      const m=document.createElement('div');m.className='msg '+turn.w;
-      m.innerHTML='<span class="who">'+(turn.w==='you'?'Seller':'MaliHaus')+'</span>'+turn.t;
-      stream.appendChild(m);stream.scrollTop=stream.scrollHeight;
-      if(turn.f)Object.entries(turn.f).forEach(([k,v])=>setField(k,v));},delay));
-    delay+=turn.w==='them'?1500:1250;});}
-document.querySelectorAll('.picker button').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.picker button').forEach(x=>x.setAttribute('aria-pressed','false'));
+const track=document.getElementById('track');
+const card=r=>`<div class="rev"><q>&ldquo;${r[0]}&rdquo;</q><div class="by"><b>${r[1]}</b> &middot; ${r[2]}</div></div>`;
+track.innerHTML=(REVIEWS.map(card).join('')).repeat(2);
+
+const S=[
+{t:"9:14 PM",m:[
+["u","My mother passed in March and I have her house in Delray. I live in Georgia and I don't know where to start."],
+["b","I'm sorry about your mother. Out of state makes this easier than most people expect, not harder. What's the address in Delray?"],
+["u","1140 SW 8th Ave. It's been empty since March."],
+["b","Thank you. Has probate been opened, or is that still ahead of you?"],
+["u","My attorney filed in May. He says a few more weeks."],
+["b","Good, that's usually the part that holds everything up and yours is nearly through. Anything you already know the house needs?"],
+["u","The roof is original, maybe 20 years. Kitchen and bathrooms are 1990s."],
+["b","None of that has to be fixed, we buy it as is. Vacant, out of state and needing a roof is the shape where our national buyers often beat a straight cash number, so we'll price both."],
+["u","I'd rather it was just done. I can't keep flying down."],
+["b","Understood. Someone can call you tomorrow with both numbers and the sales we based them on. Morning or afternoon?"],
+["u","Morning."],
+["b","Ten o'clock. You won't be asked anything you've already told me."]]},
+{t:"7:38 AM",m:[
+["u","I'm three payments behind and the bank sent something last week. Is it too late to sell?"],
+["b","Almost certainly not, and three behind is early rather than late. Do you have the letter to hand? The wording tells us how much time you actually have."],
+["u","It says notice of default. Boca Raton, off Palmetto Park."],
+["b","A notice of default is not a sale date, so you have room. Roughly what is owed including the arrears?"],
+["u","About 240 with the missed payments."],
+["b","Thank you. Are you still living there, and is the house in reasonable shape?"],
+["u","We're still in it. Tidy, nothing broken, just dated."],
+["b","That's good news, it means the renovation buyers are open to you and not only a cash offer. Do you need time after closing to find somewhere?"],
+["u","Maybe a month."],
+["b","That is normally arrangeable and it shouldn't cost you on price. Given the letter I'd rather someone called you today than tomorrow. Two o'clock?"],
+["u","Two is fine."],
+["b","Two o'clock. We'll have your payoff position and the timeline mapped before we call."]]},
+{t:"11:52 PM",m:[
+["u","I have a rental in Lake Worth I'm done with. Tenant is still in there with 5 months left."],
+["b","A tenant in place isn't a problem, it can be worth more that way. What's the address and what are they paying?"],
+["u","826 N K St. They pay 2,100."],
+["b","Thank you. Is the rent paid on time?"],
+["u","Always. That isn't the issue, I'm just tired of the maintenance calls."],
+["b","That matters. A paying tenant on a current lease makes this an income property rather than a fixer, which brings a different and usually better set of buyers."],
+["u","So I don't have to make them leave?"],
+["b","No. Buyers holding for income would rather they stayed. It's one of the few cases where the house is worth more exactly as it is."],
+["u","That's a relief."],
+["b","We'll want the lease and the rent roll before we price it. Send them over whenever and we'll call you tomorrow afternoon."]]}];
+
+const stream=document.getElementById('stream'),clock=document.getElementById('clock');
+let seq=0,timers=[],cur=0;
+function play(i){
+  timers.forEach(clearTimeout);timers=[];const mine=++seq;cur=i;
+  const s=S[i];stream.innerHTML='';clock.textContent=s.t;let d=350;
+  s.m.forEach(([w,t])=>{
+    if(w==='b'){const tf=Math.min(1400,400+t.length*8);
+      timers.push(setTimeout(()=>{if(mine!==seq)return;
+        const e=document.createElement('div');e.className='ty';e.id='ty';e.innerHTML='<i></i><i></i><i></i>';
+        stream.appendChild(e);stream.scrollTop=stream.scrollHeight;},d));d+=tf;}
+    timers.push(setTimeout(()=>{if(mine!==seq)return;
+      const y=document.getElementById('ty');if(y)y.remove();
+      const e=document.createElement('div');e.className='m '+w;e.textContent=t;
+      stream.appendChild(e);stream.scrollTop=stream.scrollHeight;},d));
+    d+=w==='b'?1450:1200;});
+}
+document.querySelectorAll('.pick button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.pick button').forEach(x=>x.setAttribute('aria-pressed','false'));
   b.setAttribute('aria-pressed','true');play(+b.dataset.s);}));
-document.getElementById('replay').addEventListener('click',()=>play(current));
-let started=false;
-new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!started){started=true;play(0);}}),
-  {threshold:.2}).observe(document.getElementById('how'));
-const mct=document.getElementById('mctimer');
-const io2=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;let n=0;
-  const t=setInterval(()=>{n++;mct.textContent='Sent '+n+' second'+(n===1?'':'s')+' after the missed call';
-    if(n>=11)clearInterval(t);},90);io2.disconnect();}),{threshold:.5});
-io2.observe(mct);
+let go=false;
+new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting&&!go){go=true;play(0);}}),{threshold:.2})
+  .observe(document.getElementById('ask'));
+
+const sticky=document.getElementById('sticky');
+addEventListener('scroll',()=>sticky.classList.toggle('on',scrollY>window.innerHeight*.9),{passive:true});
 </script>
 </body>
 </html>
