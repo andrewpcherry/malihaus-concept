@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>What Runs Behind the MaliHaus Page</title>
-<meta name="description" content="The working parts behind the MaliHaus home page concept: missed call text back, the conversation, the record it builds, reviews and reporting.">
+<title>From Brochure to Operational</title>
+<meta name="description" content="What turns the MaliHaus website from a leaflet that takes messages into a system that answers, qualifies, books, follows up and gets paid.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="What Runs Behind the MaliHaus Page">
-<meta property="og:description" content="Not a brochure. The parts that actually answer, qualify, book and follow up.">
+<meta property="og:title" content="From Brochure to Operational">
+<meta property="og:description" content="Every part that answers, qualifies, books, chases, closes and reports. All of it running on this page.">
 <link rel="icon" href="img/cropped-Untitled-1-270x270.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
 :root{
   --black:#07080A; --panel:#0E1114; --panel2:#151A1E; --line:#20272C; --line2:#2E383F;
   --copper:#C68C4E; --copper-lt:#E8BC86; --cream:#EDF1F3; --dim:#94A0A8; --dimmer:#616E76;
-  --live:#5FC98B; --wire:#3D8FB5;
+  --live:#5FC98B; --cold:#8A5A55;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -32,28 +32,46 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
 .wrap{max-width:1160px;margin:0 auto;padding:0 36px}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
 
-.top{border-bottom:1px solid var(--line);padding:22px 0;background:#06070A}
+.top{border-bottom:1px solid var(--line);padding:20px 0;background:#06070A;position:sticky;top:0;z-index:50}
 .topin{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.top img{height:38px}
+.top img{height:36px}
 .top .back{font-size:14.5px;color:var(--copper-lt)}
 
-.head{padding:86px 0 70px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-.head:after{content:"";position:absolute;right:-180px;top:-160px;width:620px;height:620px;
-  background:radial-gradient(circle,rgba(198,140,78,.13),transparent 66%);pointer-events:none}
-.head h1{font-size:clamp(2.4rem,5.4vw,4rem);margin:0;max-width:17ch}
+.head{padding:88px 0 76px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.head:after{content:"";position:absolute;right:-200px;top:-180px;width:660px;height:660px;
+  background:radial-gradient(circle,rgba(198,140,78,.14),transparent 66%);pointer-events:none}
+.head h1{font-size:clamp(2.4rem,5.4vw,4rem);margin:0;max-width:16ch;position:relative;z-index:1}
 .head h1 i{font-style:italic;color:var(--copper-lt)}
-.head p{color:var(--dim);max-width:58ch;margin:26px 0 0;font-size:1.12rem}
+.head p{color:var(--dim);max-width:60ch;margin:26px 0 0;font-size:1.12rem;position:relative;z-index:1}
 
-/* numbered part blocks */
-.part{padding:92px 0;border-bottom:1px solid var(--line)}
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+/* ledger */
+.ledger{padding:92px 0;border-bottom:1px solid var(--line)}
+.lhead{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:44px;border:1px solid var(--line);border-bottom:0}
+.lhead div{padding:16px 22px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+  letter-spacing:.12em;text-transform:uppercase}
+.lhead .a{color:var(--cold);border-right:1px solid var(--line);background:#0C0A0A}
+.lhead .b{color:var(--live);background:#0A0E0C}
+.lrow{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-top:0}
+.lrow>div{padding:20px 22px;font-size:15.5px;line-height:1.55}
+.lrow .a{color:var(--dim);border-right:1px solid var(--line);background:#0A0A0B}
+.lrow .b{color:var(--cream);background:#0A0D0C}
+.lrow .ev{grid-column:1/-1;padding:13px 22px;background:var(--panel2);border-bottom:1px solid var(--line);
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper)}
+@media(max-width:720px){
+  .lhead{grid-template-columns:1fr}.lhead .a{border-right:0;border-bottom:1px solid var(--line)}
+  .lrow{grid-template-columns:1fr}.lrow .a{border-right:0;border-bottom:1px solid var(--line)}
+}
+
+/* part blocks */
+.part{padding:88px 0;border-bottom:1px solid var(--line)}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .pgrid.flip .demo{order:-1}
-@media(max-width:960px){.pgrid{grid-template-columns:1fr;gap:36px}.pgrid.flip .demo{order:0}}
+@media(max-width:960px){.pgrid{grid-template-columns:1fr;gap:34px}.pgrid.flip .demo{order:0}}
 .tag{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;color:var(--copper);
   display:flex;align-items:center;gap:10px;margin-bottom:16px}
 .tag:before{content:"";width:28px;height:1px;background:var(--copper)}
-.part h2{font-size:clamp(1.7rem,3.2vw,2.35rem);margin:0 0 18px;max-width:19ch}
-.part p{color:var(--dim);margin:0 0 15px;max-width:50ch}
+.part h2{font-size:clamp(1.65rem,3.1vw,2.25rem);margin:0 0 18px;max-width:20ch}
+.part p{color:var(--dim);margin:0 0 15px;max-width:52ch}
 .part p:last-child{margin-bottom:0}
 .part b{color:var(--cream);font-weight:600}
 .facts{margin:22px 0 0;padding:0;list-style:none}
@@ -61,7 +79,6 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
 .facts li:before{content:"";position:absolute;left:0;top:19px;width:9px;height:1px;background:var(--copper)}
 .facts li b{color:var(--cream)}
 
-/* phone */
 .handset{background:var(--panel);border:1px solid var(--line2);border-radius:22px;padding:24px 20px;
   max-width:330px;margin:0 auto;box-shadow:0 40px 90px -50px #000}
 .missed{display:flex;align-items:center;gap:13px;padding:12px 0 16px;border-bottom:1px solid var(--line)}
@@ -75,7 +92,6 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
   text-transform:uppercase;color:var(--dimmer);display:block;margin-bottom:6px}
 .tick{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--live)}
 
-/* chat + record */
 .dual{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:760px){.dual{grid-template-columns:1fr}}
 .box{background:var(--panel);border:1px solid var(--line);height:520px;display:flex;flex-direction:column;overflow:hidden}
@@ -98,8 +114,7 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
 .recb{flex:1;overflow-y:auto;padding:4px 18px 18px}
 .row{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .row:last-child{border-bottom:0}
-.row .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--dimmer)}
+.row .k{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dimmer)}
 .row .v{font-size:14px;opacity:0;transform:translateY(4px);transition:.4s}
 .row .v.on{opacity:1;transform:none}
 .row .v.pend{color:#4A555C;font-style:italic;opacity:1;transform:none}
@@ -115,7 +130,13 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
   font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;padding:10px 18px}
 .replay:hover{border-color:var(--copper);color:var(--copper-lt)}
 
-/* review engine */
+/* channel strip */
+.chans{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:26px}
+.chans div{background:var(--panel);padding:18px 18px;font-size:14.5px;color:var(--dim)}
+.chans div b{display:block;color:var(--cream);font-size:15px;margin-bottom:3px}
+
+/* flow */
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 @media(max-width:820px){.flow{grid-template-columns:1fr 1fr}}
 .flow div{background:var(--panel);padding:24px 20px}
@@ -123,25 +144,25 @@ h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;
 .flow .h{font-size:15.5px;color:var(--cream);margin-bottom:7px;font-weight:600}
 .flow .d{font-size:14px;color:var(--dim);line-height:1.5}
 
-/* report */
 .report{background:var(--panel);border:1px solid var(--line)}
 .rtop{padding:14px 20px;border-bottom:1px solid var(--line);background:var(--panel2);
   font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim)}
 .rbody{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line)}
 .rbody div{background:var(--panel);padding:22px 20px}
-.rbody .n{font-family:"Fraunces",serif;font-size:2rem;color:var(--copper-lt);line-height:1;display:block;margin-bottom:7px}
+.rbody .n{font-family:"Fraunces",serif;font-size:1.9rem;color:var(--copper-lt);line-height:1;display:block;margin-bottom:7px}
 .rbody .l{font-size:13.5px;color:var(--dim)}
 
 .closer{padding:110px 0;text-align:center}
 .closer h2{font-size:clamp(1.9rem,4vw,2.9rem);margin:0 auto 22px;max-width:20ch}
-.closer p{color:var(--dim);max-width:52ch;margin:0 auto 34px}
+.closer p{color:var(--dim);max-width:54ch;margin:0 auto 34px}
 .btn{display:inline-block;font-weight:600;font-size:15px;padding:16px 32px;transition:.2s}
 .btn.solid{background:var(--copper);color:#0B0805}
 .btn.solid:hover{background:var(--copper-lt)}
 .btn.ghost{border:1px solid var(--line2);color:var(--copper-lt)}
 .btn.ghost:hover{border-color:var(--copper)}
 footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(--dimmer);background:#06070A}
-@media(max-width:760px){.wrap{padding:0 22px}.part{padding:64px 0}.head{padding:56px 0 48px}.box{height:460px}}
+@media(max-width:760px){.wrap{padding:0 22px}.part{padding:62px 0}.head{padding:56px 0 48px}
+  .box{height:460px}.ledger{padding:64px 0}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;transition-duration:.001s!important}}
 </style>
 </head>
@@ -153,33 +174,66 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 </div></div></div>
 
 <div class="head"><div class="wrap">
-  <h1>The page is the easy part. <i>This is what makes it work.</i></h1>
-  <p>A new website on its own just moves the same problem somewhere prettier. What follows are the working parts sitting behind it: what answers when you cannot, what it asks, what it writes down, and what arrives on your phone afterwards. Everything on this page runs. Press the buttons.</p>
+  <h1>Right now your website is a leaflet. <i>This makes it staff.</i></h1>
+  <p>A leaflet can be handed to someone. It cannot answer a question at nine at night, ask what condition the roof is in, put the appointment in your calendar, chase the seller who went quiet for six weeks, send the paperwork, take the money, or ask for the review afterwards. Everything below does. All of it is running on this page, so press the buttons rather than take my word for it.</p>
 </div></div>
 
-<!-- 01 MISSED CALL -->
+<!-- LEDGER -->
+<div class="ledger"><div class="wrap">
+  <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem);margin:0;max-width:20ch">The same week, run twice.</h2>
+  <p style="color:var(--dim);max-width:56ch;margin:20px 0 0">Nothing on the left is a criticism. It is simply what a website that can only take a message is able to do.</p>
+
+  <div class="lhead"><div class="a">Your site today</div><div class="b">The same site, operational</div></div>
+
+  <div class="lrow"><div class="ev mono">Tuesday 6:42pm &nbsp;&middot;&nbsp; a seller calls, you are on a walkthrough</div>
+    <div class="a">Rings out. Voicemail. He calls the next buyer on his list and one of them picks up.</div>
+    <div class="b">Text out in eleven seconds from your own number. He replies. By the time you are back in the car there is an address and a reason on your phone.</div></div>
+
+  <div class="lrow"><div class="ev mono">Tuesday 9:14pm &nbsp;&middot;&nbsp; a woman reads your page about her late mother's house</div>
+    <div class="a">Eight required fields, a state dropdown, then a promise that someone will be in touch. She closes the tab.</div>
+    <div class="b">She asks one question and gets an answer. Ten minutes later probate stage, condition, motivation and timeline are on the record and Wednesday at ten is booked.</div></div>
+
+  <div class="lrow"><div class="ev mono">Wednesday &nbsp;&middot;&nbsp; three enquiries land while you are at a closing</div>
+    <div class="a">Three form emails in an inbox with everything else. You get to them Thursday. One has already sold.</div>
+    <div class="b">All three answered inside a minute, qualified, scored, and sorted so the urgent one is at the top when you look.</div></div>
+
+  <div class="lrow"><div class="ev mono">Thursday &nbsp;&middot;&nbsp; a seller from March goes quiet again</div>
+    <div class="a">He sits in a spreadsheet. Nobody has the appetite to work an old list.</div>
+    <div class="b">He is in a sequence built for his situation. Text, then email, then a voicemail. It stops the moment he answers.</div></div>
+
+  <div class="lrow"><div class="ev mono">Friday &nbsp;&middot;&nbsp; you agree a price on the phone</div>
+    <div class="a">Print it, scan it, email it, wait, remind him, wait.</div>
+    <div class="b">The agreement goes to his phone, he signs it there, and the invoice raises itself the moment he does.</div></div>
+
+  <div class="lrow"><div class="ev mono">Two weeks later &nbsp;&middot;&nbsp; it closes</div>
+    <div class="a">You mean to ask for a review. You are already on the next house.</div>
+    <div class="b">The request goes out while he still feels good about it, one tap to your Google listing, and it appears on your home page on its own.</div></div>
+
+  <div class="lrow"><div class="ev mono">End of the month &nbsp;&middot;&nbsp; what did any of it produce</div>
+    <div class="a">No analytics, no tracking, no call records. Nothing to look at.</div>
+    <div class="b">One page: calls, answered and missed, conversations, appointments, deals, reviews, and what each lead cost.</div></div>
+</div></div>
+
+<!-- 01 PHONE -->
 <section class="part"><div class="wrap"><div class="pgrid">
   <div>
-    <div class="tag mono">01 &nbsp;/&nbsp; Missed calls</div>
-    <h2>A missed call becomes a text message before they dial the next buyer.</h2>
-    <p>A seller in the middle of something calls two or three companies in one evening and goes with whoever answers. Right now, when you are on a walkthrough or asleep, that call becomes a voicemail nobody listens to.</p>
-    <p>The moment a call to your number goes unanswered, <b>a text goes out automatically</b> and the conversation carries on without you. If the seller replies, it keeps going.</p>
+    <div class="tag mono">01 &nbsp;/&nbsp; The phone</div>
+    <h2>Every call gets answered, including the ones you cannot take.</h2>
+    <p>Two things sit on your number. The first is <b>missed call text back</b>: the instant a call goes unanswered, a text goes out and the conversation carries on without you.</p>
+    <p>The second is a <b>voice agent that actually answers</b>. It picks up in a human sounding voice, asks about the property, and books straight into your calendar. It does not read a menu and it does not take a message.</p>
     <ul class="facts">
-      <li>Fires on <b>every</b> unanswered call, day or night, weekends included</li>
+      <li>Fires on <b>every</b> unanswered call, nights, weekends, holidays</li>
       <li>Comes from <b>your own number</b>, so replies land where you expect</li>
-      <li>Stops the moment a human joins the thread</li>
+      <li>Every call <b>tracked and recorded</b>, so you know which ones came from where</li>
+      <li>Stops the second a human joins the thread</li>
     </ul>
   </div>
   <div class="demo">
     <div class="handset">
-      <div class="missed">
-        <span class="ic">&#8600;</span>
-        <div><div class="n">Missed call</div><div class="m">(561) 555 0148 &nbsp;&middot;&nbsp; 6:42 PM</div></div>
-      </div>
-      <div class="bub" id="bub">
-        <span class="fr">MaliHaus Capital &middot; 6:42 PM</span>
-        Sorry we missed you, this is MaliHaus. Are you calling about selling a property? Give me the address and I can start looking at it right now.
-      </div>
+      <div class="missed"><span class="ic">&#8600;</span>
+        <div><div class="n">Missed call</div><div class="m">(561) 555 0148 &nbsp;&middot;&nbsp; 6:42 PM</div></div></div>
+      <div class="bub" id="bub"><span class="fr">MaliHaus Capital &middot; 6:42 PM</span>
+        Sorry we missed you, this is MaliHaus. Are you calling about selling a property? Give me the address and I can start looking at it right now.</div>
       <div class="tick mono" id="tick">waiting</div>
     </div>
   </div>
@@ -189,7 +243,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 <section class="part"><div class="wrap">
   <div class="tag mono">02 &nbsp;/&nbsp; The conversation</div>
   <h2>It does the first ten minutes of the call for you, at whatever hour the seller turns up.</h2>
-  <p style="max-width:64ch">It is not a menu and it is not a form with a chat bubble around it. It asks what you would ask, in the order you would ask it, and it stops when it has enough. Choose a seller and watch both halves at once: what they see on the left, what is being written down on the right.</p>
+  <p style="max-width:66ch">Not a menu, and not a form with a chat bubble around it. It asks what you would ask, in the order you would ask it, it knows how to handle probate differently from a notice of default, and it stops when it has enough. Choose a seller and watch both halves at once.</p>
 
   <div style="margin-top:32px">
     <div class="pick" role="group" aria-label="Choose a seller">
@@ -209,20 +263,58 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
     </div>
     <button class="replay" id="replay">Run it again</button>
   </div>
+
+  <p style="margin-top:40px;max-width:66ch"><b>And it is the same conversation wherever the seller starts it.</b> Chat on your website, a text to your number, a Facebook or Instagram message, WhatsApp, or a message through your Google listing all arrive in one place, in one thread, against one seller. You never have five inboxes and you never ask the same question twice.</p>
+  <div class="chans">
+    <div><b>Website chat</b>The widget on your own pages</div>
+    <div><b>Text message</b>To the number on your signs</div>
+    <div><b>Facebook &amp; Instagram</b>Messages and comments</div>
+    <div><b>WhatsApp</b>For the ones who prefer it</div>
+    <div><b>Google listing</b>Messages straight off your profile</div>
+    <div><b>Email</b>In the same thread as the rest</div>
+  </div>
 </div></section>
 
-<!-- 03 WHAT HAPPENS NEXT -->
+<!-- 03 RECORD -->
 <section class="part"><div class="wrap"><div class="pgrid flip">
   <div>
-    <div class="tag mono">03 &nbsp;/&nbsp; Nothing goes cold</div>
-    <h2>The ones who do not answer are worth more than the ones who do.</h2>
-    <p>Most of the money in a list like yours is sitting in people who enquired months ago and were never chased, because chasing is boring and there is always something more urgent.</p>
-    <p>Follow up runs on its own, in a sequence that changes depending on what the seller told you. Somebody weeks from a foreclosure date is treated differently from somebody thinking about it next year. <b>It stops the second they reply</b>, and it never sends twice in a way that looks automated.</p>
+    <div class="tag mono">03 &nbsp;/&nbsp; The record</div>
+    <h2>Every seller arrives already sorted, scored and in the right column.</h2>
+    <p>What you saw building on the right hand side is a real record. It carries the address, the situation, the condition, the payoff, the timeline, the motivation and the route you would take, plus every message either way and every call recording.</p>
+    <p>Sellers are <b>scored and ranked</b>, so the notice of default sits above the man who is thinking about it next spring. They move through <b>your own pipeline</b>, whatever stages you actually use, and the pipeline moves them on its own as things happen.</p>
     <ul class="facts">
-      <li>Different sequences for <b>urgent, warm and long term</b></li>
-      <li>Text, email and voicemail, not the same channel over and over</li>
-      <li><b>Old leads reactivated</b> from the list you already own, without a call block</li>
-      <li>Everything logged against the seller, so nothing is asked twice</li>
+      <li>One record per seller, not a form email in an inbox</li>
+      <li><b>Lead scoring</b> so the urgent ones surface without you sorting</li>
+      <li>Pipeline stages that <b>advance themselves</b> when a seller books, signs or pays</li>
+      <li>Everything on <b>your phone</b>, including calling and texting from your business number</li>
+    </ul>
+  </div>
+  <div class="demo">
+    <div class="report">
+      <div class="rtop">Sorted before you look</div>
+      <div class="rbody">
+        <div><span class="n">01</span><span class="l">Notice of default, Boca Raton, today</span></div>
+        <div><span class="n">02</span><span class="l">Inherited, vacant, Delray, tomorrow 10am</span></div>
+        <div><span class="n">03</span><span class="l">Tenanted rental, Lake Worth, docs coming</span></div>
+        <div><span class="n">04</span><span class="l">Relocating, no date set, nurturing</span></div>
+      </div>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- 04 FOLLOW UP -->
+<section class="part"><div class="wrap"><div class="pgrid">
+  <div>
+    <div class="tag mono">04 &nbsp;/&nbsp; Nothing goes cold</div>
+    <h2>The ones who did not answer are worth more than the ones who did.</h2>
+    <p>Most of the money in a book like yours is sitting in people who enquired months ago and were never chased, because chasing is boring and there is always something more urgent.</p>
+    <p>Follow up runs itself, and it branches on what the seller told you. Someone weeks from a foreclosure date is worked differently from someone thinking about next year. <b>It stops the second they reply.</b></p>
+    <p>The same machine can be pointed at <b>the list you already own</b>. Every old enquiry, every dead lead, every seller who said not yet, worked in the background without a single call block.</p>
+    <ul class="facts">
+      <li>Separate sequences for <b>urgent, warm and long term</b></li>
+      <li>Text, email and <b>voicemail dropped straight to their phone</b> without ringing</li>
+      <li><b>Database reactivation</b> across your whole existing list</li>
+      <li>Appointment reminders, so the booked ones actually turn up</li>
     </ul>
   </div>
   <div class="demo">
@@ -240,31 +332,47 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
   </div>
 </div></div></section>
 
-<!-- 04 REVIEWS -->
+<!-- 05 PAPERWORK -->
 <section class="part"><div class="wrap">
-  <div class="tag mono">04 &nbsp;/&nbsp; Reviews</div>
-  <h2>Twenty nine five star reviews, working for you instead of sitting on Google.</h2>
-  <p style="max-width:64ch">They go onto the website and keep syncing, so new ones appear without anyone touching the site. Then the flow that produces more of them runs on its own.</p>
+  <div class="tag mono">05 &nbsp;/&nbsp; Offer to signature to money</div>
+  <h2>The bit between agreeing a price and getting it signed is where deals die.</h2>
+  <p style="max-width:66ch">A seller who says yes on Friday afternoon and has not signed anything by Monday is a seller who has had a weekend to talk to someone else. This closes that gap to minutes.</p>
   <div class="flow" style="margin-top:34px">
-    <div><div class="n mono">STEP 01</div><div class="h">Closing lands</div><div class="d">The request goes out at the right moment, not two weeks later when the goodwill has gone.</div></div>
-    <div><div class="n mono">STEP 02</div><div class="h">One tap to leave it</div><div class="d">Straight to your Google listing. No account hunting, no instructions.</div></div>
-    <div><div class="n mono">STEP 03</div><div class="h">Answered same day</div><div class="d">Every review gets a reply. Google counts that, and so do the people reading them.</div></div>
-    <div><div class="n mono">STEP 04</div><div class="h">Onto the site</div><div class="d">It appears on the home page on its own, and the stars show in search results.</div></div>
+    <div><div class="n mono">STEP 01</div><div class="h">Offer built and sent</div><div class="d">Your figures, your terms, on your letterhead, out to the seller's phone while you are still on the call.</div></div>
+    <div><div class="n mono">STEP 02</div><div class="h">Signed on the phone</div><div class="d">He signs it where he stands. No printer, no scanner, no attachment nobody can open.</div></div>
+    <div><div class="n mono">STEP 03</div><div class="h">Paperwork raises itself</div><div class="d">The moment it is signed, the invoice and the next documents generate on their own, with the same terms carried over.</div></div>
+    <div><div class="n mono">STEP 04</div><div class="h">Payment by text</div><div class="d">Where money needs to move, it moves by a link in a text message rather than a bank visit.</div></div>
   </div>
+  <p style="color:var(--dimmer);font-size:14px;margin-top:18px">Deposits, assignment fees and anything else you currently chase by email.</p>
 </div></section>
 
-<!-- 05 VISIBILITY -->
-<section class="part"><div class="wrap"><div class="pgrid">
+<!-- 06 REVIEWS -->
+<section class="part"><div class="wrap">
+  <div class="tag mono">06 &nbsp;/&nbsp; Reviews</div>
+  <h2>Twenty nine five star reviews, working for you instead of sitting on Google.</h2>
+  <p style="max-width:66ch">They go onto the website and keep syncing, so new ones appear without anyone touching the site. Then the machine that produces more of them runs on its own, and the replies write themselves for you to approve.</p>
+  <div class="flow" style="margin-top:34px">
+    <div><div class="n mono">STEP 01</div><div class="h">Asked at the right moment</div><div class="d">The request goes out when the closing lands, not two weeks later when the goodwill has gone.</div></div>
+    <div><div class="n mono">STEP 02</div><div class="h">One tap to leave it</div><div class="d">Straight to your Google listing. No account hunting, no instructions, no friction.</div></div>
+    <div><div class="n mono">STEP 03</div><div class="h">Answered the same day</div><div class="d">A reply is drafted for every review and waits for your approval. Google counts that, and so do the people reading.</div></div>
+    <div><div class="n mono">STEP 04</div><div class="h">Out into the world</div><div class="d">It appears on your home page on its own, and gets posted to your social accounts as proof.</div></div>
+  </div>
+  <p style="margin-top:26px;max-width:66ch"><b>Video reviews too, where a seller will give you one.</b> A thirty second clip of somebody saying you did what you said you would is worth more than any paragraph either of us could write.</p>
+</div></section>
+
+<!-- 07 FOUND -->
+<section class="part"><div class="wrap"><div class="pgrid flip">
   <div>
-    <div class="tag mono">05 &nbsp;/&nbsp; Being found</div>
+    <div class="tag mono">07 &nbsp;/&nbsp; Being found</div>
     <h2>Sellers now ask an assistant before they open a search page.</h2>
-    <p>Somebody types "how do I sell an inherited house in Florida without doing repairs" into ChatGPT and gets an answer built out of pages that address that exact question in plain language.</p>
-    <p>Your site currently has nothing for that to draw on, and ten footer links that all lead back to the same Boca Raton page. <b>That gets rebuilt as real pages</b>, one per situation, each written for one circumstance and each ending in the same place.</p>
+    <p>Somebody types "how do I sell an inherited house in Florida without doing repairs" into ChatGPT and gets an answer assembled from pages that address that exact question in plain language.</p>
+    <p>Your site has nothing for that to draw on, and ten footer links that all lead back to the same Boca Raton page. <b>That gets rebuilt as real pages</b>, one per situation, each ending in the same place.</p>
     <ul class="facts">
       <li>Your Google listing corrected and completed, with the right categories</li>
-      <li><b>One phone number</b> everywhere instead of the three currently in public</li>
+      <li><b>One phone number</b> everywhere, instead of the three currently in public</li>
       <li>Situation pages marked up so assistants can quote them</li>
-      <li>Real market pages for the counties you actually work</li>
+      <li>Posts going out to your social accounts on a schedule, without you writing them</li>
+      <li>Real market pages for the counties you genuinely work</li>
     </ul>
   </div>
   <div class="demo">
@@ -279,28 +387,30 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
   </div>
 </div></div></section>
 
-<!-- 06 REPORTING -->
+<!-- 08 REPORTING -->
 <section class="part"><div class="wrap">
-  <div class="tag mono">06 &nbsp;/&nbsp; What you see</div>
-  <h2>Right now none of this is measured, which is the part that limits everything else.</h2>
-  <p style="max-width:64ch">There is no analytics, no tag manager, no advertising pixel and no call tracking anywhere on malihaus.com today. So there is no way to know how many people arrive, what they do, or what a lead costs. That goes in first, before anything else is changed, so that every change after it can be judged against a real number.</p>
+  <div class="tag mono">08 &nbsp;/&nbsp; What you see</div>
+  <h2>None of this is measured today, which is the part that limits everything else.</h2>
+  <p style="max-width:66ch">There is no analytics, no tag manager, no advertising pixel and no call tracking anywhere on malihaus.com right now. So there is no way to know how many people arrive, what they do, or what a lead costs you. That goes in first, before anything else changes, so every change after it can be judged against a real number rather than a feeling.</p>
   <div class="report" style="margin-top:34px">
-    <div class="rtop">One report, every week</div>
+    <div class="rtop">One page, every week</div>
     <div class="rbody">
-      <div><span class="n">&bull;</span><span class="l">Visits and where from</span></div>
+      <div><span class="n">&bull;</span><span class="l">Visits, and where from</span></div>
       <div><span class="n">&bull;</span><span class="l">Calls, answered and missed</span></div>
       <div><span class="n">&bull;</span><span class="l">Conversations started</span></div>
-      <div><span class="n">&bull;</span><span class="l">Appointments booked</span></div>
+      <div><span class="n">&bull;</span><span class="l">Appointments booked and kept</span></div>
+      <div><span class="n">&bull;</span><span class="l">Deals in each stage</span></div>
       <div><span class="n">&bull;</span><span class="l">New reviews</span></div>
       <div><span class="n">&bull;</span><span class="l">Cost per lead</span></div>
+      <div><span class="n">&bull;</span><span class="l">Which source produced the deal</span></div>
     </div>
   </div>
-  <p style="color:var(--dimmer);font-size:13.5px;margin-top:16px">Blank because there is nothing to fill them with yet. That is the point.</p>
+  <p style="color:var(--dimmer);font-size:13.5px;margin-top:16px">Blank because there is nothing to fill them with yet. That is rather the point.</p>
 </div></section>
 
 <div class="closer"><div class="wrap">
-  <h2>None of this asks anything of you once it is running.</h2>
-  <p>You keep doing the part you are good at, which is looking at houses and making offers. The rest of it answers, asks, writes it down, books the time and tells you what happened.</p>
+  <h2>Once it is running, none of it asks anything of you.</h2>
+  <p>You keep doing the part you are good at, which is looking at houses, working out what they are worth and making offers. The website answers, asks, writes it down, books the time, chases the quiet ones, sends the paperwork, asks for the review and tells you what happened.</p>
   <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
     <a class="btn solid" href="./">See the page it sits behind</a>
     <a class="btn ghost" href="https://andrewpcherry.github.io/malihaus-review/">Read the full review of the site</a>
@@ -310,7 +420,6 @@ footer{border-top:1px solid var(--line);padding:36px 0;font-size:14px;color:var(
 <footer><div class="wrap">Prepared for MaliHaus Capital by Andrew Cherry, RequityAI &nbsp;&middot;&nbsp; andrew@requityai.com</div></footer>
 
 <script>
-/* missed call timer */
 const bub=document.getElementById('bub'),tick=document.getElementById('tick');
 new IntersectionObserver((e,o)=>e.forEach(x=>{if(!x.isIntersecting)return;o.disconnect();
   let n=0;const t=setInterval(()=>{n++;tick.textContent='+ '+n+'s';
@@ -318,7 +427,6 @@ new IntersectionObserver((e,o)=>e.forEach(x=>{if(!x.isIntersecting)return;o.disc
     if(n>=11){clearInterval(t);tick.textContent='sent 11s after the missed call';}},170);
 }),{threshold:.5}).observe(tick);
 
-/* conversation */
 const S=[
 {t:"9:14 PM",s:"inherited, out of state",m:[
 ["u","My mother passed in March and I have her house in Delray. I live in Georgia and I don't know where to start."],
