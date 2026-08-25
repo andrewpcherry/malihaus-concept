@@ -543,6 +543,23 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
   </div>
 </div>
 
+<script>
+(function(){
+var REVIEWS=[
+ ["Great experience! The team was professional, honest, and made the entire process quick and stress-free. They communicated well, kept their promises, and closed on time.","Saugold Services","two months ago"],
+ ["We had to sell our property fast. From the very beginning I felt comfortable with our choice. Their reps were professional, friendly and effective. In no time we received a fair offer.","Robert Krupp","eight months ago"],
+ ["I have done multiple deals with them. George and Tom are the best. Always upfront, honest, and great people overall. Give them a chance, you wont be disappointed.","Zion Bar","nine months ago"],
+ ["Had an amazing experience. Their team made the entire process of selling my property so smooth and stress-free. They truly care about their clients and go above and beyond.","Mohamed Magdy","a year ago"],
+ ["Five stars, no question. Tom went above and beyond to get my property sold. He truly went out of his way to make things happen, and I couldn't be more grateful.","Cleveland Smith","a year ago"],
+ ["I had an excellent experience working with MaliHaus Capital. George, Tom, and Mike were extremely professional, detail-oriented and genuinely helpful throughout.","Grits Wald","four months ago"]
+];
+var t=document.getElementById('track'); if(!t) return;
+function esc(x){var d=document.createElement('div');d.textContent=x;return d.innerHTML;}
+function card(r){return '<div class="rev"><q>\u201C'+esc(r[0])+'\u201D</q>'+
+  '<div class="by"><b>'+esc(r[1])+'</b> \u00B7 '+esc(r[2])+'</div></div>';}
+t.innerHTML=REVIEWS.map(card).join('').repeat(3);
+})();
+</script>
 <script src="chat.js?v=1787594980"></script>
 
 </body>
