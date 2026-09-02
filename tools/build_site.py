@@ -82,7 +82,7 @@ def head(title, meta, canonical, r):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="{r}site.css">
-<link rel="stylesheet" href="{r}components.css?v=2">
+<link rel="stylesheet" href="{r}components.css?v=3">
 </head>
 """
 

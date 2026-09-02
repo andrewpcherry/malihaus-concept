@@ -158,13 +158,14 @@ a.mh-proof:hover{border-color:var(--copper);background:var(--panel2)}
 .mh-form legend{font-size:12px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--copper);padding:22px 0 4px}
 .mh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-@media(max-width:760px){.mh-grid{grid-template-columns:repeat(2,1fr)}}
+/* Tablets get two columns: four across at 768px leaves the fields too narrow. */
+@media(max-width:900px){.mh-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.mh-grid{grid-template-columns:1fr}}
 .mh-f{display:flex;flex-direction:column;min-width:0}
 .mh-full{grid-column:span 4}
 .mh-half{grid-column:span 2}
 .mh-quarter{grid-column:span 1}
-@media(max-width:760px){
+@media(max-width:900px){
   .mh-full{grid-column:span 2}.mh-half{grid-column:span 2}.mh-quarter{grid-column:span 1}
 }
 @media(max-width:480px){.mh-full,.mh-half,.mh-quarter{grid-column:span 1}}
