@@ -24,10 +24,11 @@ REVIEW_LINE = "Rated 4.8 stars by more than 400 MaliHaus clients"
 REVIEW_URL = "https://www.experience.com/reviews/michael-mali"
 
 NATIONAL_STRAP = "Local market knowledge supported by a national investor network."
-NATIONAL_SUPPORT = ("MaliHaus evaluates each property using its condition, location, repair requirements "
-                    "and current investor demand. Our combination of direct purchasing experience, local "
-                    "relationships and national investor exposure gives us several ways to structure a "
-                    "potential sale.")
+
+# Michael's exact wording, supplied 2026-09-03. Do not reword or paraphrase.
+NATIONAL_SUPPORT = ("Your property deserves more than a one-size-fits-all offer. We evaluate it first, "
+                    "then determine the best path forward: a direct purchase, an improved property paired "
+                    "with an investor partner, or competitive exposure to our nationwide investor network.")
 
 # --------------------------------------------------------------------------
 # The three selling pillars. Michael's wording, exactly as supplied.

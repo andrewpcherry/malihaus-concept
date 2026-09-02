@@ -315,3 +315,185 @@ footer{padding:0!important}
 @media (prefers-reduced-motion:reduce){
   .mh-card,.mh-card-fig img,.mh-drawer,.mh-drawer-p{transition-duration:.001s!important}
 }
+
+/* ================================================================== *
+ * GOLD CONTRAST TREATMENT (2026-09-03, Michael's request)
+ *
+ * The brand gold is used as an ALTERNATING contrast ground against the
+ * black, never as a wash over the whole page. Dark sections are kept
+ * between the gold ones so the page keeps its rhythm.
+ *
+ * .mh-gold is a scope, not a skin. Putting it on a section, a card or a
+ * panel re-points the existing design tokens at their gold-ground
+ * equivalents, so every component inside recolours itself without any
+ * component needing to know about gold.
+ *
+ * Contrast, measured against the gold ground #C68C4E (rel. luminance
+ * 0.313), all above the WCAG AA 4.5:1 threshold for body text:
+ *   headings  #16110A  ~6.9:1
+ *   body      #33271A  ~5.0:1
+ *   dark btn  #14100A  ~7.2:1, with #E8BC86 text on it at ~10.7:1
+ * ================================================================== */
+
+:root{
+  --gold:#C68C4E;          /* the established brand gold */
+  --gold-lift:#D3A068;     /* cards sitting on a gold ground */
+  --gold-deep:#A9752F;     /* edges and dividers on gold */
+  --gold-ink:#16110A;      /* headings on gold */
+  --gold-body:#33271A;     /* body copy on gold */
+  --gold-btn:#14100A;      /* dark button on gold */
+}
+
+.mh-gold{
+  /* Re-point the shared tokens for everything inside this scope. */
+  --panel:var(--gold-lift);
+  --panel2:#DCAA74;
+  --line:rgba(22,17,10,.20);
+  --line2:rgba(22,17,10,.34);
+  --cream:var(--gold-ink);
+  --dim:var(--gold-body);
+  --dimmer:var(--gold-body);
+  --copper:var(--gold-btn);
+  --copper-lt:#38260C;
+
+  background:var(--gold);
+  color:var(--gold-ink);
+}
+
+/* A gold section spans the full bleed, its .wrap keeps the grid. */
+section.mh-gold,div.mh-gold.mh-band{border-top:1px solid var(--gold-deep);
+  border-bottom:1px solid var(--gold-deep)}
+
+/* Headings and copy */
+.mh-gold h1,.mh-gold h2,.mh-gold h3,.mh-gold .lead,.mh-gold .mh-form-h,
+.mh-gold .mh-notsure h2,.mh-gold blockquote{color:var(--gold-ink)}
+.mh-gold .sub,.mh-gold p,.mh-gold .mh-form-intro,.mh-gold .prose p{color:var(--gold-body)}
+.mh-gold .kicker,.mh-gold legend,.mh-gold .mh-sn,.mh-gold .mh-marketc h3,
+.mh-gold .mh-foot-c h2{color:#38260C}
+
+/* Icons go dark on gold. CSS beats the SVG presentation attribute. */
+.mh-gold svg[stroke]{stroke:var(--gold-ink)}
+.mh-gold .mh-card-ic,.mh-gold .mh-pillar-ic{
+  border-color:rgba(22,17,10,.30);
+  background:linear-gradient(150deg,rgba(22,17,10,.10),rgba(22,17,10,.02))}
+.mh-gold .mh-card-ic svg,.mh-gold .mh-pillar-ic svg{stroke:var(--gold-ink)}
+/* The Google mark keeps its own brand colours, it is a third-party logo. */
+.mh-gold svg[aria-label="Google"] path,.mh-gold .src>svg[aria-hidden] path[fill]{stroke:none}
+
+/* Cards on a gold ground lift slightly; a card that IS the gold scope
+   sits at full gold against the dark section behind it. */
+.mh-gold .mh-card,.mh-gold .mh-pillar,.mh-gold .src,.mh-gold .mh-proof{
+  background:var(--gold-lift);border-color:rgba(22,17,10,.28)}
+.mh-card.mh-gold,.mh-proof.mh-gold,.mh-loccard-b.mh-gold{
+  background:var(--gold);border-color:var(--gold-deep)}
+.mh-card.mh-gold:hover,a.mh-proof.mh-gold:hover{
+  background:var(--gold-lift);border-color:var(--gold-btn);transform:translateY(-3px)}
+.mh-gold .mh-card:hover,.mh-gold .src:hover{
+  background:#DCAA74;border-color:var(--gold-btn)}
+
+/* Buttons: dark button with gold text is the strongest pairing on gold. */
+.mh-gold .btn.solid{background:var(--gold-btn);color:var(--copper-lt);color:#E8BC86}
+.mh-gold .btn.solid:hover{background:#2A2114;color:#F0CE9E}
+.mh-gold .btn.ghost{border-color:rgba(22,17,10,.42);color:var(--gold-ink)}
+.mh-gold .btn.ghost:hover{border-color:var(--gold-btn);background:rgba(22,17,10,.09);
+  color:var(--gold-ink)}
+
+/* Links stay obvious against gold. */
+.mh-gold a{color:var(--gold-ink)}
+.mh-gold .mh-card-go,.mh-gold .mh-proof-a,.mh-gold .sca{color:#38260C;font-weight:600}
+.mh-gold .mh-when{color:#38260C;border-top-color:rgba(22,17,10,.22)}
+.mh-gold .mh-check a,.mh-gold .mh-or a{color:var(--gold-ink);
+  border-bottom-color:rgba(22,17,10,.5)}
+.mh-gold .marqhead .n a{color:var(--gold-ink);border-bottom-color:rgba(22,17,10,.4)}
+
+/* Focus stays visible on gold. */
+.mh-gold :focus-visible{outline:2px solid var(--gold-btn);outline-offset:3px}
+
+/* Stars read as dark bronze on gold rather than disappearing. */
+.mh-gold .st,.mh-gold .stars,.mh-gold .mh-st,.mh-gold .scr .st,.mh-gold .rq .st{color:#5C3F16}
+
+/* Rules and dividers */
+.mh-gold .rule,.mh-gold .qa,.mh-gold .ck,.mh-gold .rq,.mh-gold .sit,
+.mh-gold .mh-step,.mh-gold .mh-marketc a{border-color:rgba(22,17,10,.20)}
+.mh-gold .mh-step{border-top-color:rgba(22,17,10,.34)}
+
+/* ---- The enquiry form on gold ---- */
+.mh-formwrap.mh-gold{border-color:var(--gold-deep)}
+.mh-gold .mh-f label{color:var(--gold-ink);font-weight:600}
+.mh-gold .mh-req{color:#4E2208}
+.mh-gold .mh-f input,.mh-gold .mh-f select,.mh-gold .mh-f textarea{
+  background:#FBF3E7;border:1px solid rgba(22,17,10,.42);color:#16110A}
+.mh-gold .mh-f input::placeholder,.mh-gold .mh-f textarea::placeholder{color:#6B5A44}
+.mh-gold .mh-f input:hover,.mh-gold .mh-f select:hover,.mh-gold .mh-f textarea:hover{
+  border-color:rgba(22,17,10,.66)}
+.mh-gold .mh-f input:focus,.mh-gold .mh-f select:focus,.mh-gold .mh-f textarea:focus{
+  border-color:var(--gold-btn);box-shadow:0 0 0 3px rgba(22,17,10,.24);background:#fff}
+.mh-gold .mh-f select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%2316110A' d='M6 8 0 0h12z'/%3E%3C/svg%3E")}
+.mh-gold .mh-f input[aria-invalid="true"],.mh-gold .mh-f select[aria-invalid="true"]{
+  border-color:#7E1B1E;box-shadow:0 0 0 3px rgba(126,27,30,.20)}
+.mh-gold .mh-err{color:#520E11;font-weight:600}
+.mh-gold .mh-consent{background:rgba(255,248,238,.44);border-color:rgba(22,17,10,.34);
+  border-left-color:var(--gold-btn)}
+.mh-gold .mh-check label{color:var(--gold-ink)}
+.mh-gold .mh-check input[type="checkbox"]{accent-color:var(--gold-btn)}
+.mh-gold .mh-disclosure{color:#3B2E1F}
+.mh-gold .mh-formstatus{color:var(--gold-body)}
+.mh-gold .mh-formstatus.bad{color:#520E11}
+
+/* ---- Reviews on gold ---- */
+.mh-gold .rq q,.mh-gold .scr,.mh-gold .scr b{color:var(--gold-ink)}
+.mh-gold .rq .by,.mh-gold .scn{color:var(--gold-body)}
+.mh-gold .rq .by b{color:#38260C}
+.mh-gold .rsub{color:var(--gold-body)}
+.mh-gold .mh-proof-r,.mh-gold .mh-proof-r b{color:var(--gold-ink)}
+.mh-gold .mh-proof-n{color:var(--gold-body)}
+
+/* ---- The band CTA inside a gold section ---- */
+.mh-gold .band{background:rgba(22,17,10,.09);border-color:rgba(22,17,10,.30)}
+.mh-gold .band p{color:var(--gold-ink)}
+.mh-gold .mh-notsure{background:rgba(22,17,10,.09);border-color:rgba(22,17,10,.30)}
+.mh-gold .mh-notsure p{color:var(--gold-body)}
+
+/* ---- Market cards: image stays prominent, panel below goes gold ---- */
+.mh-loccard-b.mh-gold h3{color:var(--gold-ink)}
+.mh-loccard-b.mh-gold p{color:var(--gold-body)}
+.mh-loccard:hover .mh-loccard-b.mh-gold{background:var(--gold-lift)}
+.mh-loccard-fig:after{background:linear-gradient(180deg,rgba(8,8,6,.04),rgba(8,8,6,.30))}
+
+/* Situation cards keep an even height so a gold grid reads as a block. */
+.mh-cards{align-items:stretch}
+.mh-card.mh-gold .mh-card-b p{min-height:0}
+
+/* Mobile: gold panels need a little more breathing room than dark ones. */
+@media(max-width:640px){
+  .mh-formwrap.mh-gold{padding:26px 20px}
+  .mh-gold .mh-consent{padding:20px 18px}
+}
+
+/* Market link columns as gold panels need their own padding, since as
+   bare columns they had none. */
+.mh-marketc.mh-gold{padding:28px 30px;border:1px solid var(--gold-deep)}
+.mh-marketc.mh-gold h3{color:#38260C;margin-bottom:10px}
+.mh-marketc.mh-gold a{color:var(--gold-ink);border-bottom-color:rgba(22,17,10,.20)}
+.mh-marketc.mh-gold a:hover{color:#38260C;background:rgba(22,17,10,.06);
+  padding-left:8px;padding-right:8px;margin-left:-8px;margin-right:-8px}
+@media(max-width:640px){.mh-marketc.mh-gold{padding:22px 20px}}
+
+/* The homepage strap figure sits inside the gold "3 Ways to Sell" section. */
+.mh-gold .mh-strap{border-top-color:rgba(22,17,10,.22)}
+.mh-gold .mh-strap figcaption b{color:var(--gold-ink)}
+.mh-gold .mh-strap figcaption span{color:var(--gold-body)}
+
+/* Review source tiles and quote cards on the gold reviews section. */
+.mh-gold .src{background:var(--gold-lift);border-color:rgba(22,17,10,.30)}
+.mh-gold .src:hover{background:#DCAA74;border-color:var(--gold-btn)}
+.mh-gold .srcs .src .scn{color:var(--gold-body)}
+/* Keep the Google logo in its own brand colours on gold. */
+.mh-gold .src>svg path{stroke:none}
+
+/* The trust marquee header inside a gold scope. */
+.mh-gold .marqhead .rate,.mh-gold .marqhead .n{color:var(--gold-ink)}
+
+/* Situation cards keep an even height across a gold grid. */
+.mh-cards{grid-auto-rows:1fr}

@@ -61,7 +61,8 @@ NAV = [
 ]
 
 
-def head(title, meta, canonical, r):
+def head(title, meta, canonical, r, og_image=None):
+    og_image = og_image or f"{ROOT}/img/hero-everyday.jpg"
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -75,14 +76,14 @@ def head(title, meta, canonical, r):
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(meta)}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{ROOT}/img/hero-everyday.jpg">
+<meta property="og:image" content="{og_image}">
 <link rel="canonical" href="{canonical}">
 <link rel="icon" href="{r}img/cropped-Untitled-1-270x270.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="{r}site.css">
-<link rel="stylesheet" href="{r}components.css?v=3">
+<link rel="stylesheet" href="{r}components.css?v=4">
 </head>
 """
 
@@ -200,7 +201,7 @@ def steps_block():
 
 
 def proof_block():
-    return f"""  <a class="mh-proof" href="{REVIEW_URL}" target="_blank" rel="noopener">
+    return f"""  <a class="mh-proof mh-gold" href="{REVIEW_URL}" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="#C68C4E" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 1.35 2.9 3.15.42-2.3 2.16.58 3.12L12 14.53l-2.78 1.47.58-3.12-2.3-2.16 3.15-.42z"/></svg>
     <div class="mh-proof-t">
       <div class="mh-proof-r"><span class="mh-st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>{e(REVIEW_LINE)}</b></div>
@@ -227,7 +228,7 @@ def form_block(situation="", market="", heading="Tell Us About Your Property", i
     intro = intro or ("Tell us about the property and your situation. The MaliHaus team will review the "
                       "information and explain what the next step could look like. Submitting this form "
                       "does not commit you to selling.")
-    return f"""  <div class="mh-formwrap">
+    return f"""  <div class="mh-formwrap mh-gold">
     <div data-mh-form data-situation="{e(situation)}" data-market="{e(market)}"
          data-heading="{e(heading)}"
          data-intro="{e(intro)}"></div>
@@ -236,7 +237,7 @@ def form_block(situation="", market="", heading="Tell Us About Your Property", i
 
 
 def sit_card(s, r):
-    return f"""      <a class="mh-card" data-situation-link="{s['slug']}" href="{r}situations/{s['slug']}/">
+    return f"""      <a class="mh-card mh-gold" data-situation-link="{s['slug']}" href="{r}situations/{s['slug']}/">
         <div class="mh-card-fig"><div class="mh-card-ic">{icon(s['icon'])}</div></div>
         <div class="mh-card-b">
           <h3>{e(s['nav'])}</h3>
@@ -248,10 +249,17 @@ def sit_card(s, r):
 
 
 def loc_card(l, r):
-    img = l["img"].replace("../", r)
+    """Market card: the local imagery stays prominent and full bleed at the
+    top, the content panel below carries the gold contrast treatment.
+    width/height are set so the card reserves its space and nothing shifts."""
+    b = r + l["img"]
     return f"""      <div class="mh-loccard">
-        <div class="mh-loccard-fig"><img src="{img}" alt="{e(l['alt'])}" loading="lazy" width="640" height="360"></div>
-        <div class="mh-loccard-b">
+        <div class="mh-loccard-fig"><img
+          src="{b}-640.webp"
+          srcset="{b}-640.webp 640w, {b}-1440.webp 1440w"
+          sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw"
+          alt="{e(l['alt'])}" loading="lazy" decoding="async" width="640" height="360"></div>
+        <div class="mh-loccard-b mh-gold">
           <h3>{e(l['name'])}</h3>
           <p>{e(l['card'])}</p>
           <a class="btn ghost" data-cta data-loc="location_card" href="{r}locations/{l['slug']}/">Explore This Market</a>
@@ -315,7 +323,7 @@ def build_situations_hub():
 {cards}  </div>
 </div></section>
 
-<section class="rule" id="ways"><div class="wrap">
+<section class="rule mh-gold" id="ways"><div class="wrap">
 {pillars_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -458,7 +466,7 @@ def build_situation(s):
 {helps}  </div>
 {disclaimer}</div></section>
 
-<section class="rule" id="ways"><div class="wrap">
+<section class="rule mh-gold" id="ways"><div class="wrap">
 {pillars_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -600,7 +608,7 @@ def build_locations_hub():
 {nat_cards}  </div>
 </div></section>
 
-<section class="rule" id="ways"><div class="wrap">
+<section class="rule mh-gold" id="ways"><div class="wrap">
 {pillars_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -681,7 +689,7 @@ def build_locations_hub():
 def build_location(l):
     r = "../../"
     canonical = f"{ROOT}/locations/{l['slug']}/"
-    img = l["img"].replace("../", r)
+    img = r + l["img"]
 
     opening = "".join(f'  <p class="standfirst">{e(p)}</p>\n' for p in l["opening"])
     how = "".join(f"    <p>{e(p)}</p>\n" for p in l["how"])
@@ -705,7 +713,7 @@ def build_location(l):
 
     area_type = "AdministrativeArea" if "County" in l["name"] else "City"
 
-    out = head(l["title"], l["meta"], canonical, r)
+    out = head(l["title"], l["meta"], canonical, r, og_image=f"{ROOT}/{l['img']}-1440.webp")
     out += '<body data-page-type="location">\n\n' + nav(r, "Areas We Serve")
     out += f"""
 <div class="wrap">
@@ -713,7 +721,11 @@ def build_location(l):
 </div>
 
 <header class="mh-lochero">
-  <div class="mh-lochero-bg"><img src="{img}" alt="{e(l['alt'])}" width="1600" height="900"></div>
+  <div class="mh-lochero-bg"><img
+    src="{img}-1440.webp"
+    srcset="{img}-640.webp 640w, {img}-1440.webp 1440w"
+    sizes="100vw"
+    alt="{e(l['alt'])}" fetchpriority="high" decoding="async" width="1440" height="810"></div>
   <div class="mh-lochero-scrim"></div>
   <div class="wrap mh-lochero-in">
     <p class="kicker">{e(l['name'])}</p>
@@ -737,7 +749,7 @@ def build_location(l):
 {how}  </div>
 {kc_note}</div></section>
 
-<section class="rule" id="ways"><div class="wrap">
+<section class="rule mh-gold" id="ways"><div class="wrap">
 {pillars_block(condensed=True)}  <div class="mh-b" style="margin-top:40px">
     <a class="btn ghost" data-cta data-loc="loc_ways" href="{r}index.html#ways">See the three approaches in full</a>
   </div>
@@ -821,7 +833,7 @@ def build_location(l):
       "description": "{j(l['meta'])}",
       "isPartOf": {{ "@id": "{ROOT}/#website" }},
       "about": {{ "@id": "{ROOT}/#business" }},
-      "primaryImageOfPage": "{ROOT}/{l['img'].replace('../', '')}"
+      "primaryImageOfPage": "{ROOT}/{l['img']}-1440.webp"
     }},
     {{
       "@type": "Service",

@@ -25,23 +25,28 @@ KANSAS CITY IS UNRESOLVED. Michael did not say whether he means
 Missouri, Kansas or the metro. The route and copy are deliberately
 state neutral. Do not add a state until he confirms it.
 
-Imagery: the site's existing everyday residential photographs are
-rotated across the markets, with alt text that does NOT claim the
-photograph was taken in that market. Market specific photography is an
-outstanding input.
-"""
+Imagery (replaced 2026-09-03 on Michael's feedback that the old images
+were repetitive and showed palm trees in markets where that is wrong):
+every market now has its OWN image, generated for that market's regional
+housing style. Sixteen distinct images, no repeats. Palms and South
+Florida architecture appear ONLY in Broward and Miami-Dade. Jacksonville,
+Tampa and Orlando are visibly different from each other and from South
+Florida. Every northern market shows regional housing with deciduous
+trees and no tropical planting.
 
-IMGS = [
-    ("../img/hero-everyday.jpg", "A single storey family home with a carport and a front lawn"),
-    ("../img/street-day.jpg", "An everyday single family home seen from the pavement"),
-    ("../img/street-dusk.jpg", "A street of modest single storey family homes at dusk"),
-]
+The images are original AI-generated residential exteriors. They are
+generic houses at no real address and are never captioned as MaliHaus
+properties or as a specific street. Each is served as WebP at 640w and
+1440w from img/markets/<slug>-<width>.webp.
+"""
 
 LOCATIONS = []
 
 
 def _l(**kw):
-    kw["img"], kw["alt"] = IMGS[len(LOCATIONS) % len(IMGS)]
+    """Each market supplies its own `alt`. The image paths are derived from
+    the slug, so a replacement image is a file swap with no code change."""
+    kw["img"] = f"img/markets/{kw['slug']}"
     LOCATIONS.append(kw)
 
 
@@ -51,6 +56,7 @@ def _l(**kw):
 
 _l(
     slug="broward-county-fl",
+    alt='A single storey concrete block ranch house with a barrel tile roof, carport and palm trees, typical of everyday residential Broward County, Florida',
     name="Broward County",
     region="Florida Markets",
     area="Broward County, Florida",
@@ -90,6 +96,7 @@ _l(
 
 _l(
     slug="miami-dade-county-fl",
+    alt='A mid century mint green stucco house with jalousie windows, a decorative breeze block screen and a chain link fence, typical of everyday residential Miami-Dade County, Florida',
     name="Miami-Dade County",
     region="Florida Markets",
     area="Miami-Dade County, Florida",
@@ -127,6 +134,7 @@ _l(
 
 _l(
     slug="jacksonville-fl",
+    alt='A red brick ranch house with a carport, set among tall pines and live oaks draped in Spanish moss, typical of everyday residential Jacksonville, Florida',
     name="Jacksonville",
     region="Florida Markets",
     area="Jacksonville, Florida",
@@ -164,6 +172,7 @@ _l(
 
 _l(
     slug="tampa-fl",
+    alt='A 1920s craftsman bungalow with a deep front porch and tapered columns, shaded by a live oak, typical of the older residential neighbourhoods of Tampa, Florida',
     name="Tampa",
     region="Florida Markets",
     area="Tampa, Florida",
@@ -200,6 +209,7 @@ _l(
 
 _l(
     slug="orlando-fl",
+    alt='A two storey stucco house with a barrel tile roof and attached garage on a planned subdivision street, typical of suburban Orlando, Florida',
     name="Orlando",
     region="Florida Markets",
     area="Orlando, Florida",
@@ -240,6 +250,7 @@ _l(
 
 _l(
     slug="cleveland-oh",
+    alt='A white American Foursquare house with a full width front porch and a detached garage, bare autumn trees and a wet street, typical of everyday residential Cleveland, Ohio',
     name="Cleveland",
     region="National Markets",
     area="Cleveland, Ohio",
@@ -278,6 +289,7 @@ _l(
 
 _l(
     slug="memphis-tn",
+    alt='A single storey brick ranch house with a carport and a flowering crepe myrtle in the front yard, typical of everyday residential Memphis, Tennessee',
     name="Memphis",
     region="National Markets",
     area="Memphis, Tennessee",
@@ -314,6 +326,7 @@ _l(
 
 _l(
     slug="birmingham-al",
+    alt='A brick ranch house set above the road on a sloped wooded lot with steps up from the pavement and exposed red clay, typical of everyday residential Birmingham, Alabama',
     name="Birmingham",
     region="National Markets",
     area="Birmingham, Alabama",
@@ -350,6 +363,7 @@ _l(
 
 _l(
     slug="kansas-city",
+    alt='A 1950s brick and siding ranch house with a low front stoop and a detached garage on a flat tree lined street, typical of everyday residential neighbourhoods in the Kansas City area',
     name="Kansas City",
     region="National Markets",
     area="the Kansas City area",
@@ -387,6 +401,7 @@ _l(
 
 _l(
     slug="indianapolis-in",
+    alt='A 1920s brick bungalow with a covered front porch and a detached garage, mature shade trees along the street, typical of everyday residential Indianapolis, Indiana',
     name="Indianapolis",
     region="National Markets",
     area="Indianapolis, Indiana",
@@ -423,6 +438,7 @@ _l(
 
 _l(
     slug="cincinnati-oh",
+    alt='A narrow two storey brick house standing above the street on a hillside lot, with a concrete retaining wall and steps climbing to the front door, typical of everyday residential Cincinnati, Ohio',
     name="Cincinnati",
     region="National Markets",
     area="Cincinnati, Ohio",
@@ -459,6 +475,7 @@ _l(
 
 _l(
     slug="charlotte-nc",
+    alt='A brick ranch house with a carport, azaleas and a flowering dogwood among tall pines, typical of everyday residential Charlotte, North Carolina',
     name="Charlotte",
     region="National Markets",
     area="Charlotte, North Carolina",
@@ -495,6 +512,7 @@ _l(
 
 _l(
     slug="dayton-oh",
+    alt='A post war Cape Cod house with dormer windows and pale siding on a flat street with bare winter trees, typical of everyday residential Dayton, Ohio',
     name="Dayton",
     region="National Markets",
     area="Dayton, Ohio",
@@ -531,6 +549,7 @@ _l(
 
 _l(
     slug="akron-oh",
+    alt='A 1930s pale green wood sided bungalow with a covered front porch and a detached garage on a damp autumn street, typical of everyday residential Akron, Ohio',
     name="Akron",
     region="National Markets",
     area="Akron, Ohio",
@@ -567,6 +586,7 @@ _l(
 
 _l(
     slug="greensboro-nc",
+    alt='A red brick ranch house with a carport and a picture window, backed by tall loblolly pines, typical of everyday residential Greensboro, North Carolina',
     name="Greensboro",
     region="National Markets",
     area="Greensboro, North Carolina",
@@ -603,6 +623,7 @@ _l(
 
 _l(
     slug="winston-salem-nc",
+    alt='A two storey red brick colonial style house with black shutters and a low hedge on an established tree lined street, typical of everyday residential Winston-Salem, North Carolina',
     name="Winston-Salem",
     region="National Markets",
     area="Winston-Salem, North Carolina",
