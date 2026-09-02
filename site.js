@@ -1,4 +1,4 @@
-/* MaliHaus Capital — shared site layer
+/* MaliHaus Capital, shared site layer
    Covers proposal section 03 items 02 (measurement), 03 (call tracking foundation)
    and 11 (conversion event tracking).
 
@@ -10,20 +10,66 @@
   'use strict';
 
   var CONFIG = {
-    /* ---- Call tracking foundation (proposal 03/03) ----
-       One business-controlled number, presented identically everywhere.
+    /* ---- The approved telephone number. ONE PLACE. ----
+       Approved by Michael Mali and confirmed in the 2026-09-03 build brief.
+       Every header, mobile menu, call button, contact section, form,
+       confirmation page, footer, structured data block and accessibility
+       label on this site is driven from these two values and nothing else.
        digits: 10 digits, no punctuation. display: exactly how it should read. */
-    phoneDigits: '3214612550',
-    phoneDisplay: '(321) 461-2550',
+    phoneDigits: '4079173347',
+    phoneDisplay: '407-917-3347',
 
-    /* ---- Measurement foundation (proposal 03/02) ----
+    /* ---- Measurement foundation ----
        Put the real GTM container ID here and the container loads on every page.
        Left empty the site runs normally and events queue into dataLayer,
        so nothing breaks and nothing is lost before the container exists. */
     gtmId: '',
 
-    /* Seller qualification path (proposal 03/04) */
-    funnelUrl: 'https://andrewpcherry.github.io/malihaus-funnel/'
+    /* Seller qualification path */
+    funnelUrl: 'https://andrewpcherry.github.io/malihaus-funnel/',
+
+    /* ---- Lead destination ----
+       GoHighLevel captures the website visitor and hands the completed lead
+       to REsimpli through the separately configured integration.
+       NO endpoint has been supplied, so nothing is invented here. While this
+       is empty the form validates, records consent, keeps the full payload
+       and routes to the confirmation page, and the payload is pushed to
+       dataLayer so nothing is lost. Paste the real endpoint here to go live. */
+    leadEndpoint: '',
+
+    /* ---- Chat: the GHL Conversation AI widget ----
+       Paste the official script URL supplied from the GHL sub account.
+       While it is empty the concept receptionist on the home page runs
+       instead. When it is set, the GHL widget loads on every page and the
+       concept widget stands down so the two never overlap. */
+    ghlWidgetSrc: '',
+    ghlWidgetAttrs: {},
+
+    /* ---- Legal links ----
+       Both verified live on malihaus.com, 2026-09-03. */
+    privacyUrl: 'https://www.malihaus.com/privacy-policy/',
+    termsUrl: 'https://www.malihaus.com/terms-of-use/',
+
+    /* ---- A2P consent ----
+       Michael's approved wording, used verbatim. Do not reword it.
+       The HELP number inside it is the A2P REGISTERED number and is
+       deliberately NOT the public website number above. It stays at
+       (321) 655-2099 unless Michael, Rocky or the REsimpli team
+       confirms in writing that it should change. Never swap it
+       automatically for the public number. */
+    consentCheckboxLabel: 'I agree to the Terms & Conditions and Privacy Policy.',
+    consentDisclosure: 'By submitting this form, you consent to receive marketing/notification messages from MaliHaus Capital. Message frequency varies, MSG and data rates may apply. Reply HELP for help at (321) 655-2099, reply STOP to unsubscribe. We will not share or sell mobile data to third parties for promotional or marketing purposes.',
+
+    /* ---- Review proof ----
+       Michael's figures, supplied by him. Wording is the approved wording. */
+    reviewRating: '4.8',
+    reviewLine: 'Rated 4.8 stars by more than 400 MaliHaus clients',
+    reviewUrl: 'https://www.experience.com/reviews/michael-mali',
+
+    /* ---- Coverage ----
+       The approved public coverage line. The advertising market list is
+       deliberately NOT here and is never rendered to a visitor. */
+    coverageLine: 'Serving homeowners across Florida and selected markets nationwide.'
   };
 
   window.MALIHAUS = CONFIG;
@@ -130,13 +176,32 @@
     var i, els;
 
     els = root.querySelectorAll('[data-call]');
-    for (i = 0; i < els.length; i++) els[i].setAttribute('href', tel);
+    for (i = 0; i < els.length; i++) {
+      els[i].setAttribute('href', tel);
+      els[i].setAttribute('aria-label', 'Call MaliHaus on ' + CONFIG.phoneDisplay);
+    }
 
     els = root.querySelectorAll('[data-sms]');
-    for (i = 0; i < els.length; i++) els[i].setAttribute('href', sms);
+    for (i = 0; i < els.length; i++) {
+      els[i].setAttribute('href', sms);
+      els[i].setAttribute('aria-label', 'Text MaliHaus on ' + CONFIG.phoneDisplay);
+    }
 
     els = root.querySelectorAll('[data-phone]');
     for (i = 0; i < els.length; i++) els[i].textContent = CONFIG.phoneDisplay;
+
+    /* Structured data has to be readable by crawlers that do not run
+       JavaScript, so the number is written into the JSON-LD literally.
+       This checks the two can never drift apart unnoticed. */
+    els = root.querySelectorAll('script[type="application/ld+json"]');
+    for (i = 0; i < els.length; i++) {
+      var found = els[i].textContent.match(/"telephone"\s*:\s*"([^"]+)"/);
+      if (found && found[1] !== '+1' + CONFIG.phoneDigits) {
+        if (window.console) console.warn(
+          'MaliHaus: structured data telephone ' + found[1] +
+          ' does not match the configured number +1' + CONFIG.phoneDigits);
+      }
+    }
   }
 
   /* ------------------------------------------------------------------ *
@@ -215,13 +280,86 @@
   }
 
   /* ------------------------------------------------------------------ *
-   * 5. Boot
+   * 5. Chat: the GHL Conversation AI widget
+   *    The widget sits in the reserved bottom right corner. Nothing else
+   *    is allowed to live there, and the page reserves space at the foot
+   *    of the document so it can never cover a button, a form control or
+   *    the consent wording. See .mh-chat-safe in components.css.
+   * ------------------------------------------------------------------ */
+
+  function mountChat() {
+    if (!CONFIG.ghlWidgetSrc) return false;
+
+    var s = document.createElement('script');
+    s.src = CONFIG.ghlWidgetSrc;
+    s.async = true;
+    for (var k in CONFIG.ghlWidgetAttrs) {
+      if (CONFIG.ghlWidgetAttrs.hasOwnProperty(k)) s.setAttribute(k, CONFIG.ghlWidgetAttrs[k]);
+    }
+    document.body.appendChild(s);
+
+    /* The concept receptionist stands down so the two never overlap. */
+    document.documentElement.setAttribute('data-chat', 'ghl');
+    var own = document.getElementById('launch');
+    var wid = document.getElementById('wid');
+    var nudge = document.getElementById('nudge');
+    if (own) own.remove();
+    if (wid) wid.remove();
+    if (nudge) nudge.remove();
+    return true;
+  }
+
+  /* ------------------------------------------------------------------ *
+   * 6. Mobile navigation
+   *    Keyboard operable: Escape closes it and focus is not left behind
+   *    the overlay.
+   * ------------------------------------------------------------------ */
+
+  function wireDrawer() {
+    var drawer = document.getElementById('mhdrawer');
+    var open = document.getElementById('mhburger');
+    if (!drawer || !open) return;
+
+    var close = drawer.querySelector('.mh-drawer-x');
+    var bg = drawer.querySelector('.mh-drawer-bg');
+    var last = null;
+
+    function show() {
+      last = document.activeElement;
+      drawer.classList.add('on');
+      open.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      var first = drawer.querySelector('a,button');
+      if (first) first.focus();
+    }
+    function hide() {
+      drawer.classList.remove('on');
+      open.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      if (last) last.focus();
+    }
+
+    open.addEventListener('click', show);
+    if (close) close.addEventListener('click', hide);
+    if (bg) bg.addEventListener('click', hide);
+    drawer.addEventListener('click', function (ev) {
+      if (ev.target.closest('a')) hide();
+    });
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && drawer.classList.contains('on')) hide();
+    });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * 7. Boot
    * ------------------------------------------------------------------ */
 
   function init() {
     applyPhone(document);
     wireEvents(document);
+    wireDrawer();
     attribution();
+    mountChat();
     track('page_ready', { page_type: document.body.getAttribute('data-page-type') || 'other' });
   }
 

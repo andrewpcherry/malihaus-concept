@@ -1,0 +1,304 @@
+/* MaliHaus Capital, shared components added in the 2026-09-03 build.
+
+   Everything here is namespaced mh- so it can be loaded alongside the
+   home page's own inline stylesheet and alongside site.css without
+   touching a single existing rule. Tokens are the existing brand tokens
+   and are not redefined here. */
+
+/* ------------------------------------------------------------------ *
+ * Situation cards, used on the home page and on the situations hub
+ * ------------------------------------------------------------------ */
+
+.mh-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(288px,1fr));
+  gap:22px;margin-top:50px}
+.mh-card{display:flex;flex-direction:column;background:var(--panel);
+  border:1px solid var(--line);transition:border-color .2s,transform .2s,background .2s}
+.mh-card:hover{border-color:var(--copper);background:var(--panel2);transform:translateY(-3px)}
+.mh-card:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+.mh-card-fig{position:relative;padding:26px 22px 0;flex-shrink:0}
+.mh-card-ic{width:46px;height:46px;border:1px solid var(--line2);display:grid;place-items:center;
+  background:linear-gradient(150deg,rgba(198,140,78,.15),rgba(198,140,78,.03));
+  transition:border-color .2s}
+.mh-card:hover .mh-card-ic{border-color:var(--copper)}
+.mh-card-ic svg{width:23px;height:23px;stroke:var(--copper-lt);fill:none;
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.mh-card-b{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+.mh-card-b h3{font-family:"Fraunces",Georgia,serif;font-size:1.22rem;font-weight:500;
+  margin:0 0 10px;line-height:1.2;letter-spacing:-.01em}
+.mh-card-b p{color:var(--dim);font-size:15px;line-height:1.55;margin:0 0 16px;flex:1}
+.mh-card-go{color:var(--copper-lt);font-size:14.5px;font-weight:600}
+
+/* ------------------------------------------------------------------ *
+ * 3 Ways to Sell. Michael's three pillars, always all three.
+ * ------------------------------------------------------------------ */
+
+.mh-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px;
+  align-items:stretch}
+@media(max-width:1000px){.mh-pillars{grid-template-columns:1fr}}
+.mh-pillar{display:flex;flex-direction:column;padding:32px 30px;background:var(--panel);
+  border:1px solid var(--line2)}
+.mh-pillar-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.mh-pillar-n{font-family:"Fraunces",Georgia,serif;font-size:2.4rem;color:var(--copper);
+  line-height:.9;font-variation-settings:"SOFT" 60,"WONK" 1}
+.mh-pillar-ic{width:44px;height:44px;border:1px solid var(--line2);display:grid;place-items:center;
+  background:linear-gradient(150deg,rgba(198,140,78,.15),rgba(198,140,78,.03))}
+.mh-pillar-ic svg{width:22px;height:22px;stroke:var(--copper-lt);fill:none;
+  stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.mh-pillar h3{font-family:"Fraunces",Georgia,serif;font-size:1.34rem;font-weight:500;
+  margin:0 0 14px;line-height:1.18;letter-spacing:-.01em}
+.mh-pillar p{color:var(--dim);margin:0 0 20px;font-size:16px;flex:1;line-height:1.6}
+.mh-pillar .mh-when{color:var(--copper-lt);font-size:14.5px;padding-top:18px;
+  border-top:1px solid var(--line);line-height:1.5}
+
+/* ------------------------------------------------------------------ *
+ * Location cards
+ * ------------------------------------------------------------------ */
+
+.mh-loccards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:24px;margin-top:50px}
+.mh-loccard{display:flex;flex-direction:column;background:var(--panel);
+  border:1px solid var(--line);transition:border-color .2s,transform .2s}
+.mh-loccard:hover{border-color:var(--copper);transform:translateY(-3px)}
+.mh-loccard-fig{aspect-ratio:16/9;overflow:hidden;background:#0C0A08;flex-shrink:0;position:relative}
+.mh-loccard-fig img{width:100%;height:100%;object-fit:cover;object-position:center 52%;
+  transition:transform .5s ease}
+.mh-loccard:hover .mh-loccard-fig img{transform:scale(1.04)}
+.mh-loccard-fig:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(8,8,6,.06),rgba(8,8,6,.55))}
+.mh-loccard-b{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.mh-loccard-b h3{font-family:"Fraunces",Georgia,serif;font-size:1.44rem;font-weight:500;
+  margin:0 0 12px;line-height:1.16;letter-spacing:-.01em}
+.mh-loccard-b p{color:var(--dim);font-size:15.5px;line-height:1.58;margin:0 0 22px;flex:1}
+.mh-loccard-b .btn{align-self:flex-start}
+
+/* Location hero */
+.mh-lochero{position:relative;overflow:hidden;background:#0B0906;padding:70px 0 0}
+.mh-lochero-bg{position:absolute;inset:0;z-index:0}
+.mh-lochero-bg img{width:100%;height:100%;object-fit:cover;object-position:58% 52%}
+.mh-lochero-scrim{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(92deg,rgba(8,8,6,.97) 6%,rgba(8,8,6,.86) 44%,rgba(8,8,6,.42) 100%),
+  linear-gradient(180deg,rgba(8,8,6,.88) 0%,rgba(8,8,6,.42) 34%,rgba(8,8,6,.9) 88%,var(--black) 100%)}
+.mh-lochero-in{position:relative;z-index:2;padding-bottom:64px}
+.mh-lochero h1{font-family:"Fraunces",Georgia,serif;font-weight:500;
+  font-size:clamp(2.2rem,4.8vw,3.6rem);margin:0;max-width:18ch;line-height:1.08;
+  letter-spacing:-.015em;font-variation-settings:"SOFT" 40,"WONK" 1}
+.mh-lochero h1 i{font-style:italic;color:var(--copper-lt)}
+.mh-lochero .standfirst{font-size:1.14rem;color:#CFC6B9;max-width:60ch;margin:26px 0 0}
+@media(max-width:820px){.mh-lochero{padding-top:44px}.mh-lochero-in{padding-bottom:44px}}
+
+/* Market link columns on situation pages */
+.mh-marketcols{display:grid;grid-template-columns:1fr 1fr;gap:32px 56px;margin-top:44px}
+@media(max-width:700px){.mh-marketcols{grid-template-columns:1fr;gap:28px}}
+.mh-marketc h3{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);
+  font-family:"Karla",Helvetica,Arial,sans-serif;font-weight:600;margin:0 0 6px}
+.mh-marketc a{display:block;padding:12px 0;border-bottom:1px solid var(--line);
+  font-size:16px;color:#CFC6B9}
+.mh-marketc a:hover{color:var(--copper-lt);padding-left:8px;transition:.18s}
+
+/* Legal and disclaimer notes */
+.mh-legal{margin-top:38px;padding:24px 26px;background:#0B0A08;border:1px solid var(--line2);
+  border-left:2px solid var(--copper);max-width:74ch}
+.mh-legal p{margin:0;color:#B4AA9C;font-size:15.5px;line-height:1.62}
+.mh-legal b{color:var(--cream);font-weight:600}
+
+/* Nationally applicable strap, replacing the old tri county figcaption */
+.mh-strap{display:grid;grid-template-columns:440px 1fr;gap:44px;align-items:center;
+  padding-top:56px;border-top:1px solid var(--line)}
+@media(max-width:900px){.mh-strap{grid-template-columns:1fr;gap:28px}}
+.mh-strap img{width:100%;height:300px;object-fit:cover;object-position:center 46%}
+@media(max-width:900px){.mh-strap img{height:220px}}
+.mh-strap figcaption b{display:block;font-family:"Fraunces",Georgia,serif;font-weight:500;
+  font-size:clamp(1.4rem,2.6vw,1.9rem);line-height:1.2;letter-spacing:-.015em;
+  color:var(--cream);margin-bottom:18px}
+.mh-strap figcaption span{color:var(--dim);font-size:16.5px;line-height:1.62}
+
+/* ------------------------------------------------------------------ *
+ * The three step process
+ * ------------------------------------------------------------------ */
+
+.mh-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:50px;
+  counter-reset:mhstep}
+@media(max-width:820px){.mh-steps{grid-template-columns:1fr;gap:0}}
+.mh-step{padding-top:26px;border-top:2px solid var(--line2)}
+@media(max-width:820px){.mh-step{border-top:1px solid var(--line);padding:26px 0}}
+.mh-step .mh-sn{font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--copper);margin-bottom:14px}
+.mh-step h3{font-family:"Fraunces",Georgia,serif;font-size:1.3rem;font-weight:500;
+  margin:0 0 12px;line-height:1.2}
+.mh-step p{color:var(--dim);margin:0;font-size:16px}
+
+/* ------------------------------------------------------------------ *
+ * Review proof
+ * ------------------------------------------------------------------ */
+
+.mh-proof{display:flex;align-items:center;gap:20px;padding:24px 26px;margin-top:46px;
+  background:var(--panel);border:1px solid var(--line2);transition:.2s}
+a.mh-proof:hover{border-color:var(--copper);background:var(--panel2)}
+.mh-proof svg{width:30px;height:30px;flex-shrink:0}
+.mh-proof-t{flex:1;min-width:0}
+.mh-proof-r{font-family:"Fraunces",Georgia,serif;font-size:1.4rem;line-height:1.15;
+  color:var(--cream);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mh-proof-r .mh-st{color:var(--copper);letter-spacing:2px;font-size:13px}
+.mh-proof-n{color:var(--dim);font-size:14.5px;margin-top:6px;line-height:1.45}
+.mh-proof-a{color:var(--copper-lt);font-size:14px;white-space:nowrap;align-self:center}
+@media(max-width:560px){.mh-proof-a{display:none}.mh-proof{padding:20px}}
+
+/* ------------------------------------------------------------------ *
+ * The property enquiry form
+ * ------------------------------------------------------------------ */
+
+.mh-formwrap{margin-top:50px;background:var(--panel);border:1px solid var(--line2);
+  padding:44px 42px}
+@media(max-width:640px){.mh-formwrap{padding:30px 22px}}
+.mh-form-h{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.6rem,3vw,2.1rem);
+  font-weight:500;margin:0 0 14px;line-height:1.14;letter-spacing:-.015em}
+.mh-form-intro{color:var(--dim);margin:0 0 34px;max-width:56ch;font-size:16.5px}
+
+.mh-form fieldset{border:0;padding:0;margin:0 0 12px;border-top:1px solid var(--line)}
+.mh-form legend{font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--copper);padding:22px 0 4px}
+.mh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:760px){.mh-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.mh-grid{grid-template-columns:1fr}}
+.mh-f{display:flex;flex-direction:column;min-width:0}
+.mh-full{grid-column:span 4}
+.mh-half{grid-column:span 2}
+.mh-quarter{grid-column:span 1}
+@media(max-width:760px){
+  .mh-full{grid-column:span 2}.mh-half{grid-column:span 2}.mh-quarter{grid-column:span 1}
+}
+@media(max-width:480px){.mh-full,.mh-half,.mh-quarter{grid-column:span 1}}
+
+.mh-f label{font-size:14.5px;color:#CFC6B9;margin-bottom:8px;font-weight:500}
+.mh-req{color:var(--copper)}
+.mh-f input,.mh-f select,.mh-f textarea{
+  width:100%;background:#0B0A08;border:1px solid var(--line2);color:var(--cream);
+  font-family:"Karla",Helvetica,Arial,sans-serif;font-size:16px;padding:13px 14px;
+  border-radius:1px;transition:border-color .18s;min-width:0}
+.mh-f textarea{resize:vertical;line-height:1.55}
+.mh-f input::placeholder,.mh-f textarea::placeholder{color:#6F675C}
+.mh-f input:hover,.mh-f select:hover,.mh-f textarea:hover{border-color:#57493A}
+.mh-f input:focus,.mh-f select:focus,.mh-f textarea:focus{
+  outline:none;border-color:var(--copper);box-shadow:0 0 0 3px rgba(198,140,78,.16)}
+.mh-f input[aria-invalid="true"],.mh-f select[aria-invalid="true"]{border-color:#E5484D}
+.mh-f select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:36px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%23C68C4E' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:10px}
+.mh-err{color:#F08B8E;font-size:13.5px;margin-top:7px;display:block;min-height:0}
+.mh-err:empty{display:none}
+
+/* Consent. Clearly visible, readable, and never preselected. */
+.mh-consent{margin-top:30px;padding:24px 24px 22px;background:#0B0A08;
+  border:1px solid var(--line2);border-left:2px solid var(--copper)}
+.mh-check{display:grid;grid-template-columns:22px 1fr;gap:14px;align-items:start}
+.mh-check input[type="checkbox"]{
+  width:22px;height:22px;margin:1px 0 0;accent-color:var(--copper);cursor:pointer;flex-shrink:0}
+.mh-check label{font-size:16px;color:var(--cream);line-height:1.5;cursor:pointer;margin:0}
+.mh-check a{color:var(--copper-lt);border-bottom:1px solid rgba(232,188,134,.4)}
+.mh-check a:hover{border-bottom-color:var(--copper-lt)}
+.mh-disclosure{margin:16px 0 0;padding-left:36px;font-size:14.5px;line-height:1.62;
+  color:#B4AA9C}
+@media(max-width:640px){.mh-disclosure{padding-left:0;margin-top:14px}}
+
+.mh-submit{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:30px}
+.mh-submit button{border:0;cursor:pointer;font-size:16px;padding:17px 34px}
+.mh-or{color:var(--dim);font-size:15px}
+.mh-or a{color:var(--copper-lt);border-bottom:1px solid rgba(232,188,134,.4)}
+.mh-formstatus{margin:18px 0 0;font-size:15px;color:var(--dim)}
+.mh-formstatus:empty{display:none}
+.mh-formstatus.bad{color:#F08B8E}
+
+/* ------------------------------------------------------------------ *
+ * Shared closing section
+ * ------------------------------------------------------------------ */
+
+.mh-notsure{margin-top:60px;padding:44px 42px;
+  background:linear-gradient(96deg,rgba(198,140,78,.11),rgba(198,140,78,.02));
+  border:1px solid var(--line2)}
+@media(max-width:640px){.mh-notsure{padding:30px 22px}}
+.mh-notsure h2{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.5rem,2.8vw,2rem);
+  font-weight:500;margin:0 0 16px;line-height:1.16;letter-spacing:-.015em}
+.mh-notsure p{color:var(--dim);margin:0 0 28px;max-width:62ch;font-size:16.5px}
+.mh-notsure .mh-b{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ------------------------------------------------------------------ *
+ * Footer, with every market organised into columns
+ * ------------------------------------------------------------------ */
+
+.mh-foot-cols{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;
+  padding:56px 0 44px}
+@media(max-width:1000px){.mh-foot-cols{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:600px){.mh-foot-cols{grid-template-columns:1fr;gap:32px;padding:40px 0 32px}}
+.mh-foot-c h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);
+  font-family:"Karla",Helvetica,Arial,sans-serif;font-weight:600;margin:0 0 16px}
+.mh-foot-c a{display:block;padding:6px 0;font-size:14.5px;color:#A29889}
+.mh-foot-c a:hover{color:var(--copper-lt)}
+.mh-foot-wide p{color:var(--dim);margin:0 0 12px;font-size:15px;max-width:34ch;line-height:1.55}
+.mh-foot-cov{color:var(--dimmer)!important;font-size:14px!important}
+.mh-foot-logo{height:42px;margin-bottom:20px}
+.mh-foot-tel{display:inline-block;margin-top:8px;font-family:"Fraunces",Georgia,serif;
+  font-size:1.4rem;color:var(--copper-lt)}
+.mh-foot-tel:hover{color:var(--cream)}
+.mh-foot-base{display:flex;justify-content:space-between;gap:16px 34px;flex-wrap:wrap;
+  padding:24px 0 8px;border-top:1px solid var(--line);font-size:13.5px;color:var(--dimmer)}
+.mh-foot-base a{color:var(--copper-lt)}
+/* The column footer supplies its own vertical rhythm. */
+footer{padding:0!important}
+
+/* ------------------------------------------------------------------ *
+ * Chat safe area. Nothing may sit under the widget corner.
+ * ------------------------------------------------------------------ */
+
+.mh-chat-safe{height:96px}
+@media(max-width:820px){.mh-chat-safe{height:120px}}
+
+/* ------------------------------------------------------------------ *
+ * Mobile navigation
+ * ------------------------------------------------------------------ */
+
+.mh-burger{display:none;background:none;border:1px solid var(--line2);cursor:pointer;
+  padding:11px 12px;border-radius:1px;line-height:0}
+.mh-burger svg{width:20px;height:20px;stroke:var(--copper-lt);stroke-width:1.8;fill:none}
+.mh-burger:hover{border-color:var(--copper)}
+@media(max-width:1000px){.mh-burger{display:inline-block}}
+
+.mh-drawer{position:fixed;inset:0;z-index:100;visibility:hidden;opacity:0;transition:.25s}
+.mh-drawer.on{visibility:visible;opacity:1}
+.mh-drawer-bg{position:absolute;inset:0;background:rgba(4,4,3,.82);backdrop-filter:blur(3px)}
+.mh-drawer-p{position:absolute;top:0;right:0;bottom:0;width:min(360px,86vw);
+  background:#0B0A08;border-left:1px solid var(--line2);padding:22px 26px;
+  overflow-y:auto;transform:translateX(14px);transition:transform .25s}
+.mh-drawer.on .mh-drawer-p{transform:none}
+.mh-drawer-top{display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:20px;border-bottom:1px solid var(--line)}
+.mh-drawer-top img{height:36px}
+.mh-drawer-x{background:none;border:0;color:var(--dim);font-size:26px;cursor:pointer;
+  line-height:1;padding:4px 8px}
+.mh-drawer-x:hover{color:var(--cream)}
+.mh-drawer-p a.mh-dl{display:block;padding:17px 0;border-bottom:1px solid var(--line);
+  font-family:"Fraunces",Georgia,serif;font-size:1.16rem;color:var(--cream)}
+.mh-drawer-p a.mh-dl:hover{color:var(--copper-lt)}
+.mh-drawer-tel{display:block;margin-top:26px;text-align:center;
+  font-family:"Fraunces",Georgia,serif;font-size:1.5rem;color:var(--copper-lt);
+  padding:16px;border:1px solid var(--line2)}
+.mh-drawer-cta{display:block;margin-top:12px;text-align:center}
+
+/* ------------------------------------------------------------------ *
+ * Confirmation page
+ * ------------------------------------------------------------------ */
+
+.mh-ty{max-width:660px;margin:0 auto;padding:110px 0 90px;text-align:center}
+.mh-ty .mh-tick{width:62px;height:62px;margin:0 auto 30px;border-radius:50%;
+  border:1px solid var(--copper);display:grid;place-items:center}
+.mh-ty .mh-tick svg{width:28px;height:28px;stroke:var(--copper);stroke-width:1.8;fill:none}
+.mh-ty h1{font-family:"Fraunces",Georgia,serif;font-size:clamp(2rem,4.4vw,3rem);
+  font-weight:500;margin:0 0 20px;line-height:1.14;letter-spacing:-.015em}
+.mh-ty p{color:var(--dim);margin:0 0 20px;font-size:1.05rem}
+.mh-ty .mh-tyb{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.mh-ty-tel{display:inline-block;margin-top:10px;font-family:"Fraunces",Georgia,serif;
+  font-size:2rem;color:var(--copper-lt);padding:14px 30px;border:1px solid var(--line2)}
+.mh-ty-tel:hover{border-color:var(--copper);color:var(--cream)}
+
+@media (prefers-reduced-motion:reduce){
+  .mh-card,.mh-card-fig img,.mh-drawer,.mh-drawer-p{transition-duration:.001s!important}
+}

@@ -34,7 +34,9 @@ function setChips(list){
 }
 
 /* ---------- extraction ---------- */
-var CITY=/(delray|boca raton|boca|lake worth|boynton|west palm|palm beach|coral springs|deerfield|pompano|fort lauderdale|ft lauderdale|lauderdale|miami|hollywood|jupiter|wellington|greenacres|riviera|hialeah|davie|plantation|sunrise|margate|tamarac|coconut creek|parkland|stuart|port st lucie|jacksonville|orlando|tampa|kissimmee|ocala)/i;
+/* City recognition for the demo receptionist. Covers the Florida cities the
+   team hears most plus every national market MaliHaus now serves. */
+var CITY=/(delray|boca raton|boca|lake worth|boynton|west palm|palm beach|coral springs|deerfield|pompano|fort lauderdale|ft lauderdale|lauderdale|miami|hollywood|jupiter|wellington|greenacres|riviera|hialeah|davie|plantation|sunrise|margate|tamarac|coconut creek|parkland|stuart|port st lucie|jacksonville|orlando|tampa|kissimmee|ocala|cleveland|memphis|birmingham|kansas city|indianapolis|cincinnati|charlotte|dayton|akron|greensboro|winston.?salem)/i;
 var ADDR=/\d{1,6}\s+[\w'.-]+(\s+[\w'.-]+){0,3}\s*(st|street|ave|avenue|rd|road|dr|drive|ln|lane|ct|court|blvd|boulevard|way|ter|terrace|pl|place|cir|circle|hwy|pkwy|trail|trl)\b/i;
 var PHONE=/(\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4})/;
 
@@ -81,7 +83,7 @@ var SIT=[
 var QA=[
  {re:/how much|what.*worth|price|offer|number|value|ballpark|lowball|pay me|give me for/i,
   a:["I cannot put a number on it in a chat window and I would not trust anyone who did.",
-     "What happens is that we look at what has actually sold near you, run the house through all three of our routes, then come back with a figure and the sales it is based on. If one route beats our own offer, we tell you."]},
+     "What happens is that we inspect the property properly, then work out which of our three approaches fits it. We may buy it ourselves with our own cash, we may complete some repairs first and bring in an investor partner, or we may present it to our national investor network so investors compete for it."]},
  {re:/fee|commission|cost|charge|pay\s+(you\s+)?anything|owe\s+(you\s+)?anything|do i pay|what.s the catch|catch\b|hidden|free\b/i,
   a:["Nothing. No fees, no commission, and we cover the closing costs. You do not spend a dollar to sell to us and you owe nothing if you walk away."]},
  {re:/repair|fix|clean|paint|roof|renovat|condition|as is|inspection|tidy/i,
@@ -104,7 +106,7 @@ var QA=[
  {re:/tenant.*rights|do they have to leave|evict|kick out/i,
   a:["You do not have to remove anyone. Buyers holding for income would generally rather the tenant stayed."]},
  {re:/multiple|other buyer|competing|shop around|another offer/i,
-  a:["Please do compare. It is the reason we run every house through three routes instead of one, so you can see what each is actually worth to you."]}
+  a:["Please do compare. It is the reason we assess every property against all three of our approaches instead of one, so you can see what each is actually worth to you."]}
 ];
 
 var ASK={
@@ -231,8 +233,8 @@ async function handle(text){
 /* ---------- open / close ---------- */
 async function begin(){
   if(started) return; started=true;
-  await bot(["Hello, you are through to MaliHaus Capital. I can help with anything about selling a property, at any hour.",
-             "What is going on with the house?"]);
+  await bot(["Hello, you are through to MaliHaus. I am the MaliHaus AI receptionist, so you are talking to an assistant rather than a person, and I can pass you to the team whenever you want.",
+             "I can help with anything about selling a property, at any hour. What is going on with the house?"]);
   setChips(["I inherited a house","I am behind on payments","I am done being a landlord","How much can you pay?"]);
   if(input) input.focus();
 }
