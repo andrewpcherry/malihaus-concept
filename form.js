@@ -334,15 +334,21 @@
     });
   }
 
+  /* The confirmation page lives at the site root, so the site root has to be
+     found from wherever the form was submitted: the home page, /situations/,
+     /situations/<slug>/, /locations/ or /locations/<slug>/. The canonical URL
+     is the reliable anchor because every page carries one. */
   function confirmUrl() {
-    /* Works from the root and from /situations/<slug>/ alike. */
-    var depth = location.pathname.replace(/^\/|\/$/g, '').split('/');
     var base = document.querySelector('link[rel="canonical"]');
-    if (base) {
-      var root = base.getAttribute('href').split('/situations/')[0].replace(/\/$/, '');
-      return root + '/thank-you.html';
-    }
-    return 'thank-you.html';
+    var href = base ? base.getAttribute('href') : location.href;
+
+    /* Cut everything from the first section segment onwards. */
+    var root = href.replace(/\/(situations|locations)\/.*$/, '');
+
+    /* On the home page there is no section segment, so drop the file name. */
+    root = root.replace(/\/[^\/]*\.html$/, '').replace(/\/+$/, '');
+
+    return root + '/thank-you.html';
   }
 
   for (var m = 0; m < mounts.length; m++) {

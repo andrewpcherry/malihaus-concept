@@ -161,7 +161,7 @@ def footer(r):
 
 
 def scripts(r):
-    return f'<script src="{r}site.js?v=4"></script>\n<script src="{r}form.js?v=1"></script>\n'
+    return f'<script src="{r}site.js?v=4"></script>\n<script src="{r}form.js?v=2"></script>\n'
 
 
 # --------------------------------------------------------------------------
