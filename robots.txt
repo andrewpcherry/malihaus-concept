@@ -1,0 +1,10 @@
+# MaliHaus Capital
+# NOTE: this is the concept build on github.io and every page carries
+# <meta name="robots" content="noindex, nofollow"> on purpose. Remove the
+# Disallow below AND the noindex meta tags when the site moves to the
+# production domain, not before.
+
+User-agent: *
+Disallow: /
+
+Sitemap: https://andrewpcherry.github.io/malihaus-concept/sitemap.xml

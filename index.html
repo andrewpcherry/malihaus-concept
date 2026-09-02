@@ -9,6 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sell Your House in Boca Raton | MaliHaus Capital">
 <meta property="og:description" content="Three ways to sell your house, not one. No repairs, no fees, no commission.">
+<meta property="og:url" content="https://andrewpcherry.github.io/malihaus-concept/">
+<link rel="canonical" href="https://andrewpcherry.github.io/malihaus-concept/">
 <link rel="icon" href="img/cropped-Untitled-1-270x270.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -250,8 +252,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
   <img src="img/logo-copper.png" alt="MaliHaus Capital">
   <div class="mid"><span class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 on Google &nbsp;&middot;&nbsp; 4.8 from over 400 on Experience.com</div>
   <div style="display:flex;gap:10px">
-    <a class="btn ghost" href="tel:3214612550">(321) 461-2550</a>
-    <a class="btn solid" href="#start">Get my offer</a>
+    <a class="btn ghost" data-call data-loc="sticky_bar" href="#"><span data-phone></span></a>
+    <a class="btn solid" data-cta data-loc="sticky_bar" href="#start">Get my offer</a>
   </div>
 </div></div></div>
 
@@ -264,8 +266,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
     <a href="#situations">Situations</a>
   </div>
   <div class="navr">
-    <a class="navtel" href="tel:3214612550">(321) 461-2550</a>
-    <a class="btn solid" href="#start">Get my offer</a>
+    <a class="navtel" data-call data-loc="nav" href="#"><span data-phone></span></a>
+    <a class="btn solid" data-cta data-loc="nav" href="#start">Get my offer</a>
   </div>
 </nav></div></div>
 
@@ -276,12 +278,11 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
     <h1>Three ways to sell your house. <i>Not one.</i></h1>
     <p class="herop">Most cash buyers hand you a single number and call it an offer. We run your house through our own capital, our local renovators and a national buyer network, then tell you which one pays you most.</p>
     <div class="act" id="start">
-      <form class="addr" onsubmit="event.preventDefault();var a=this.querySelector('input').value.trim();
-        location.href='https://andrewpcherry.github.io/malihaus-funnel/'+(a?'?address='+encodeURIComponent(a):'');">
-        <input type="text" placeholder="Your property address" aria-label="Your property address">
+      <form class="addr" data-address-form>
+        <input type="text" placeholder="Your property address" aria-label="Your property address" autocomplete="street-address">
         <button type="submit">See my options</button>
       </form>
-      <a class="btn ghost" href="tel:3214612550">Or just call us</a>
+      <a class="btn ghost" data-call data-loc="hero" href="#">Or just call us</a>
     </div>
     <p class="small">No repairs. No fees. No commission. Nothing owed if you walk away.</p>
   </div></div>
@@ -376,7 +377,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
     <p>Find out which of the three pays you most.</p>
     <div class="b">
       <a class="btn solid" href="#start">Start with my address</a>
-      <a class="btn ghost" href="tel:3214612550">Call (321) 461-2550</a>
+      <a class="btn ghost" data-call data-loc="cta_band" href="#">Call <span data-phone></span></a>
     </div>
   </div>
 </div></section>
@@ -408,7 +409,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
       <p style="color:var(--dim);margin:0 0 26px">If you would rather talk to a person, say so and one of us will call. If you would rather not talk at all until you have a number, that is fine too.</p>
       <div style="display:flex;gap:11px;flex-wrap:wrap">
         <a class="btn solid" href="#start">Get my offer</a>
-        <a class="btn ghost" href="sms:3214612550">Text us instead</a>
+        <a class="btn ghost" data-sms data-loc="chat_section" href="#">Text us instead</a>
       </div>
     </div>
     <div class="chat">
@@ -475,7 +476,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
     <p>See what your house is worth to all three buyers.</p>
     <div class="b">
       <a class="btn solid" href="#start">Start with my address</a>
-      <a class="btn ghost" href="tel:3214612550">Call (321) 461-2550</a>
+      <a class="btn ghost" data-call data-loc="cta_band" href="#">Call <span data-phone></span></a>
     </div>
   </div>
 </div></section>
@@ -484,12 +485,12 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
   <h2 class="lead">Whatever put you here, we have seen it before.</h2>
   <p class="sub">Pick whichever is closest. None of them changes what we need from you to start, which is the address and a rough idea of the situation.</p>
   <div class="sits">
-    <a class="sit" href="#start"><span class="q">I inherited a house and I do not want to fix it up</span><span class="a">Probate and inherited &rarr;</span></a>
-    <a class="sit" href="#start"><span class="q">I am behind on the mortgage and the letters have started</span><span class="a">Pre foreclosure &rarr;</span></a>
-    <a class="sit" href="#start"><span class="q">I want out of the rental, and the tenant is still in it</span><span class="a">Tired landlords &rarr;</span></a>
-    <a class="sit" href="#start"><span class="q">We are divorcing and the house has to go, quietly</span><span class="a">Divorce &rarr;</span></a>
-    <a class="sit" href="#start"><span class="q">The house will not pass an inspection</span><span class="a">Condition &rarr;</span></a>
-    <a class="sit" href="#start"><span class="q">I am relocating and cannot wait for a listing</span><span class="a">Relocation &rarr;</span></a>
+    <a class="sit" data-situation-link="inherited-property" href="situations/inherited-property.html"><span class="q">I inherited a house and I do not want to fix it up</span><span class="a">Probate and inherited &rarr;</span></a>
+    <a class="sit" data-situation-link="pre-foreclosure" href="situations/pre-foreclosure.html"><span class="q">I am behind on the mortgage and the letters have started</span><span class="a">Pre foreclosure &rarr;</span></a>
+    <a class="sit" data-situation-link="tired-landlord" href="situations/tired-landlord.html"><span class="q">I want out of the rental, and the tenant is still in it</span><span class="a">Tired landlords &rarr;</span></a>
+    <a class="sit" data-situation-link="divorce" href="situations/divorce.html"><span class="q">We are divorcing and the house has to go, quietly</span><span class="a">Divorce &rarr;</span></a>
+    <a class="sit" data-situation-link="house-needs-repairs" href="situations/house-needs-repairs.html"><span class="q">The house will not pass an inspection</span><span class="a">Condition &rarr;</span></a>
+    <a class="sit" data-situation-link="relocating" href="situations/relocating.html"><span class="q">I am relocating and cannot wait for a listing</span><span class="a">Relocation &rarr;</span></a>
   </div>
 </div></section>
 
@@ -501,19 +502,19 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
     <p>You will hear back the same day, usually a good deal sooner. No repairs, no fees, no commission, and no obligation to take anything we put in front of you.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <a class="btn solid" href="#start">Get my offer</a>
-      <a class="btn ghost" href="tel:3214612550">Call (321) 461-2550</a>
+      <a class="btn ghost" data-call data-loc="cta_band" href="#">Call <span data-phone></span></a>
     </div>
   </div>
 </div>
 
 <footer><div class="wrap foot">
   <span>MaliHaus Capital &nbsp;&middot;&nbsp; 1515 S Federal Hwy Ste 156, Boca Raton, FL 33432</span>
-  <span><a href="tel:3214612550">(321) 461-2550</a></span>
+  <span><a data-call data-loc="footer" href="#"><span data-phone></span></a></span>
 </div></footer>
 
 <div class="callbar">
-  <a href="tel:3214612550">Call now</a>
-  <a href="sms:3214612550">Text us</a>
+  <a data-call data-loc="mobile_bar" href="#">Call now</a>
+  <a data-sms data-loc="mobile_bar" href="#">Text us</a>
 </div>
 
 <style>
@@ -617,7 +618,63 @@ function card(r){return '<div class="rev"><q>\u201C'+esc(r[0])+'\u201D</q>'+
 t.innerHTML=REVIEWS.map(card).join('').repeat(3);
 })();
 </script>
+<script src="site.js?v=2"></script>
 <script src="chat.js?v=1787594980"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://andrewpcherry.github.io/malihaus-concept/#business",
+      "name": "MaliHaus Capital",
+      "description": "Cash home buyer in South Florida. Three ways to sell a house: MaliHaus buys it directly with its own capital, local renovation buyers compete for it, or a national off market buyer network bids on it.",
+      "url": "https://andrewpcherry.github.io/malihaus-concept/",
+      "telephone": "+13214612550",
+      "priceRange": "$$",
+      "image": "https://andrewpcherry.github.io/malihaus-concept/img/hero-everyday.jpg",
+      "logo": "https://andrewpcherry.github.io/malihaus-concept/img/logo-copper.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1515 S Federal Hwy Ste 156",
+        "addressLocality": "Boca Raton",
+        "addressRegion": "FL",
+        "postalCode": "33432",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Palm Beach County, Florida" },
+        { "@type": "AdministrativeArea", "name": "Broward County, Florida" },
+        { "@type": "AdministrativeArea", "name": "Miami-Dade County, Florida" }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "29",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Ways to sell your house to MaliHaus Capital",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Direct cash purchase", "description": "MaliHaus buys the house with its own capital, as it stands, with no repairs, no inspection contingency and no financing to fall through." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Renovation buyer competition", "description": "Florida renovation buyers bid against each other for the house while MaliHaus runs the process." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "National buyer network placement", "description": "The house is shown to auction and off market platforms where investors across the country can bid." } }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://andrewpcherry.github.io/malihaus-concept/#website",
+      "url": "https://andrewpcherry.github.io/malihaus-concept/",
+      "name": "MaliHaus Capital",
+      "publisher": { "@id": "https://andrewpcherry.github.io/malihaus-concept/#business" }
+    }
+  ]
+}
+</script>
 
 </body>
 </html>

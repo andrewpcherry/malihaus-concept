@@ -169,6 +169,12 @@ function sitAck(){
 }
 
 async function handle(text){
+  if(window.mhTrack){
+    if(!handle._started){ handle._started=true;
+      window.mhTrack('chat_conversation_started',{chat_name:'website_receptionist'}); }
+    handle._turns=(handle._turns||0)+1;
+    window.mhTrack('chat_message',{chat_name:'website_receptionist',turn:handle._turns});
+  }
   if(busy) return;
   text=(text||'').trim(); if(!text) return;
   me(text); if(input) input.value='';
@@ -231,6 +237,8 @@ async function begin(){
   if(input) input.focus();
 }
 function open_(){
+  if(!wid.classList.contains('open') && window.mhTrack)
+    window.mhTrack('chat_open',{chat_name:'website_receptionist'});
   wid.classList.add('open');
   if(nudge) nudge.classList.remove('on');
   if(launch){ launch.style.opacity='0'; launch.style.pointerEvents='none'; }
