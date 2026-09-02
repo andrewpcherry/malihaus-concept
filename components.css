@@ -191,8 +191,14 @@ a.mh-proof:hover{border-color:var(--copper);background:var(--panel2)}
 .mh-consent{margin-top:30px;padding:24px 24px 22px;background:#0B0A08;
   border:1px solid var(--line2);border-left:2px solid var(--copper)}
 .mh-check{display:grid;grid-template-columns:22px 1fr;gap:14px;align-items:start}
+/* The box is drawn at 22px but the hit area is padded out to a comfortable
+   tap target on touch screens, without shifting the layout. */
 .mh-check input[type="checkbox"]{
-  width:22px;height:22px;margin:1px 0 0;accent-color:var(--copper);cursor:pointer;flex-shrink:0}
+  width:22px;height:22px;margin:1px 0 0;accent-color:var(--copper);cursor:pointer;flex-shrink:0;
+  position:relative}
+.mh-check input[type="checkbox"]:before{content:"";position:absolute;
+  top:-12px;left:-12px;right:-12px;bottom:-12px}
+@media(hover:hover){.mh-check input[type="checkbox"]:before{display:none}}
 .mh-check label{font-size:16px;color:var(--cream);line-height:1.5;cursor:pointer;margin:0}
 .mh-check a{color:var(--copper-lt);border-bottom:1px solid rgba(232,188,134,.4)}
 .mh-check a:hover{border-bottom-color:var(--copper-lt)}
@@ -262,8 +268,14 @@ footer{padding:0!important}
 .mh-burger:hover{border-color:var(--copper)}
 @media(max-width:1000px){.mh-burger{display:inline-block}}
 
-.mh-drawer{position:fixed;inset:0;z-index:100;visibility:hidden;opacity:0;transition:.25s}
-.mh-drawer.on{visibility:visible;opacity:1}
+/* Visibility flips instantly on open so the panel is focusable straight away,
+   and is delayed on close until the fade has finished. Transitioning
+   visibility itself would leave the drawer unfocusable for 250ms, which
+   breaks keyboard access. */
+.mh-drawer{position:fixed;inset:0;z-index:100;visibility:hidden;opacity:0;
+  transition:opacity .25s ease,visibility 0s linear .25s}
+.mh-drawer.on{visibility:visible;opacity:1;
+  transition:opacity .25s ease,visibility 0s linear 0s}
 .mh-drawer-bg{position:absolute;inset:0;background:rgba(4,4,3,.82);backdrop-filter:blur(3px)}
 .mh-drawer-p{position:absolute;top:0;right:0;bottom:0;width:min(360px,86vw);
   background:#0B0A08;border-left:1px solid var(--line2);padding:22px 26px;
