@@ -896,20 +896,28 @@ HOME_FEATURED = ["sell-house-fast", "inherited-property-probate", "foreclosure-m
 # --------------------------------------------------------------------------
 
 SIT_BRANCH = {
-    "sell-house-fast":               "moving",
-    "foreclosure-missed-payments":   "deadline",
-    "inherited-property-probate":    "inherited",
-    "tired-landlords":               "rental",
-    "vacant-abandoned-property":     "condition",
-    "major-repairs-as-is":           "condition",
-    "fire-water-storm-damage":       "condition",
-    "divorce-separation":            "moving",
-    "relocation":                    "moving",
-    "out-of-state-owner":            "rental",
-    "tax-liens-code-violations":     "deadline",
-    "hoarder-house-cleanout":        "condition",
-    "expired-listing":               "comparing",
-    "title-problems-multiple-owners":"inherited",
-    "downsizing-senior-transition":  "moving",
-    "financial-hardship":            "deadline",
+    # Only preselect where the funnel card is genuinely TRUE of that page.
+    # Anything inferred is left blank so the visitor picks it themselves.
+    # Ticking "facing foreclosure" for someone who only said money is tight,
+    # or "I own a rental" for an out-of-state owner, is a judgement about the
+    # seller, and it also hides the options they actually needed.
+    "foreclosure-missed-payments":   "deadline",     # card says exactly this
+    "tax-liens-code-violations":     "deadline",     # branch asks about liens and city notices
+    "inherited-property-probate":    "inherited",    # card says exactly this
+    "tired-landlords":               "rental",       # card says exactly this
+    "major-repairs-as-is":           "condition",    # card says exactly this
+    "fire-water-storm-damage":       "condition",    # branch asks about fire and water damage
+    "hoarder-house-cleanout":        "condition",    # branch asks about clutter and hoarding
+    "relocation":                    "moving",       # branch asks about relocation
+    "divorce-separation":            "moving",       # branch asks about divorce
+    "downsizing-senior-transition":  "moving",       # branch asks about downsizing
+
+    # Deliberately NOT preselected. Each of these would put words in the
+    # seller's mouth, so they land on the clean picker instead.
+    "sell-house-fast":               "",   # wanting speed is not "moving by a date"
+    "financial-hardship":            "",   # money being tight is not "facing foreclosure"
+    "expired-listing":               "",   # a failed listing is not "just curious"
+    "out-of-state-owner":            "",   # owning at a distance is not owning a rental
+    "vacant-abandoned-property":     "",   # empty does not mean it needs work
+    "title-problems-multiple-owners":"",   # a title problem is not always an inheritance
 }

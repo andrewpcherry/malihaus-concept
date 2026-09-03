@@ -47,7 +47,7 @@
        when:function(a){return a.heirs==="Me and one other person"||a.heirs==="Three or more heirs";},
        opts:["Yes, everyone agrees","Mostly, we are close","No, we are not agreed","We have not discussed it"]},
       {id:"contents", q:"What is still inside the house?",
-       opts:["It is cleared out","Some furniture and belongings","Completely full","I have not been inside"]}
+       opts:["It is cleared out","Some furniture and belongings","Completely full","I have not been inside","Something else"]}
     ]
   },
   deadline:{
@@ -61,12 +61,13 @@
     extra:{name:"deadlineNotes", label:"What date are you working against? (optional)"},
     qs:[
       {id:"pressure", key:true, q:"What is the pressure?",
-       opts:["Behind on mortgage payments","A notice of default or foreclosure filing","Property taxes or a tax lien","A lien, code violation or city notice","A court or auction date is set","Payments are current, the deadline is personal"]},
+       opts:["Behind on mortgage payments","A notice of default or foreclosure filing","Property taxes or a tax lien","A lien, code violation or city notice","A court or auction date is set","Payments are current, the deadline is personal",
+             "Another reason not listed"]},
       {id:"dateset", key:true, q:"Has a date actually been set?", sub:"This is the single most useful thing you can tell us.",
        when:function(a){return a.pressure && a.pressure!=="Payments are current, the deadline is personal";},
        opts:["Yes, within 30 days","Yes, more than 30 days out","No date yet","I do not know"]},
       {id:"lender", q:"Have you spoken to the lender or the county?",
-       opts:["Yes, we are working on something","I have tried, no progress","Not yet","I would rather not"]}
+       opts:["Yes, we are working on something","I have tried, no progress","Not yet","I would rather they were not involved yet"]}
     ]
   },
   condition:{
@@ -80,11 +81,12 @@
     extra:{name:"conditionNotes", label:"Briefly, what is wrong with it? (optional)"},
     qs:[
       {id:"issue", key:true, q:"What is the main problem?", sub:"Pick the biggest one.",
-       opts:["The roof","Foundation or structural","Plumbing, electrical or HVAC","Fire, water or mold damage","Years of clutter or a hoarder situation","Dated throughout, nothing broken","Several of these"]},
+       opts:["The roof","Foundation or structural","Plumbing, electrical or HVAC","Fire, water or mold damage","Years of clutter or a hoarder situation","Dated throughout, nothing broken","Several of these","Something else not listed"]},
       {id:"quoted", q:"Have you had the work priced?",
-       opts:["Yes, I have real numbers","I have a rough idea","No quotes yet","I would rather not find out"]},
-      {id:"motivation", q:"If the repairs were somehow free, would you still sell?", sub:"There is no wrong answer. It changes what we bring you.",
-       opts:["Yes, I would still sell","No, I would stay","I am honestly not sure"]}
+       opts:["Yes, I have real numbers","I have a rough idea","No quotes yet","I would rather not guess"]},
+      {id:"repairIntent", q:"How would you rather handle the work?", sub:"There is no wrong answer. It changes what we bring you.",
+       opts:["Sell it as it stands, I am not doing the work","I would do some of it, not all",
+             "I would consider doing it if selling as-is costs too much","Something else"]}
     ]
   },
   rental:{
@@ -98,11 +100,12 @@
     extra:{name:"rentalNotes", label:"Addresses or unit count if it is more than one property (optional)"},
     qs:[
       {id:"tenants", key:true, q:"What is the tenant situation?",
-       opts:["Occupied and paying","Occupied and behind on rent","Occupied, the lease is ending soon","It is vacant right now","We are mid-eviction","There are people in it who should not be"]},
+       opts:["Occupied and paying","Occupied and behind on rent","Occupied, the lease is ending soon","It is vacant right now","We are mid-eviction","Someone is in it without a lease","Something else"]},
       {id:"units", q:"How much are we talking about?",
-       opts:["One property","Two to four units","Five or more units","Several addresses"]},
+       opts:["One property","Two to four units","Five or more units","Several addresses","Something else"]},
       {id:"trigger", q:"What tipped you into selling?",
-       opts:["Tired of managing it","It stopped cash flowing","Repairs keep stacking up","Rebalancing or cashing out","I am out of state and it is a hassle"]}
+       opts:["Tired of managing it","It stopped cash flowing","Repairs keep stacking up","Rebalancing or cashing out","I am out of state and it is a hassle",
+             "Another reason not listed"]}
     ]
   },
   moving:{
@@ -116,12 +119,17 @@
     extra:{name:"movingNotes", label:"What date are you working towards? (optional)"},
     qs:[
       {id:"driver", key:true, q:"What is driving the move?",
-       opts:["A job or relocation","Downsizing or upsizing","Divorce or separation","Health, age or family care","I am buying another place first"]},
+       opts:["A job or relocation","Downsizing or upsizing","Divorce or separation",
+             "Health, age or family care","I am buying another place first",
+             "Money is tight and the payments are the problem",
+             "I am behind on payments or facing foreclosure",
+             "Another reason not listed"]},
       {id:"bothagree", key:true, q:"Are both parties agreed on selling?",
        when:function(a){return a.driver==="Divorce or separation";},
        opts:["Yes, we both want to sell","Mostly, we are close","Not yet","The attorneys are handling it"]},
       {id:"priority", q:"Which matters more to you?",
-       opts:["A closing date I can count on","The highest possible number","A balance of the two"]},
+       opts:["A closing date I can count on","The highest possible number","A balance of the two",
+            "I am not sure yet"]},
       {id:"possession", q:"Do you need time in the house after closing?",
        opts:["Yes, a few weeks","Yes, a month or more","No, I can be out at closing","Not sure yet"]}
     ]
@@ -138,7 +146,8 @@
     extra:null,
     qs:[
       {id:"question", key:true, q:"What are you actually trying to work out?",
-       opts:["What the house is genuinely worth","What I would net listing against selling as-is","Whether a direct offer is a fair number","Whether now is the right time to sell at all","Whether to sell at all"]},
+       opts:["What the house is genuinely worth","What I would net listing against selling as-is","Whether a direct offer is a fair number","Whether now is the right time to sell",
+             "Something else not listed"]},
       {id:"stage", key:true, q:"How far along are you?",
        opts:["Ready to move if the numbers work","Deciding over the next few months","A year or so out","Just curious"]}
     ]
@@ -182,18 +191,19 @@
   {id:"location", q:"Where is the property?", sub:"We buy across "+MARKET+". The exact address comes later.",
    opts:["Florida","Ohio","North Carolina","Tennessee","Alabama","Indiana","Kansas City area","Another state"]},
   {id:"propertyType", q:"What kind of property is it?",
-   opts:["Single family home","Townhouse","Condominium","Duplex or multi family","Mobile or manufactured home","Vacant land"]},
+   opts:["Single family home","Townhouse","Condominium","Duplex or multi family","Mobile or manufactured home","Vacant land","Something else"]},
   {id:"priceExpectation", q:"Roughly what do you think it is worth?",
    sub:"A rough band is fine. It just tells us whether we are in the same ballpark before we call.",
    opts:["Under $150,000","$150,000 to $250,000","$250,000 to $400,000","$400,000 to $600,000","Over $600,000","I would rather not say"]},
   {id:"title", q:"Are you the owner on the title?", sub:"We can only work with somebody who is able to sign.",
-   opts:["Yes, I am the owner","Yes, one of several owners","I am the executor, or I hold power of attorney","No, I am family helping out","No, I rent here"]},
+   opts:["Yes, I am the owner","Yes, one of several owners","I am the executor, or I hold power of attorney","No, I am family helping out","No, I rent here","It is complicated, the title needs sorting out"]},
   {id:"listed", q:"Is it listed with an agent right now?",
    when:function(a,prim){return prim!=="comparing";},
-   opts:["No","It was listed, that agreement has ended","Yes, it is listed now","It is under contract"]},
+   opts:["No","It was listed, that agreement has ended","Yes, it is listed now","It is under contract",
+            "Something else"]},
   {id:"occupancy", q:"Who is in the property right now?",
    when:function(a,prim,has){return !has("rental");},
-   opts:["I live there","A tenant","It is vacant","Family, or somebody else"]},
+   opts:["I live there","A tenant","It is vacant","Family, or somebody else","Something else"]},
   {id:"equity", q:"What is left on the mortgage compared to what the house is worth?",
    sub:"This is the single number that changes the answer most. A rough guess is genuinely fine.",
    opts:["It is paid off, no mortgage","I owe less than half of what it is worth","I owe about half","I owe close to what it is worth","I owe more than it is worth","I am not sure"]},
@@ -264,7 +274,8 @@
   if(S.situations.length>2) return {t:"A",why:"three or more situations stacked, high motivation"};
   if(has("comparing")) return (a.stage==="Ready to move if the numbers work"&&canSign&&soon)
     ? {t:"B",why:"researching but ready"} : {t:"C",why:"research stage"};
-  if(has("condition")&&a.motivation==="No, I would stay"&&S.situations.length===1) return {t:"C",why:"condition problem, not motivation"};
+  if(has("condition")&&a.repairIntent==="I would consider doing it if selling as-is costs too much"
+     &&S.situations.length===1) return {t:"C",why:"weighing repairs against selling"};
   if(has("inherited")&&(a.agreed==="No, we are not agreed"||a.agreed==="We have not discussed it")) return {t:"B",why:"heirs not aligned"};
   if(has("moving")&&a.bothagree==="Not yet") return {t:"B",why:"both parties not agreed"};
   if(canSign&&soon) return {t:"A",why:"can sign, inside 30 days"};
@@ -363,6 +374,10 @@
       + '<h1 class="mhf-h">What is going on with the property?</h1>'
       + '<p class="mhf-sub">Pick everything that applies. Most people are in more than one of these at '
       + 'once, and the combination usually matters more than any single one.</p>'
+      + (S.situations.length
+          ? '<p class="mhf-preset">We have ticked ' + esc(BRANCHES[S.situations[0]].label.toLowerCase())
+            + ' from the page you came from. Add anything else that is true, or untick it.</p>'
+          : '')
       + '<div class="mh-cards mhf-cards">';
     Object.keys(BRANCHES).forEach(function(k){
       var b = BRANCHES[k], on = S.situations.indexOf(k) >= 0;
@@ -634,10 +649,12 @@
     if (!m) return;
     var k = m[1];
     if (!BRANCHES[k]) return;
+    /* PRESELECT, do not skip. Arriving from "Sell a House Fast" used to jump
+       straight into one branch's questions, which meant a seller who was also
+       behind on payments was never offered the chance to say so. The card is
+       ticked for them and the picker still shows, so they can add whatever
+       else is true. */
     S.situations = [k];
-    S.primary = k;
-    S.phase = 'question';
-    S.i = 0;
     if (window.mhTrack) window.mhTrack('funnel_seeded', { situation: k });
   })();
 

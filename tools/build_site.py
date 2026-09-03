@@ -452,7 +452,7 @@ def build_situation(s):
   <h1>{emphasise(s['h1'], s.get('h1_em', ''))}</h1>
 {opening}
   <div class="act">
-    <a class="btn solid" data-cta data-loc="page_head" href="{r}get-offer/?s={SIT_BRANCH.get(s['slug'],'')}#start">{e(s['cta'])}</a>
+    <a class="btn solid" data-cta data-loc="page_head" href="{r}get-offer/{('?s=' + SIT_BRANCH[s['slug']]) if SIT_BRANCH.get(s['slug']) else ''}#start">{e(s['cta'])}</a>
     <a class="btn ghost" data-call data-loc="page_head" href="#">Call <span data-phone></span></a>
   </div>
 

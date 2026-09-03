@@ -657,3 +657,8 @@ button.mhf-card.on .mhf-tick{background:var(--gold-btn);border-color:var(--gold-
 .mh-card-read:hover{color:var(--gold-ink);border-bottom-color:var(--gold-ink)}
 .mh-card:hover{transform:none}
 .mh-card-acts a:focus-visible{outline:2px solid var(--gold-btn);outline-offset:3px}
+
+/* When a visitor arrives from a situation card we tick that card for them.
+   Saying so beats silently changing the state under them. */
+.mhf-preset{color:var(--copper-lt);font-size:15px;margin:-24px 0 34px;
+  padding:14px 18px;border-left:2px solid var(--copper);background:var(--panel);max-width:60ch}
