@@ -379,14 +379,24 @@
             + ' from the page you came from. Add anything else that is true, or untick it.</p>'
           : '')
       + '<div class="mh-cards mhf-cards">';
+    /* The card is a DIV, not a button, because each one now carries its own
+       Continue and a button cannot be nested inside a button. The body is
+       still one big tap target that toggles; Continue takes this situation
+       straight through so nobody has to scroll to the foot of the list. */
     Object.keys(BRANCHES).forEach(function(k){
       var b = BRANCHES[k], on = S.situations.indexOf(k) >= 0;
-      h += '<button type="button" class="mh-card mh-gold mhf-card' + (on ? ' on' : '') + '" '
-         + 'aria-pressed="' + on + '" onclick="MHF.toggle(\'' + k + '\')">'
+      h += '<div class="mh-card mh-gold mhf-card' + (on ? ' on' : '') + '">'
+         + '<button type="button" class="mhf-card-hit" aria-pressed="' + on + '" '
+         + 'onclick="MHF.toggle(\'' + k + '\')">'
          + '<span class="mh-card-fig"><span class="mh-card-ic">' + icon(b.icon) + '</span>'
          + '<span class="mhf-tick" aria-hidden="true">&#10003;</span></span>'
          + '<span class="mh-card-b"><span class="mhf-card-h">' + esc(b.card) + '</span>'
-         + '<span class="mhf-card-p">' + esc(b.blurb) + '</span></span></button>';
+         + '<span class="mhf-card-p">' + esc(b.blurb) + '</span></span></button>'
+         + '<div class="mhf-card-acts">'
+         + '<button type="button" class="mhf-card-go" onclick="MHF.pickAndGo(\'' + k + '\')">'
+         + 'Continue &rarr;</button>'
+         + '<span class="mhf-card-or">' + (on ? 'Selected' : 'or tick to add more') + '</span>'
+         + '</div></div>';
     });
     h += '</div><div class="mhf-nav"><button class="btn solid" id="mhf-go" '
        + (S.situations.length ? '' : 'disabled ') + 'onclick="MHF.confirm()">Continue</button>'
@@ -546,6 +556,21 @@
         if (i>=0) S.situations.splice(i,1); else S.situations.push(k);
       }
       render();
+    },
+    /* Continue straight from one card. Selects it if it is not already
+       selected, keeping anything else the visitor has ticked, then goes.
+       An exclusive situation still clears the others, same as toggle. */
+    pickAndGo: function(k){
+      if (BRANCHES[k].exclusive) S.situations = [k];
+      else {
+        /* keep everything else already ticked, drop any exclusive one, and
+           put this card FIRST: confirm() reads the primary off the head of
+           the list, so the card they pressed is the branch they get. */
+        S.situations = [k].concat(S.situations.filter(function(x){
+          return x !== k && !BRANCHES[x].exclusive;
+        }));
+      }
+      MHF.confirm();
     },
     confirm: function(){
       if (!S.situations.length) return;
