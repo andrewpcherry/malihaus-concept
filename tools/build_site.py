@@ -32,7 +32,7 @@ from site_data import SIT_BRANCH
 DATE = "2026-09-03"
 
 # One asset version for the whole site, so a bump can never half-apply.
-ASSET_V = 13
+ASSET_V = 14
 
 
 def e(t):
@@ -184,7 +184,7 @@ def pillars_block(condensed=False):
     out += '  <div class="mh-pillars">\n'
     for p in PILLARS:
         body = p["short"] if condensed else p["p"]
-        out += f"""    <div class="mh-pillar">
+        out += f"""    <div class="mh-pillar mh-gold">
       <div class="mh-pillar-top"><span class="mh-pillar-n">{p['n']}</span><span class="mh-pillar-ic">{icon(p['icon'])}</span></div>
       <h3>{e(p['h'])}</h3>
       <p>{e(body)}</p>
@@ -341,7 +341,7 @@ def build_situations_hub():
 {cards}  </div>
 </div></section>
 
-<section class="rule mh-gold" id="ways"><div class="wrap">
+<section class="rule" id="ways"><div class="wrap">
 {pillars_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -484,7 +484,7 @@ def build_situation(s):
 {helps}  </div>
 {disclaimer}</div></section>
 
-<section class="rule mh-gold" id="ways"><div class="wrap">
+<section class="rule" id="ways"><div class="wrap">
 {pillars_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -626,7 +626,7 @@ def build_locations_hub():
 {nat_cards}  </div>
 </div></section>
 
-<section class="rule mh-gold" id="ways"><div class="wrap">
+<section class="rule" id="ways"><div class="wrap">
 {pillars_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -767,7 +767,7 @@ def build_location(l):
 {how}  </div>
 {kc_note}</div></section>
 
-<section class="rule mh-gold" id="ways"><div class="wrap">
+<section class="rule" id="ways"><div class="wrap">
 {pillars_block(condensed=True)}  <div class="mh-b" style="margin-top:40px">
     <a class="btn ghost" data-cta data-loc="loc_ways" href="{r}index.html#ways">See the three approaches in full</a>
   </div>
