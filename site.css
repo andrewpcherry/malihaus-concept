@@ -4,7 +4,7 @@
 
 :root{
   --black:#080806; --panel:#100E0B; --panel2:#171410; --line:#2A241C; --line2:#3E3427;
-  --copper:#C68C4E; --copper-lt:#E8BC86; --cream:#F5F0E8; --dim:#A29889; --dimmer:#6F675C;
+  --copper:#C68C4E; --copper-lt:#E8BC86; --cream:#F5F0E8; --dim:#A29889; --dimmer:#8A8177;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}

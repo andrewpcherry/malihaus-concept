@@ -17,11 +17,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="components.css?v=12">
+<link rel="stylesheet" href="components.css?v=13">
 <style>
 :root{
   --black:#080806; --panel:#100E0B; --panel2:#171410; --line:#2A241C; --line2:#3E3427;
-  --copper:#C68C4E; --copper-lt:#E8BC86; --cream:#F5F0E8; --dim:#A29889; --dimmer:#6F675C;
+  --copper:#C68C4E; --copper-lt:#E8BC86; --cream:#F5F0E8; --dim:#A29889; --dimmer:#8A8177;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -737,7 +737,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
 .launch:hover{transform:scale(1.06)}
 .launch svg{width:28px;height:28px;fill:#160E05}
 .launch .badge{position:absolute;top:-3px;right:-3px;width:21px;height:21px;border-radius:50%;
-  background:#E5484D;color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;border:2px solid var(--black)}
+  background:#C4262B;color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;border:2px solid var(--black)}
 .ping{position:absolute;inset:0;border-radius:50%;border:2px solid var(--copper);
   animation:ping 2.2s cubic-bezier(0,0,.2,1) infinite}
 @keyframes ping{0%{transform:scale(1);opacity:.85}100%{transform:scale(1.8);opacity:0}}
@@ -753,7 +753,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
 .wid.open{opacity:1;transform:none;pointer-events:auto}
 .whead{padding:15px 17px;background:linear-gradient(135deg,#1D1509,#12161A);border-bottom:1px solid var(--line);
   display:flex;align-items:center;gap:12px;flex-shrink:0}
-.whead .lg{width:36px;height:36px;border-radius:50%;background:linear-gradient(160deg,#E8BC86,#8A5A2C);
+.whead .lg{width:36px;height:36px;border-radius:50%;background:linear-gradient(160deg,#E8BC86,#A9752F);
   display:grid;place-items:center;font-size:13px;font-weight:700;color:#1a1207}
 .whead .n{font-size:15px;font-weight:600;line-height:1.2;color:var(--cream)}
 .whead .s{font-size:11.5px;color:#5FC98B;display:flex;align-items:center;gap:5px}
@@ -831,7 +831,7 @@ function card(r){return '<div class="rev"><q>\u201C'+esc(r[0])+'\u201D</q>'+
 t.innerHTML=REVIEWS.map(card).join('').repeat(3);
 })();
 </script>
-<script src="site.js?v=12"></script>
+<script src="site.js?v=13"></script>
 <script src="chat.js?v=1787595400"></script>
 
 <script type="application/ld+json">

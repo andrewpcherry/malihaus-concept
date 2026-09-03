@@ -413,7 +413,7 @@ section.mh-gold,div.mh-gold.mh-band{border-top:1px solid var(--gold-deep);
 .mh-gold :focus-visible{outline:2px solid var(--gold-btn);outline-offset:3px}
 
 /* Stars read as dark bronze on gold rather than disappearing. */
-.mh-gold .st,.mh-gold .stars,.mh-gold .mh-st,.mh-gold .scr .st,.mh-gold .rq .st{color:#5C3F16}
+.mh-gold .st,.mh-gold .stars,.mh-gold .mh-st,.mh-gold .scr .st,.mh-gold .rq .st{color:#3A260B}
 
 /* Rules and dividers */
 .mh-gold .rule,.mh-gold .qa,.mh-gold .ck,.mh-gold .rq,.mh-gold .sit,
