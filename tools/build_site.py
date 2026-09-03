@@ -162,7 +162,7 @@ def footer(r):
 
 
 def scripts(r):
-    return f'<script src="{r}site.js?v=4"></script>\n<script src="{r}form.js?v=2"></script>\n'
+    return f'<script src="{r}site.js?v=5"></script>\n'
 
 
 # --------------------------------------------------------------------------
@@ -225,13 +225,19 @@ def closing_block():
 
 
 def form_block(situation="", market="", heading="Tell Us About Your Property", intro=None):
-    intro = intro or ("Tell us about the property and your situation. The MaliHaus team will review the "
-                      "information and explain what the next step could look like. Submitting this form "
-                      "does not commit you to selling.")
-    return f"""  <div class="mh-formwrap mh-gold">
-    <div data-mh-form data-situation="{e(situation)}" data-market="{e(market)}"
-         data-heading="{e(heading)}"
-         data-intro="{e(intro)}"></div>
+    """The inline enquiry form is RETIRED (Andrew, 2026-09-03: one capture path).
+    Every page now hands off to the funnel at /get-offer/, which qualifies by
+    situation and tap rather than presenting a wall of fields. This renders the
+    handoff block that replaced it."""
+    intro = intro or ("Tell us about the property and your situation. It takes about two minutes, "
+                      "you tap rather than type, and nothing here commits you to selling.")
+    return f"""  <div class="mh-handoff">
+    <h2>{{e(heading)}}</h2>
+    <p>{{e(intro)}}</p>
+    <div class="mh-b">
+      <a class="btn solid" data-cta data-loc="funnel_handoff" href="{{R}}get-offer/#quiz">Start With Your Situation</a>
+      <a class="btn ghost" data-call data-loc="funnel_handoff" href="#">Call <span data-phone></span></a>
+    </div>
   </div>
 """
 
@@ -344,7 +350,7 @@ def build_situations_hub():
 {proof_block()}</div></section>
 
 <section class="rule" id="enquiry"><div class="wrap">
-{form_block(situation="situations-hub", market="")}
+{form_block(situation="situations-hub", market="").replace("{R}", r)}
 {closing_block()}</div></section>
 
 {footer(r)}
@@ -480,7 +486,7 @@ def build_situation(s):
 </div></section>
 
 <section class="rule" id="enquiry"><div class="wrap">
-{form_block(situation=s['slug'], market='')}
+{form_block(situation=s['slug'], market='').replace('{R}', r)}
 {proof_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -628,7 +634,7 @@ def build_locations_hub():
 {proof_block()}</div></section>
 
 <section class="rule" id="enquiry"><div class="wrap">
-{form_block(situation='', market='locations-hub')}
+{form_block(situation='', market='locations-hub').replace('{R}', r)}
 {closing_block()}</div></section>
 
 {footer(r)}
@@ -781,8 +787,7 @@ def build_location(l):
 </div></section>
 
 <section class="rule" id="enquiry"><div class="wrap">
-{form_block(situation='', market=l['slug'],
-            intro="Tell us about the property and your situation and we will review it. Submitting this form does not commit you to selling.")}
+{form_block(situation='', market=l['slug']).replace('{R}', r)}
 {proof_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -895,7 +900,8 @@ def build_redirects():
 def build_sitemap():
     urls = [(f"{ROOT}/", "1.0"),
             (f"{ROOT}/situations/", "0.9"),
-            (f"{ROOT}/locations/", "0.9")]
+            (f"{ROOT}/locations/", "0.9"),
+            (f"{ROOT}/get-offer/", "0.9")]
     urls += [(f"{ROOT}/situations/{s['slug']}/", "0.8") for s in SITUATIONS]
     urls += [(f"{ROOT}/locations/{l['slug']}/", "0.8") for l in LOCATIONS]
     urls += [(f"{ROOT}/how-it-works.html", "0.3")]

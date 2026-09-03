@@ -507,3 +507,22 @@ section.mh-gold,div.mh-gold.mh-band{border-top:1px solid var(--gold-deep);
 
 /* Situation cards keep an even height across a gold grid. */
 .mh-cards{grid-auto-rows:1fr}
+
+/* ------------------------------------------------------------------ *
+ * Funnel handoff. Replaced the inline enquiry form on 2026-09-03 when
+ * the funnel became the single capture path. Reuses the gold ground so
+ * the section still carries weight on the page.
+ * ------------------------------------------------------------------ */
+
+.mh-handoff{margin-top:50px;padding:52px 46px;background:var(--gold);
+  border:1px solid var(--gold-deep);color:var(--gold-ink)}
+@media(max-width:640px){.mh-handoff{padding:32px 22px}}
+.mh-handoff h2{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.7rem,3.2vw,2.4rem);
+  font-weight:500;margin:0 0 16px;line-height:1.14;letter-spacing:-.015em;color:var(--gold-ink)}
+.mh-handoff p{color:var(--gold-body);margin:0 0 30px;max-width:56ch;font-size:17px}
+.mh-handoff .mh-b{display:flex;gap:12px;flex-wrap:wrap}
+.mh-handoff .btn.solid{background:var(--gold-btn);color:#E8BC86}
+.mh-handoff .btn.solid:hover{background:#2A2114;color:#F0CE9E}
+.mh-handoff .btn.ghost{border-color:rgba(22,17,10,.42);color:var(--gold-ink)}
+.mh-handoff .btn.ghost:hover{border-color:var(--gold-btn);background:rgba(22,17,10,.09)}
+.mh-handoff :focus-visible{outline:2px solid var(--gold-btn);outline-offset:3px}

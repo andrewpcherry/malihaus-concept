@@ -205,10 +205,13 @@
 </div></section>
 
 <section class="rule" id="enquiry"><div class="wrap">
-  <div class="mh-formwrap mh-gold">
-    <div data-mh-form data-situation="" data-market="indianapolis-in"
-         data-heading="Tell Us About Your Property"
-         data-intro="Tell us about the property and your situation and we will review it. Submitting this form does not commit you to selling."></div>
+  <div class="mh-handoff">
+    <h2>{e(heading)}</h2>
+    <p>{e(intro)}</p>
+    <div class="mh-b">
+      <a class="btn solid" data-cta data-loc="funnel_handoff" href="../../get-offer/#quiz">Start With Your Situation</a>
+      <a class="btn ghost" data-call data-loc="funnel_handoff" href="#">Call <span data-phone></span></a>
+    </div>
   </div>
 
   <a class="mh-proof mh-gold" href="https://www.experience.com/reviews/michael-mali" target="_blank" rel="noopener">
@@ -310,8 +313,7 @@
 </div>
 <div class="mh-chat-safe" aria-hidden="true"></div>
 
-<script src="../../site.js?v=4"></script>
-<script src="../../form.js?v=2"></script>
+<script src="../../site.js?v=5"></script>
 
 <script type="application/ld+json">
 {

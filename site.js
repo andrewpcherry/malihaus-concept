@@ -26,7 +26,11 @@
     gtmId: '',
 
     /* Seller qualification path */
-    funnelUrl: 'https://andrewpcherry.github.io/malihaus-funnel/',
+    /* The funnel now lives inside this site at /get-offer/. The old
+       standalone at /malihaus-funnel/ is superseded. Path is resolved
+       against the site root at runtime, so it works from any depth. */
+    funnelPath: 'get-offer/',
+    funnelHash: '#quiz',
 
     /* ---- Lead destination ----
        GoHighLevel captures the website visitor and hands the completed lead
@@ -156,13 +160,23 @@
   }
 
   /* Carry attribution across to the funnel so the lead record knows its source. */
+  /* The site root, derived from the page's own canonical URL so this works
+     identically from /, /situations/<slug>/ and /locations/<slug>/. */
+  function siteRoot() {
+    var base = document.querySelector('link[rel="canonical"]');
+    var href = base ? base.getAttribute('href') : window.location.href;
+    var root = href.replace(/\/(situations|locations|get-offer)\/.*$/, '');
+    return root.replace(/\/[^\/]*\.html$/, '').replace(/\/+$/, '') + '/';
+  }
+
   function funnelLink(extra) {
     var q = new URLSearchParams();
     var a = attribution();
     for (var k in a) if (a.hasOwnProperty(k) && k !== 'first_seen') q.set(k, a[k]);
     if (extra) for (var e in extra) if (extra.hasOwnProperty(e) && extra[e]) q.set(e, extra[e]);
     var s = q.toString();
-    return CONFIG.funnelUrl + (s ? '?' + s : '');
+    /* Query BEFORE the fragment, or the funnel never sees the attribution. */
+    return siteRoot() + CONFIG.funnelPath + (s ? '?' + s : '') + CONFIG.funnelHash;
   }
   window.mhFunnelLink = funnelLink;
 
