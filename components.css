@@ -421,15 +421,22 @@ section.mh-gold,div.mh-gold.mh-band{border-top:1px solid var(--gold-deep);
 .mh-formwrap.mh-gold{border-color:var(--gold-deep)}
 .mh-gold .mh-f label{color:var(--gold-ink);font-weight:600}
 .mh-gold .mh-req{color:#4E2208}
+/* background-color, NOT the background shorthand. The shorthand resets
+   background-repeat, -position and -size to their initial values, which
+   wiped the select arrow's "no-repeat / right 14px center / 10px" from
+   the base rule and left the arrow tiling across the whole field. */
 .mh-gold .mh-f input,.mh-gold .mh-f select,.mh-gold .mh-f textarea{
-  background:#FBF3E7;border:1px solid rgba(22,17,10,.42);color:#16110A}
+  background-color:#FBF3E7;border:1px solid rgba(22,17,10,.42);color:#16110A}
 .mh-gold .mh-f input::placeholder,.mh-gold .mh-f textarea::placeholder{color:#6B5A44}
 .mh-gold .mh-f input:hover,.mh-gold .mh-f select:hover,.mh-gold .mh-f textarea:hover{
   border-color:rgba(22,17,10,.66)}
 .mh-gold .mh-f input:focus,.mh-gold .mh-f select:focus,.mh-gold .mh-f textarea:focus{
-  border-color:var(--gold-btn);box-shadow:0 0 0 3px rgba(22,17,10,.24);background:#fff}
+  border-color:var(--gold-btn);box-shadow:0 0 0 3px rgba(22,17,10,.24);background-color:#fff}
+/* The dark arrow, with its placement restated so it can never tile even
+   if a background shorthand is reintroduced above. */
 .mh-gold .mh-f select{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%2316110A' d='M6 8 0 0h12z'/%3E%3C/svg%3E")}
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='%2316110A' d='M6 8 0 0h12z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:10px}
 .mh-gold .mh-f input[aria-invalid="true"],.mh-gold .mh-f select[aria-invalid="true"]{
   border-color:#7E1B1E;box-shadow:0 0 0 3px rgba(126,27,30,.20)}
 .mh-gold .mh-err{color:#520E11;font-weight:600}
