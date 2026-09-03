@@ -32,7 +32,7 @@ from site_data import SIT_BRANCH
 DATE = "2026-09-03"
 
 # One asset version for the whole site, so a bump can never half-apply.
-ASSET_V = 18
+ASSET_V = 19
 
 
 def e(t):
