@@ -31,6 +31,9 @@ from site_data import SIT_BRANCH
 
 DATE = "2026-09-03"
 
+# One asset version for the whole site, so a bump can never half-apply.
+ASSET_V = 10
+
 
 def e(t):
     return html.escape(str(t), quote=True)
@@ -84,7 +87,7 @@ def head(title, meta, canonical, r, og_image=None):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="{r}site.css">
-<link rel="stylesheet" href="{r}components.css?v=6">
+<link rel="stylesheet" href="{r}components.css?v={ASSET_V}">
 </head>
 """
 
@@ -163,7 +166,7 @@ def footer(r):
 
 
 def scripts(r):
-    return f'<script src="{r}site.js?v=5"></script>\n'
+    return f'<script src="{r}site.js?v={ASSET_V}"></script>\n'
 
 
 # --------------------------------------------------------------------------
