@@ -526,3 +526,119 @@ section.mh-gold,div.mh-gold.mh-band{border-top:1px solid var(--gold-deep);
 .mh-handoff .btn.ghost{border-color:rgba(22,17,10,.42);color:var(--gold-ink)}
 .mh-handoff .btn.ghost:hover{border-color:var(--gold-btn);background:rgba(22,17,10,.09)}
 .mh-handoff :focus-visible{outline:2px solid var(--gold-btn);outline-offset:3px}
+
+/* ================================================================== *
+ * THE FUNNEL (/get-offer/)
+ *
+ * Built from the site's own tokens and components. The branching and
+ * qualification LOGIC came from the REI demo; none of its design did.
+ * Situation cards reuse .mh-card in the gold scope, everything else is
+ * the same type, spacing and copper the rest of the site uses.
+ * ================================================================== */
+
+.mhf-wrap{padding:56px 0 110px}
+@media(max-width:820px){.mhf-wrap{padding:34px 0 80px}}
+.mhf{max-width:960px;margin:0 auto}
+
+/* progress */
+.mhf-bar{height:2px;background:var(--line);margin-bottom:48px;overflow:hidden}
+.mhf-bar span{display:block;height:100%;background:var(--copper);transition:width .35s ease}
+@media(max-width:820px){.mhf-bar{margin-bottom:32px}}
+
+.mhf-step{animation:mhfIn .28s ease both}
+@keyframes mhfIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.mhf-step{animation:none}}
+
+.mhf-h{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.015em;
+  font-size:clamp(1.9rem,4vw,3rem);line-height:1.1;margin:0 0 20px;max-width:20ch;
+  font-variation-settings:"SOFT" 40,"WONK" 1;color:var(--cream)}
+.mhf-h:focus{outline:none}
+.mhf-sub{color:var(--dim);font-size:1.08rem;max-width:58ch;margin:0 0 40px;line-height:1.66}
+
+/* ---- step 1: situation cards ---- */
+.mhf-cards{margin-top:0}
+button.mhf-card{position:relative;text-align:left;cursor:pointer;font:inherit;padding:0;
+  border:1px solid var(--gold-deep)}
+.mhf-card .mh-card-fig{display:flex;align-items:flex-start;justify-content:space-between;width:100%}
+.mhf-card .mh-card-b{display:flex;flex-direction:column}
+.mhf-card-h{font-family:"Fraunces",Georgia,serif;font-size:1.16rem;font-weight:500;
+  line-height:1.25;margin-bottom:10px;color:var(--gold-ink)}
+.mhf-card-p{color:var(--gold-body);font-size:14.5px;line-height:1.55}
+.mhf-tick{width:26px;height:26px;border:1px solid rgba(22,17,10,.35);display:grid;place-items:center;
+  font-size:14px;color:transparent;transition:.18s;border-radius:50%}
+button.mhf-card.on{background:var(--gold-lift);border-color:var(--gold-btn);
+  box-shadow:0 0 0 2px var(--gold-btn)}
+button.mhf-card.on .mhf-tick{background:var(--gold-btn);border-color:var(--gold-btn);color:#E8BC86}
+
+/* ---- step 2: tapped options ---- */
+.mhf-opts{display:grid;gap:12px;max-width:640px}
+.mhf-opt{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;
+  background:var(--panel);border:1px solid var(--line2);color:var(--cream);
+  font-family:"Karla",Helvetica,Arial,sans-serif;font-size:17px;font-weight:500;
+  padding:19px 22px;transition:border-color .16s,background .16s,transform .14s}
+.mhf-opt:hover{border-color:var(--copper);background:var(--panel2);transform:translateX(4px)}
+.mhf-opt:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+.mhf-dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--line2);flex:0 0 auto;
+  transition:border-color .16s,background .16s}
+.mhf-opt:hover .mhf-dot{border-color:var(--copper);background:var(--copper)}
+
+/* ---- nav + back ---- */
+.mhf-nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:40px}
+.mhf-nav .btn.solid[disabled]{opacity:.4;cursor:not-allowed}
+.mhf-hint{color:var(--dimmer);font-size:14.5px}
+.mhf-back{margin-top:36px;padding-top:22px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.mhf-backbtn{background:none;border:0;color:var(--dim);cursor:pointer;font:inherit;
+  font-size:15px;padding:0}
+.mhf-backbtn:hover{color:var(--copper-lt)}
+.mhf-trail{color:var(--dimmer);font-size:14px}
+
+/* ---- outcome ---- */
+.mhf-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px}
+.mhf-tags span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper-lt);
+  border:1px solid var(--line2);padding:7px 13px}
+.mhf-combo{border-left:2px solid var(--copper);padding:4px 0 4px 24px;margin:0 0 26px;max-width:64ch}
+.mhf-combo h3{font-family:"Fraunces",Georgia,serif;font-size:1.2rem;font-weight:500;
+  margin:0 0 10px;color:var(--cream);line-height:1.25}
+.mhf-combo p{color:var(--dim);margin:0;font-size:16px;line-height:1.65}
+
+/* ---- contact step ---- */
+.mhf-form{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:720px}
+@media(max-width:640px){.mhf-form{grid-template-columns:1fr}}
+.mhf-full{grid-column:1/-1}
+.mhf-f{display:flex;flex-direction:column;min-width:0}
+.mhf-f label{font-size:14.5px;color:#CFC6B9;margin-bottom:8px;font-weight:500}
+.mhf-f input,.mhf-f textarea{width:100%;background:#0B0A08;border:1px solid var(--line2);
+  color:var(--cream);font-family:"Karla",Helvetica,Arial,sans-serif;font-size:16px;
+  padding:14px 15px;transition:border-color .16s}
+.mhf-f textarea{resize:vertical;line-height:1.55}
+.mhf-f input:focus,.mhf-f textarea:focus{outline:none;border-color:var(--copper);
+  box-shadow:0 0 0 3px rgba(198,140,78,.16)}
+.mhf-ziphint{color:var(--dimmer);font-size:14px;margin-top:-8px}
+.mhf-ziphint:empty{display:none}
+.mhf-picks{display:flex;flex-wrap:wrap;gap:9px}
+.mhf-pk{background:var(--panel);border:1px solid var(--line2);color:var(--cream);cursor:pointer;
+  font-family:"Karla",Helvetica,Arial,sans-serif;font-size:15px;padding:11px 18px;
+  border-radius:999px;transition:.16s}
+.mhf-pk:hover{border-color:var(--copper)}
+.mhf-pk.on{background:var(--copper);border-color:var(--copper);color:#0B0805;font-weight:600}
+
+.mhf-consent{display:grid;grid-template-columns:22px 1fr;gap:14px;align-items:start;
+  margin-top:32px;max-width:720px;padding:22px;background:#0B0A08;
+  border:1px solid var(--line2);border-left:2px solid var(--copper)}
+.mhf-consent input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--copper);cursor:pointer}
+.mhf-consent span{font-size:15px;color:var(--cream);line-height:1.55}
+.mhf-consent a{color:var(--copper-lt);border-bottom:1px solid rgba(232,188,134,.4)}
+.mhf-disc{display:block;margin-top:12px;color:#B4AA9C;font-size:14px;line-height:1.6}
+.mhf-err{color:#F08B8E;font-size:15px;margin-top:16px;font-weight:500}
+.mhf-err:empty{display:none}
+
+/* ---- done ---- */
+.mhf-done{text-align:center;padding:40px 0}
+.mhf-tickbig{width:64px;height:64px;margin:0 auto 28px;border-radius:50%;
+  border:1px solid var(--copper);display:grid;place-items:center;color:var(--copper);font-size:26px}
+.mhf-done .mhf-h,.mhf-done .mhf-sub{margin-left:auto;margin-right:auto}
+.mhf-done .mhf-nav{justify-content:center}
+.mhf-tel{display:inline-block;margin:8px 0 4px;font-family:"Fraunces",Georgia,serif;
+  font-size:1.9rem;color:var(--copper-lt);padding:14px 30px;border:1px solid var(--line2)}
+.mhf-tel:hover{border-color:var(--copper);color:var(--cream)}
