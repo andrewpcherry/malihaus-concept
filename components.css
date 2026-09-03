@@ -642,3 +642,18 @@ button.mhf-card.on .mhf-tick{background:var(--gold-btn);border-color:var(--gold-
 .mhf-tel{display:inline-block;margin:8px 0 4px;font-family:"Fraunces",Georgia,serif;
   font-size:1.9rem;color:var(--copper-lt);padding:14px 30px;border:1px solid var(--line2)}
 .mhf-tel:hover{border-color:var(--copper);color:var(--cream)}
+
+/* Each situation card carries its own start action, so a visitor never has to
+   scroll to a block at the foot of the page to begin. */
+.mh-card-b h3 a.mh-card-link{color:inherit;text-decoration:none}
+.mh-card-b h3 a.mh-card-link:hover{color:var(--gold-btn)}
+.mh-card-acts{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:auto;
+  padding-top:16px;border-top:1px solid rgba(22,17,10,.20)}
+.mh-card-start{font-size:14.5px;font-weight:700;color:var(--gold-ink);
+  background:var(--gold-btn);color:#E8BC86;padding:10px 16px;white-space:nowrap}
+.mh-card-start:hover{background:#2A2114;color:#F0CE9E}
+.mh-card-read{font-size:14px;color:#38260C;font-weight:600;
+  border-bottom:1px solid rgba(22,17,10,.3)}
+.mh-card-read:hover{color:var(--gold-ink);border-bottom-color:var(--gold-ink)}
+.mh-card:hover{transform:none}
+.mh-card-acts a:focus-visible{outline:2px solid var(--gold-btn);outline-offset:3px}

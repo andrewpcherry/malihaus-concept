@@ -626,5 +626,27 @@
   }
   var DERIVED_STATE = '';
 
+  /* A visitor who clicked a specific situation on the site arrives with ?s=
+     already set, so we skip the picker and start qualifying immediately.
+     That is the point of putting the start action on each card. */
+  (function seed(){
+    var m = /[?&]s=([a-z]+)/.exec(location.search);
+    if (!m) return;
+    var k = m[1];
+    if (!BRANCHES[k]) return;
+    S.situations = [k];
+    S.primary = k;
+    S.phase = 'question';
+    S.i = 0;
+    if (window.mhTrack) window.mhTrack('funnel_seeded', { situation: k });
+  })();
+
   render();
+
+  /* Land people on the funnel itself, not the top of the page, when they
+     arrive from a card. */
+  if (/[?&]s=/.test(location.search) || location.hash === '#start') {
+    var t = document.getElementById('mhfunnel');
+    if (t) t.scrollIntoView({ block: 'start' });
+  }
 })();

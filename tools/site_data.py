@@ -888,3 +888,28 @@ SIT_BY_SLUG = {s["slug"]: s for s in SITUATIONS}
 HOME_FEATURED = ["sell-house-fast", "inherited-property-probate", "foreclosure-missed-payments",
                  "tired-landlords", "major-repairs-as-is", "vacant-abandoned-property",
                  "out-of-state-owner", "expired-listing"]
+
+# --------------------------------------------------------------------------
+# Which funnel branch each situation page opens the funnel on, so a visitor
+# who clicked "Foreclosure or Missed Payments" does not get asked to pick a
+# situation again. The funnel has six branches; the site has sixteen pages.
+# --------------------------------------------------------------------------
+
+SIT_BRANCH = {
+    "sell-house-fast":               "moving",
+    "foreclosure-missed-payments":   "deadline",
+    "inherited-property-probate":    "inherited",
+    "tired-landlords":               "rental",
+    "vacant-abandoned-property":     "condition",
+    "major-repairs-as-is":           "condition",
+    "fire-water-storm-damage":       "condition",
+    "divorce-separation":            "moving",
+    "relocation":                    "moving",
+    "out-of-state-owner":            "rental",
+    "tax-liens-code-violations":     "deadline",
+    "hoarder-house-cleanout":        "condition",
+    "expired-listing":               "comparing",
+    "title-problems-multiple-owners":"inherited",
+    "downsizing-senior-transition":  "moving",
+    "financial-hardship":            "deadline",
+}

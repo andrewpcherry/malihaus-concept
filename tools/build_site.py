@@ -27,6 +27,7 @@ from site_data import (ROOT, COVERAGE, REVIEW_LINE, REVIEW_URL, NATIONAL_STRAP, 
                        PILLARS_TITLE, PILLARS, STEPS, CLOSING_H2, CLOSING_COPY, CLOSING_BTN,
                        ICONS, SITUATIONS, SIT_BY_SLUG, HOME_FEATURED)
 from locations_data import LOCATIONS, LOC_BY_SLUG, FLORIDA, NATIONAL
+from site_data import SIT_BRANCH
 
 DATE = "2026-09-03"
 
@@ -212,30 +213,30 @@ def proof_block():
 """
 
 
-def closing_block():
+def closing_block(r=""):
     return f"""  <div class="mh-notsure">
     <h2>{e(CLOSING_H2)}</h2>
     <p>{e(CLOSING_COPY)}</p>
     <div class="mh-b">
-      <a class="btn solid" data-cta data-loc="closing" href="#enquiry">{e(CLOSING_BTN)}</a>
+      <a class="btn solid" data-cta data-loc="closing" href="{r}get-offer/#start">{e(CLOSING_BTN)}</a>
       <a class="btn ghost" data-call data-loc="closing" href="#">Call <span data-phone></span></a>
     </div>
   </div>
 """
 
 
-def form_block(situation="", market="", heading="Tell Us About Your Property", intro=None):
-    """The inline enquiry form is RETIRED (Andrew, 2026-09-03: one capture path).
-    Every page now hands off to the funnel at /get-offer/, which qualifies by
-    situation and tap rather than presenting a wall of fields. This renders the
-    handoff block that replaced it."""
-    intro = intro or ("Tell us about the property and your situation. It takes about two minutes, "
+def form_block(r, situation="", heading="Tell Us About Your Property", intro=None):
+    """The handoff to the funnel. Takes `r` directly rather than a placeholder
+    the caller has to substitute: the old {R} trick escaped wrong in the
+    f-string and shipped literal {e(heading)} to 34 live pages."""
+    intro = intro or ("Start with the situation you are in, not a form. It takes about two minutes, "
                       "you tap rather than type, and nothing here commits you to selling.")
+    q = f"?s={situation}" if situation else ""
     return f"""  <div class="mh-handoff">
-    <h2>{{e(heading)}}</h2>
-    <p>{{e(intro)}}</p>
+    <h2>{e(heading)}</h2>
+    <p>{e(intro)}</p>
     <div class="mh-b">
-      <a class="btn solid" data-cta data-loc="funnel_handoff" href="{{R}}get-offer/#quiz">Start With Your Situation</a>
+      <a class="btn solid" data-cta data-loc="funnel_handoff" href="{r}get-offer/{q}#start">Start With Your Situation</a>
       <a class="btn ghost" data-call data-loc="funnel_handoff" href="#">Call <span data-phone></span></a>
     </div>
   </div>
@@ -243,14 +244,22 @@ def form_block(situation="", market="", heading="Tell Us About Your Property", i
 
 
 def sit_card(s, r):
-    return f"""      <a class="mh-card mh-gold" data-situation-link="{s['slug']}" href="{r}situations/{s['slug']}/">
+    """Two actions per card: read the page, or start the funnel already seeded
+    with this situation. The start action is ON the card so a visitor never has
+    to scroll to a block at the foot of the page to begin."""
+    branch = SIT_BRANCH.get(s["slug"], "")
+    q = f"?s={branch}" if branch else ""
+    return f"""      <div class="mh-card mh-gold">
         <div class="mh-card-fig"><div class="mh-card-ic">{icon(s['icon'])}</div></div>
         <div class="mh-card-b">
-          <h3>{e(s['nav'])}</h3>
+          <h3><a class="mh-card-link" data-situation-link="{s['slug']}" href="{r}situations/{s['slug']}/">{e(s['nav'])}</a></h3>
           <p>{e(s['card'])}</p>
-          <span class="mh-card-go">Read more &rarr;</span>
+          <div class="mh-card-acts">
+            <a class="mh-card-start" data-cta data-loc="situation_card" href="{r}get-offer/{q}#start">Start here &rarr;</a>
+            <a class="mh-card-read" data-situation-link="{s['slug']}" href="{r}situations/{s['slug']}/">Read more</a>
+          </div>
         </div>
-      </a>
+      </div>
 """
 
 
@@ -350,8 +359,8 @@ def build_situations_hub():
 {proof_block()}</div></section>
 
 <section class="rule" id="enquiry"><div class="wrap">
-{form_block(situation="situations-hub", market="").replace("{R}", r)}
-{closing_block()}</div></section>
+{form_block(r)}
+{closing_block(r)}</div></section>
 
 {footer(r)}
 {scripts(r)}
@@ -443,7 +452,7 @@ def build_situation(s):
   <h1>{emphasise(s['h1'], s.get('h1_em', ''))}</h1>
 {opening}
   <div class="act">
-    <a class="btn solid" data-cta data-loc="page_head" href="#enquiry">{e(s['cta'])}</a>
+    <a class="btn solid" data-cta data-loc="page_head" href="{r}get-offer/?s={SIT_BRANCH.get(s['slug'],'')}#start">{e(s['cta'])}</a>
     <a class="btn ghost" data-call data-loc="page_head" href="#">Call <span data-phone></span></a>
   </div>
 
@@ -486,7 +495,7 @@ def build_situation(s):
 </div></section>
 
 <section class="rule" id="enquiry"><div class="wrap">
-{form_block(situation=s['slug'], market='').replace('{R}', r)}
+{form_block(r, situation=SIT_BRANCH.get(s['slug'], ''), heading=s['cta'])}
 {proof_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -510,7 +519,7 @@ def build_situation(s):
   <p class="sub">Several of these often overlap. If more than one applies, mention it when we speak.</p>
   <div class="sits">
 {related}  </div>
-{closing_block()}</div></section>
+{closing_block(r)}</div></section>
 
 {footer(r)}
 {scripts(r)}
@@ -634,8 +643,8 @@ def build_locations_hub():
 {proof_block()}</div></section>
 
 <section class="rule" id="enquiry"><div class="wrap">
-{form_block(situation='', market='locations-hub').replace('{R}', r)}
-{closing_block()}</div></section>
+{form_block(r)}
+{closing_block(r)}</div></section>
 
 {footer(r)}
 {scripts(r)}
@@ -787,7 +796,7 @@ def build_location(l):
 </div></section>
 
 <section class="rule" id="enquiry"><div class="wrap">
-{form_block(situation='', market=l['slug']).replace('{R}', r)}
+{form_block(r)}
 {proof_block()}</div></section>
 
 <section class="rule"><div class="wrap">
@@ -919,7 +928,7 @@ def build_home_blocks():
     open(".home-steps.html", "w").write(steps_block())
     open(".home-nav.html", "w").write(nav(""))
     open(".home-footer.html", "w").write(footer(""))
-    open(".home-form.html", "w").write(form_block(situation="", market="homepage"))
+    open(".home-form.html", "w").write(form_block(""))
 
 
 if __name__ == "__main__":
