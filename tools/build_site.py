@@ -32,7 +32,7 @@ from site_data import SIT_BRANCH
 DATE = "2026-09-03"
 
 # One asset version for the whole site, so a bump can never half-apply.
-ASSET_V = 14
+ASSET_V = 15
 
 
 def e(t):
@@ -936,9 +936,9 @@ def build_home_blocks():
 
 if __name__ == "__main__":
     assert len(SITUATIONS) == 16, f"expected 16 situations, found {len(SITUATIONS)}"
-    assert len(LOCATIONS) == 16, f"expected 16 locations, found {len(LOCATIONS)}"
+    assert len(LOCATIONS) == 17, f"expected 17 locations, found {len(LOCATIONS)}"
     assert len({s["slug"] for s in SITUATIONS}) == 16
-    assert len({l["slug"] for l in LOCATIONS}) == 16
+    assert len({l["slug"] for l in LOCATIONS}) == 17
     for s in SITUATIONS:
         for x in s["related"]:
             assert x in SIT_BY_SLUG and x != s["slug"], f"{s['slug']} -> {x}"
@@ -958,5 +958,5 @@ if __name__ == "__main__":
         build_location(l)
     n = build_sitemap()
     build_home_blocks()
-    print(f"built 16 situation pages + hub, 16 location pages + hub, "
+    print(f"built {len(SITUATIONS)} situation pages + hub, {len(LOCATIONS)} location pages + hub, "
           f"{len(REDIRECTS)} redirects, sitemap with {n} URLs")

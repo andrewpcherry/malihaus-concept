@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The sixteen MaliHaus markets.
+"""The seventeen MaliHaus markets.
 
 HARD RULES for everything in this file, because these pages are the ones
 most likely to drift into invention:
@@ -92,6 +92,46 @@ _l(
          "That is a question for a Florida attorney, and we would be doing you a disservice by answering it ourselves. We can tell you whether a sale is realistic, which is a different question and one we can answer."),
     ],
     related=["miami-dade-county-fl", "orlando-fl", "tampa-fl"],
+)
+
+_l(
+    slug="palm-beach-county-fl",
+    alt='A single storey stucco ranch house with a weathered barrel tile roof, a carport, a cracked concrete driveway, a clipped hedge and sabal palms on a patchy lawn, on an ordinary flat residential street in Palm Beach County, Florida',
+    name="Palm Beach County",
+    region="Florida Markets",
+    area="Palm Beach County, Florida",
+    state="FL",
+    h1="Need to sell a property in Palm Beach County?",
+    h1_em="in Palm Beach County?",
+    title="Sell a Property in Palm Beach County, Florida | MaliHaus",
+    meta="Need to sell a property in Palm Beach County? MaliHaus reviews homes in their current condition and explains which of its three selling approaches may fit. No repairs required.",
+    card="The county MaliHaus works from, running from the coast out to the western communities, where a great deal of the housing is ordinary single family and association governed property rather than the waterfront the county is known for.",
+    opening=[
+        "Palm Beach County is far broader than the stretch of coast it takes its name from. Most of its housing is ordinary: single family homes on quiet streets, association governed communities inland, older properties that have been in the same family for years and condominium ownership of every age and condition. Owners in all of it run into the same thing, which is a situation that makes an ordinary listing awkward.",
+        "MaliHaus is based in Boca Raton and reviews properties across Palm Beach County in the condition they are in now. Whether the difficulty is a roof at the end of its life, an association cost that has climbed, a special assessment, a tenant you would rather not manage or a family property nobody has decided about, the starting point does not change. Tell us about the property and we will tell you which of our three routes may apply.",
+    ],
+    how=[
+        "We begin with an inspection to understand condition, repair requirements and the overall scope of the project. That is what determines which of the three approaches is realistic, and it is why we do not put a number in front of anyone before we have looked properly.",
+        "From there, one of three things tends to happen. The property meets our purchasing criteria and we buy it with our own cash. Or the project is larger than we would take on alone, in which case we may complete select repairs ourselves, with your written approval, to bring in an investor partner. Or it suits wider exposure, and we present it to investors through our national network so they can compete for it.",
+    ],
+    sit_intro=("Owners in Palm Beach County contact us about the whole range of situations below. Roof "
+               "condition, insurance difficulty and association costs come up frequently in South Florida, "
+               "though the situation that applies to you is the one that matters."),
+    featured=["major-repairs-as-is", "inherited-property-probate", "tired-landlords",
+              "foreclosure-missed-payments", "downsizing-senior-transition", "fire-water-storm-damage"],
+    faqs=[
+        ("Do you cover the whole of Palm Beach County?",
+         "Yes. Tell us the address and we will review it, wherever in the county it sits, from the coastal municipalities to the western communities."),
+        ("MaliHaus is in Boca Raton. Does that mean you only buy nearby?",
+         "No. Boca Raton is where MaliHaus is based, not the limit of what it looks at. Properties across the county are reviewed the same way, and so are the other markets listed on this site."),
+        ("My association dues have gone up and there is a special assessment coming.",
+         "Raise that at the start, along with the amount if you know it. Association obligations affect what a property is worth to a buyer, so it is far better mentioned early than discovered during a title search."),
+        ("The roof is at the end of its life and insurance has become difficult.",
+         "That is one of the more common reasons owners here contact us. We look at properties with roofs in that condition and we do not ask you to replace one before we will assess the property."),
+        ("I have a question about Florida foreclosure or probate procedure.",
+         "That is a question for a Florida attorney, and we would be doing you a disservice by answering it ourselves. We can tell you whether a sale is realistic, which is a different question and one we can answer."),
+    ],
+    related=["broward-county-fl", "miami-dade-county-fl", "orlando-fl"],
 )
 
 _l(
