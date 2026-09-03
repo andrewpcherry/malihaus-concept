@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="components.css?v=19">
+<link rel="stylesheet" href="components.css?v=20">
 <style>
 :root{
   --black:#080806; --panel:#100E0B; --panel2:#171410; --line:#2A241C; --line2:#3E3427;
@@ -419,14 +419,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
 </div></div></div>
 
 <section id="ask"><div class="wrap">
-  <h2 class="lead">Ask us at nine at night. Get an answer at nine at night.</h2>
-  <p class="sub">You do not have to fill in a form and wait for someone to get back to you. Ask a question whenever it occurs to you, and pick up the conversation whenever suits.</p>
-
-  <div class="pick" role="group" aria-label="Choose a situation">
-    <button data-s="0" aria-pressed="true">I inherited a house</button>
-    <button data-s="1" aria-pressed="false">I am behind on payments</button>
-    <button data-s="2" aria-pressed="false">I am done being a landlord</button>
-  </div>
+  <h2 class="lead">Ask us anything, at any hour. You get an answer there and then.</h2>
+  <p class="sub">You do not have to fill in a form and wait for somebody to get back to you. Ask a question whenever it occurs to you, day or night, and you get a reply straight away. Anything we cannot settle in the chat, we book you an appointment and one of the team speaks to you.</p>
 
   <div class="chatgrid">
     <div>
@@ -438,10 +432,20 @@ footer{border-top:1px solid var(--line);padding:44px 0;font-size:14.5px;color:va
         <a class="btn ghost" data-sms data-loc="chat_section" href="#">Text us instead</a>
       </div>
     </div>
-    <div class="chat">
-      <div class="chattop"><span class="dot"></span><span class="t">MaliHaus Capital</span><span class="u" id="clock">9:14 PM</span></div>
-      <div class="stream" id="stream"></div>
-    </div>
+    <ol class="mh-askflow">
+      <li>
+        <h4>Ask, whenever it suits you</h4>
+        <p>Open the chat in the corner and type the question, at nine in the morning or nine at night. There is no form to complete first and no waiting for office hours.</p>
+      </li>
+      <li>
+        <h4>Get an answer immediately</h4>
+        <p>Questions about condition, repairs, tenants, timing, probate or what actually happens next are answered on the spot, not queued for somebody to pick up tomorrow.</p>
+      </li>
+      <li>
+        <h4>Or we book you a time</h4>
+        <p>Anything that genuinely needs a person, we book the appointment there in the chat and somebody from the MaliHaus team speaks to you directly.</p>
+      </li>
+    </ol>
   </div>
 </div></section>
 
@@ -832,8 +836,8 @@ function card(r){return '<div class="rev"><q>\u201C'+esc(r[0])+'\u201D</q>'+
 t.innerHTML=REVIEWS.map(card).join('').repeat(3);
 })();
 </script>
-<script src="site.js?v=19"></script>
-<script src="chat.js?v=1987595400"></script>
+<script src="site.js?v=20"></script>
+<script src="chat.js?v=2087595400"></script>
 
 <script type="application/ld+json">
 {

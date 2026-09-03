@@ -22,6 +22,14 @@ ROOT = "https://andrewpcherry.github.io/malihaus-concept"
 COVERAGE = "Serving homeowners across Florida and selected markets nationwide."
 REVIEW_LINE = "Rated 4.8 stars by more than 400 MaliHaus clients"
 REVIEW_URL = "https://www.experience.com/reviews/michael-mali"
+# Michael asked on 2026-09-03 for the Google listing to sit alongside the
+# Experience.com link wherever the review proof appears, not only on the
+# home page. Both figures are his, from the 2026-09-02 build brief.
+GOOGLE_URL = "https://www.google.com/search?q=Malihaus+Capital+Boca+Raton"
+GOOGLE_SCORE = "5.0"
+GOOGLE_LINE = "29 reviews on our Google listing"
+EXPERIENCE_SCORE = "4.8"
+EXPERIENCE_LINE = "Rated 4.8 stars by more than 400 MaliHaus clients"
 
 NATIONAL_STRAP = "Local market knowledge supported by a national investor network."
 

@@ -23,7 +23,9 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from site_data import (ROOT, COVERAGE, REVIEW_LINE, REVIEW_URL, NATIONAL_STRAP, NATIONAL_SUPPORT,
+from site_data import (ROOT, COVERAGE, REVIEW_LINE, REVIEW_URL, GOOGLE_URL, GOOGLE_SCORE,
+                       GOOGLE_LINE, EXPERIENCE_SCORE, EXPERIENCE_LINE,
+                       NATIONAL_STRAP, NATIONAL_SUPPORT,
                        PILLARS_TITLE, PILLARS, STEPS, CLOSING_H2, CLOSING_COPY, CLOSING_BTN,
                        ICONS, SITUATIONS, SIT_BY_SLUG, HOME_FEATURED)
 from locations_data import LOCATIONS, LOC_BY_SLUG, FLORIDA, NATIONAL
@@ -32,7 +34,7 @@ from site_data import SIT_BRANCH
 DATE = "2026-09-03"
 
 # One asset version for the whole site, so a bump can never half-apply.
-ASSET_V = 19
+ASSET_V = 20
 
 
 def e(t):
@@ -205,15 +207,33 @@ def steps_block():
 
 
 def proof_block():
-    return f"""  <a class="mh-proof mh-gold" href="{REVIEW_URL}" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#C68C4E" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7.4 1.35 2.9 3.15.42-2.3 2.16.58 3.12L12 14.53l-2.78 1.47.58-3.12-2.3-2.16 3.15-.42z"/></svg>
-    <div class="mh-proof-t">
-      <div class="mh-proof-r"><span class="mh-st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>{e(REVIEW_LINE)}</b></div>
-      <div class="mh-proof-n">Verified MaliHaus client reviews, published on Experience.com.</div>
-    </div>
-    <span class="mh-proof-a">Read them &rarr;</span>
-  </a>
+    """Both public review records, side by side. Michael asked on 2026-09-03
+    for the Google listing to appear wherever the Experience.com link does,
+    not only on the home page. The Google mark keeps its own brand colours."""
+    google_mark = ('<svg viewBox="0 0 48 48" aria-label="Google">'
+      '<path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.3h12.1c-.2 1.9-1.6 4.8-4.5 6.7l-.1.3 6.5 5 .5.1c4.1-3.8 6.6-9.4 6.6-15.4z"/>'
+      '<path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-.3.02-6.8 5.2-.1.3C7.9 41.1 15.4 46 24 46z"/>'
+      '<path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4v-.3l-6.9-5.3-.2.1A22 22 0 0 0 2 24c0 3.5.9 6.9 2.4 9.9l7.1-5.5z"/>'
+      '<path fill="#EA4335" d="M24 10.5c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.3 29.9 2 24 2 15.4 2 7.9 6.9 4.4 14.1l7.1 5.5z"/></svg>')
+    star_mark = ('<svg viewBox="0 0 24 24" fill="none" stroke="#C68C4E" stroke-width="1.4" aria-hidden="true">'
+      '<circle cx="12" cy="12" r="9"/>'
+      '<path d="m12 7.4 1.35 2.9 3.15.42-2.3 2.16.58 3.12L12 14.53l-2.78 1.47.58-3.12-2.3-2.16 3.15-.42z"/></svg>')
+
+    def card(href, mark, score, line):
+        return f"""    <a class="mh-proof mh-gold" href="{href}" target="_blank" rel="noopener">
+      {mark}
+      <div class="mh-proof-t">
+        <div class="mh-proof-r"><span class="mh-st">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b>{e(score)}</b></div>
+        <div class="mh-proof-n">{e(line)}</div>
+      </div>
+      <span class="mh-proof-a">Read them &rarr;</span>
+    </a>
 """
+
+    return ('  <div class="mh-proofs">\n'
+            + card(GOOGLE_URL, google_mark, GOOGLE_SCORE, GOOGLE_LINE)
+            + card(REVIEW_URL, star_mark, EXPERIENCE_SCORE, EXPERIENCE_LINE)
+            + '  </div>\n')
 
 
 def closing_block(r=""):

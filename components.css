@@ -131,6 +131,12 @@
  * Review proof
  * ------------------------------------------------------------------ */
 
+/* Both review records side by side. The Google mark keeps its own brand
+   colours, so it is exempt from the gold scope's stroke override. */
+.mh-proofs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:46px}
+@media(max-width:860px){.mh-proofs{grid-template-columns:1fr}}
+.mh-proofs .mh-proof{margin-top:0}
+.mh-proof svg[aria-label="Google"] path{stroke:none}
 .mh-proof{display:flex;align-items:center;gap:20px;padding:24px 26px;margin-top:46px;
   background:var(--panel);border:1px solid var(--line2);transition:.2s}
 a.mh-proof:hover{border-color:var(--copper);background:var(--panel2)}
@@ -557,6 +563,25 @@ section.mh-gold,div.mh-gold.mh-band{border-top:1px solid var(--gold-deep);
   font-variation-settings:"SOFT" 40,"WONK" 1;color:var(--cream)}
 .mhf-h:focus{outline:none}
 .mhf-sub{color:var(--dim);font-size:1.08rem;max-width:58ch;margin:0 0 40px;line-height:1.66}
+
+/* ------------------------------------------------------------------ *
+ * What happens when you ask. Replaces the scripted chat mock that used
+ * to sit in #ask: that panel was driven by an element chat.js never
+ * populated, so it rendered as a large empty box on the home page.
+ * ------------------------------------------------------------------ */
+.mh-askflow{list-style:none;counter-reset:mhask;margin:0;padding:0;
+  display:flex;flex-direction:column;gap:2px}
+.mh-askflow li{counter-increment:mhask;position:relative;
+  padding:24px 26px 24px 74px;background:var(--panel);border:1px solid var(--line)}
+.mh-askflow li:before{content:counter(mhask);position:absolute;left:26px;top:24px;
+  width:30px;height:30px;border:1px solid var(--copper);border-radius:50%;
+  display:grid;place-items:center;font-size:14px;font-weight:600;color:var(--copper-lt);
+  font-family:"Fraunces",Georgia,serif}
+.mh-askflow h4{font-family:"Fraunces",Georgia,serif;font-size:1.14rem;font-weight:500;
+  margin:0 0 8px;line-height:1.24;letter-spacing:-.01em;color:var(--cream)}
+.mh-askflow p{margin:0;color:var(--dim);font-size:15px;line-height:1.58}
+@media(max-width:560px){.mh-askflow li{padding:22px 20px 22px 62px}
+  .mh-askflow li:before{left:18px}}
 
 /* ---- step 1: situation cards ---- */
 .mhf-cards{margin-top:0}
