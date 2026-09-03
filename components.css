@@ -384,12 +384,15 @@ section.mh-gold,div.mh-gold.mh-band{border-top:1px solid var(--gold-deep);
    sits at full gold against the dark section behind it. */
 .mh-gold .mh-card,.mh-gold .mh-pillar,.mh-gold .src,.mh-gold .mh-proof{
   background:var(--gold-lift);border-color:rgba(22,17,10,.28)}
-.mh-card.mh-gold,.mh-proof.mh-gold,.mh-loccard-b.mh-gold{
+.mh-card.mh-gold,.mh-proof.mh-gold,.mh-loccard-b.mh-gold,
+.mh-pillar.mh-gold,.src.mh-gold{
   background:var(--gold);border-color:var(--gold-deep)}
-.mh-card.mh-gold:hover,a.mh-proof.mh-gold:hover{
+.mh-card.mh-gold:hover,a.mh-proof.mh-gold:hover,a.src.mh-gold:hover{
   background:var(--gold-lift);border-color:var(--gold-btn);transform:translateY(-3px)}
 .mh-gold .mh-card:hover,.mh-gold .src:hover{
   background:#DCAA74;border-color:var(--gold-btn)}
+/* The Google mark keeps its brand colours when the card itself is the scope. */
+.src.mh-gold>svg path{stroke:none}
 
 /* Buttons: dark button with gold text is the strongest pairing on gold. */
 .mh-gold .btn.solid{background:var(--gold-btn);color:var(--copper-lt);color:#E8BC86}
