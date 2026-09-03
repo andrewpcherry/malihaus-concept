@@ -652,9 +652,18 @@ button.mhf-card.on .mhf-tick{background:var(--gold-btn);border-color:var(--gold-
 .mh-card-b h3 a.mh-card-link:hover{color:var(--gold-btn)}
 .mh-card-acts{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:auto;
   padding-top:16px;border-top:1px solid rgba(22,17,10,.20)}
-.mh-card-start{font-size:14.5px;font-weight:700;color:var(--gold-ink);
+/* The start action is a dark button sitting ON a gold card, so its label
+   has to be light. It must out-specify the blanket .mh-gold a colour
+   (0,1,1) or the label paints near-black on near-black and the button
+   reads as a solid blob. a.mh-card-start is (0,1,1) too and loses on
+   source order, so the gold-scoped forms below are what actually hold. */
+.mh-card-start{font-size:14.5px;font-weight:700;
   background:var(--gold-btn);color:#E8BC86;padding:10px 16px;white-space:nowrap}
 .mh-card-start:hover{background:#2A2114;color:#F0CE9E}
+.mh-gold a.mh-card-start,a.mh-card-start.mh-gold,.mh-gold .mh-card a.mh-card-start{
+  background:var(--gold-btn);color:#E8BC86}
+.mh-gold a.mh-card-start:hover,a.mh-card-start.mh-gold:hover,
+.mh-gold .mh-card a.mh-card-start:hover{background:#2A2114;color:#F0CE9E}
 .mh-card-read{font-size:14px;color:#38260C;font-weight:600;
   border-bottom:1px solid rgba(22,17,10,.3)}
 .mh-card-read:hover{color:var(--gold-ink);border-bottom-color:var(--gold-ink)}
