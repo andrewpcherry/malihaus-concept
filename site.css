@@ -42,7 +42,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0
 .crumb{font-size:14px;color:var(--dimmer);padding:26px 0 0}
 .crumb a{color:var(--dim)}
 .crumb a:hover{color:var(--copper-lt)}
-.crumb span{margin:0 8px;color:var(--line2)}
+.crumb span{margin:0 8px;color:var(--dimmer)}
 
 /* page head */
 .phead{padding:44px 0 0}
