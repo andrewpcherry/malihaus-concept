@@ -462,7 +462,7 @@
   function contactHtml(){
     function f(label, id, type, ac, extra){
       return '<div class="mhf-f"><label for="' + id + '">' + esc(label) + '</label>'
-        + '<input id="' + id + '" type="' + type + '" autocomplete="' + ac + '" '
+        + '<input name="' + ({firstName:'first_name',lastName:'last_name',address:'address',zip:'postal_code'}[id] || id) + '" id="' + id + '" type="' + type + '" autocomplete="' + ac + '" '
         + (extra || '') + '></div>';
     }
     function pick(label, name, opts, def){
@@ -474,7 +474,7 @@
       });
       return h + '</div><input type="hidden" id="' + name + '" value="' + esc(def) + '"></div>';
     }
-    return '<div class="mhf-step"><p class="kicker">Last step</p>'
+    return '<form id="malihaus-seller-enquiry" class="mhf-step" onsubmit="event.preventDefault()"><p class="kicker">Last step</p>'
       + '<h2 class="mhf-h">Where should we send the numbers?</h2>'
       + '<p class="mhf-sub">A real person goes through the property with you and what it would actually '
       + 'pay you. Nothing here commits you to selling.</p>'
@@ -483,7 +483,7 @@
       + f('Last name','lastName','text','family-name')
       + f('Phone','phone','tel','tel')
       + f('Email','email','email','email')
-      + '<div class="mhf-f mhf-full">' + f('Property address','address','text','street-address').replace(/^<div class="mhf-f">|<\/div>$/g,'') + '</div>'
+      + '<div class="mhf-f mhf-full">' + f('Street Address','address','text','street-address').replace(/^<div class="mhf-f">|<\/div>$/g,'') + '</div>'
       + f('City','city','text','address-level2')
       + f('ZIP code','zip','text','postal-code','inputmode="numeric" maxlength="10" oninput="MHF.zip(this.value)"')
       + '<div class="mhf-f mhf-full mhf-ziphint" id="mhf-zipstate"></div>'
@@ -497,9 +497,9 @@
       + '<label class="mhf-consent"><input type="checkbox" id="consent">'
       + '<span>' + consentHtml() + '</span></label>'
       + '<div id="mhf-err" class="mhf-err" role="alert"></div>'
-      + '<div class="mhf-nav"><button class="btn solid" onclick="MHF.submit()">Send This And Call Me Back</button>'
+      + '<div class="mhf-nav"><button type="button" id="mhf-send" class="btn solid" onclick="MHF.submit()">Send This And Call Me Back</button>'
       + '<span class="mhf-hint">No obligation. Not a listing agreement.</span></div>'
-      + backBar('') + '</div>';
+      + backBar('') + '</form>';
   }
 
   /* Michael's approved A2P wording, verbatim, same as everywhere else. */
@@ -616,9 +616,11 @@
       if (!first) need.push('your first name');
       if (!last) need.push('your last name');
       if (!phone && !email) need.push('a phone number or an email address');
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) need.push('a valid email address');
+      if (phone && !/^(1\d{10}|\d{10})$/.test(phone.replace(/\D/g,''))) need.push('a valid US phone number');
       if (!addr) need.push('the property address');
       if (!city) need.push('the city');
-      if (zip.replace(/\D/g,'').length < 5) need.push('the ZIP code');
+      if (!/^\d{5}(-\d{4})?$/.test(zip)) need.push('a valid ZIP code');
       if (consent && !consent.checked) need.push('the tick box so we are allowed to contact you');
       if (need.length) { err.textContent = 'We still need ' + need.join(', ') + '.'; return; }
       err.textContent = '';
@@ -632,7 +634,8 @@
         leadTier: t.t,
         tierReason: t.why,
         tags: ['Website Funnel', 'Tier ' + t.t],
-        answers: S.history,
+        answers: queue().filter(function(item){return S.answers[item.q.id] != null;})
+          .map(function(item){return {q:item.q.q, a:S.answers[item.q.id]};}),
         contact: { firstName:first, lastName:last, fullName:(first+' '+last).trim(),
                    phone:phone, email:email, address:addr, city:city, state:state, zip:zip,
                    propertyType: S.answers.propertyType || '',
@@ -650,12 +653,15 @@
       try { sessionStorage.setItem('mh_last_lead', JSON.stringify(lead)); } catch(e){}
       window.mhLastLead = lead;
 
-      if (!CFG.leadEndpoint) { S.phase = 'done'; return render(); }
-      fetch(CFG.leadEndpoint, { method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(lead) })
-        .then(function(){ S.phase='done'; render(); })
-        .catch(function(){ err.textContent = 'That did not go through. Please call ' +
-          (CFG.phoneDisplay || '') + ' and we will take the details over the phone.'; });
+      if (!window.MHSellerDelivery) {
+        err.textContent = 'Online delivery is unavailable. Please call ' + (CFG.phoneDisplay || '') + '.';
+        return;
+      }
+      window.MHSellerDelivery.send(lead, S.answers).then(function(){
+        S.phase='done'; render();
+      }).catch(function(error){
+        err.textContent = error.message + ' Please call ' + (CFG.phoneDisplay || '') + ' if you need help.';
+      });
     }
   };
   window.MHF = MHF;
