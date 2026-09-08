@@ -74,7 +74,6 @@ def head(title, meta, canonical, r, og_image=None):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
 <title>{e(title)}</title>
 <meta name="description" content="{e(meta)}">
 <meta property="og:type" content="website">

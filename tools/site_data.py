@@ -17,7 +17,7 @@ Rules baked in and not to be broken:
   * Coverage language is the approved line below and nothing else.
 """
 
-ROOT = "https://andrewpcherry.github.io/malihaus-concept"
+ROOT = "https://www.malihaus.com"
 
 COVERAGE = "Serving homeowners across Florida and selected markets nationwide."
 REVIEW_LINE = "Rated 4.8 stars by more than 400 MaliHaus clients"
