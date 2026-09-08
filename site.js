@@ -59,48 +59,6 @@
 
     /* ---- A2P consent ----
        Michael's approved wording, used verbatim. Do not reword it.
-
-
-/* Keep the embedded GHL message composer legible in the MaliHaus dark theme. */
-(function () {
-  'use strict';
-  var STYLE_ID = 'mh-ghl-dark-composer';
-  var CSS = [
-    '.input-container-textarea{background:#0B0B0B!important;border:1px solid #C68C4E!important;}',
-    '.native-textarea,textarea{color:#FFFFFF!important;caret-color:#C68C4E!important;}',
-    'textarea::placeholder{color:#9CA3AF!important;opacity:1!important;}'
-  ].join('');
-
-  function apply(root) {
-    if (!root || !root.querySelectorAll) return;
-    if (root.querySelector('textarea')) {
-      if (!root.querySelector('#' + STYLE_ID)) {
-        var style = document.createElement('style');
-        style.id = STYLE_ID;
-        style.textContent = CSS;
-        root.appendChild(style);
-      }
-    }
-    root.querySelectorAll('*').forEach(function (element) {
-      if (element.shadowRoot) apply(element.shadowRoot);
-    });
-  }
-
-  function refresh() {
-    apply(document);
-  }
-
-  document.addEventListener('click', function () {
-    setTimeout(refresh, 100);
-  }, true);
-
-  var attempts = 0;
-  var timer = setInterval(function () {
-    refresh();
-    attempts += 1;
-    if (attempts >= 120) clearInterval(timer);
-  }, 500);
-})();
        The HELP number inside it is the A2P REGISTERED number and is
        deliberately NOT the public website number above. It stays at
        (321) 655-2099 unless Michael, Rocky or the REsimpli team
@@ -427,4 +385,45 @@
   } else {
     init();
   }
+})();
+
+/* Keep the embedded GHL message composer legible in the MaliHaus dark theme. */
+(function () {
+  'use strict';
+  var STYLE_ID = 'mh-ghl-dark-composer';
+  var CSS = [
+    '.input-container-textarea{background:#0B0B0B!important;border:1px solid #C68C4E!important;}',
+    '.native-textarea,textarea{color:#FFFFFF!important;caret-color:#C68C4E!important;}',
+    'textarea::placeholder{color:#9CA3AF!important;opacity:1!important;}'
+  ].join('');
+
+  function apply(root) {
+    if (!root || !root.querySelectorAll) return;
+    if (root.querySelector('textarea')) {
+      if (!root.querySelector('#' + STYLE_ID)) {
+        var style = document.createElement('style');
+        style.id = STYLE_ID;
+        style.textContent = CSS;
+        root.appendChild(style);
+      }
+    }
+    root.querySelectorAll('*').forEach(function (element) {
+      if (element.shadowRoot) apply(element.shadowRoot);
+    });
+  }
+
+  function refresh() {
+    apply(document);
+  }
+
+  document.addEventListener('click', function () {
+    setTimeout(refresh, 100);
+  }, true);
+
+  var attempts = 0;
+  var timer = setInterval(function () {
+    refresh();
+    attempts += 1;
+    if (attempts >= 120) clearInterval(timer);
+  }, 500);
 })();
