@@ -6,6 +6,7 @@
   window.dataLayer=window.dataLayer || [];
   window.gtag=window.gtag || function(){window.dataLayer.push(arguments);};
   let choice={analytics:false,advertising:false},loaded=false,conversionCounted=false,choiceSaved=false;
+  let analyticsAnnounced=false,advertisingAnnounced=false;
   const googleConfigured=/^GTM-[A-Z0-9]+$/.test(cfg.gtmContainerId || '') || /^G-[A-Z0-9]+$/.test(cfg.ga4MeasurementId || '') || /^AW-\d+\/[A-Za-z0-9_-]+$/.test(cfg.googleAdsConversion || '');
   function consent() {
     gtag('consent','update',{
@@ -31,13 +32,17 @@
     }
     document.head.appendChild(script);
   }
+  function signalReady() {
+    if(choice.analytics && !analyticsAnnounced){analyticsAnnounced=true;window.dataLayer.push({event:'mh_analytics_ready'});}
+    if(choice.advertising && !advertisingAnnounced){advertisingAnnounced=true;window.dataLayer.push({event:'mh_advertising_ready'});}
+  }
   if(live && googleConfigured) {
     gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
     // Do not send arbitrary URL query strings (which can contain contact data).
     gtag('set',{page_location:location.origin+location.pathname});
     try {const saved=JSON.parse(localStorage.getItem('mh_measurement_consent'));if(saved && Date.now()-saved.at<15552000000){choice={analytics:saved.analytics===true,advertising:saved.advertising===true};choiceSaved=true;}}catch(_){}
     consent();load();
-    window.dataLayer.push({event:'mh_measurement_ready'});
+    signalReady();
     function showChoices() {
       if(document.querySelector('.measurement-choice'))return;
       const panel=document.createElement('aside');panel.className='measurement-choice';panel.setAttribute('aria-label','Privacy choices');
@@ -46,7 +51,7 @@
         const value=event.target.dataset.privacyChoice;if(!value)return;
         choice={analytics:value!=='reject',advertising:value==='all'};
         try{localStorage.setItem('mh_measurement_consent',JSON.stringify({...choice,at:Date.now()}));}catch(_){}
-        consent();load();window.dataLayer.push({event:'mh_measurement_ready'});panel.remove();
+        consent();load();signalReady();panel.remove();
       });document.body.appendChild(panel);
     }
     const settings=document.createElement('button');settings.type='button';settings.className='text-link';settings.textContent='Privacy choices';
