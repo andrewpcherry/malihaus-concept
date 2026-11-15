@@ -11,7 +11,17 @@
     }
     return result;
   }
-  function fields(values, source, consentAt, pagePath) {
+  function measurementChoice(choice = {}) {
+    const at = typeof choice.at === 'string' && Number.isFinite(Date.parse(choice.at)) ? choice.at : null;
+    return {
+      analytics: at !== null && choice.analytics === true,
+      advertising: at !== null && choice.advertising === true,
+      ad_personalization: false,
+      at,
+      notice_version: 'mh-measurement-v1'
+    };
+  }
+  function fields(values, source, consentAt, pagePath, measurement = {}) {
     const name = String(values.name || '').trim().split(/\s+/);
     const phone = String(values.phone || '').replace(/\D/g, '');
     const normalized = phone.length === 10 ? '+1' + phone : '+' + phone;
@@ -22,6 +32,7 @@
       property_address: values.address, city: values.city, state: 'FL', zip: values.zip,
       ownership: values.ownership, condition: values.condition, timeline: values.timeline,
       contact_permission: {enquiry_call: true, marketing_sms: false, at: consentAt},
+      measurement_choice: measurementChoice(measurement),
       attribution: source
     };
     return {
@@ -42,7 +53,7 @@
     return clean;
   }
   function positiveAck(body) { return !!body && body.status === 'ok'; }
-  const api = {attribution, fields, analytics, positiveAck, attributionKeys};
+  const api = {attribution, fields, analytics, positiveAck, attributionKeys, measurementChoice};
   root.MHIntakeCore = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof window === 'undefined' ? globalThis : window);

@@ -40,7 +40,8 @@
     if (production && !live) return Promise.reject(new Error('Online enquiries are temporarily unavailable. Your details have not been sent. Please call (407) 917-3347.'));
     if (!live) return Promise.resolve({preview:true});
     if (inFlight) return inFlight;
-    const mapped = core.fields(values, source, new Date().toISOString(), location.pathname);
+    const mapped = core.fields(values, source, new Date().toISOString(), location.pathname,
+      window.MHMeasurement?.consentSnapshot?.() || {});
     inFlight = (async () => {
       const identity = JSON.stringify([mapped.first_name,mapped.last_name,mapped.phone,mapped.email,mapped.address,mapped.city,mapped.postal_code,mapped.property_ownership,mapped.property_condition,mapped.desired_selling_timeframe]);
       const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(identity));

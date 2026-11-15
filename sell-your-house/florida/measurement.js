@@ -6,6 +6,7 @@
   window.dataLayer=window.dataLayer || [];
   window.gtag=window.gtag || function(){window.dataLayer.push(arguments);};
   let choice={analytics:false,advertising:false},loaded=false,conversionCounted=false,choiceSaved=false;
+  let choiceAt=null;
   let analyticsAnnounced=false,advertisingAnnounced=false;
   const googleConfigured=/^GTM-[A-Z0-9]+$/.test(cfg.gtmContainerId || '') || /^G-[A-Z0-9]+$/.test(cfg.ga4MeasurementId || '') || /^AW-\d+\/[A-Za-z0-9_-]+$/.test(cfg.googleAdsConversion || '');
   function consent() {
@@ -40,7 +41,7 @@
     gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
     // Do not send arbitrary URL query strings (which can contain contact data).
     gtag('set',{page_location:location.origin+location.pathname});
-    try {const saved=JSON.parse(localStorage.getItem('mh_measurement_consent'));if(saved && Date.now()-saved.at<15552000000){choice={analytics:saved.analytics===true,advertising:saved.advertising===true};choiceSaved=true;}}catch(_){}
+    try {const saved=JSON.parse(localStorage.getItem('mh_measurement_consent'));if(saved && Number.isFinite(saved.at) && saved.at>0 && saved.at<=Date.now() && Date.now()-saved.at<15552000000){choice={analytics:saved.analytics===true,advertising:saved.advertising===true};choiceAt=new Date(saved.at).toISOString();choiceSaved=true;}}catch(_){}
     consent();load();
     signalReady();
     function showChoices() {
@@ -50,7 +51,8 @@
       panel.addEventListener('click',event=>{
         const value=event.target.dataset.privacyChoice;if(!value)return;
         choice={analytics:value!=='reject',advertising:value==='all'};
-        try{localStorage.setItem('mh_measurement_consent',JSON.stringify({...choice,at:Date.now()}));}catch(_){}
+        const selectedAt=Date.now();choiceAt=new Date(selectedAt).toISOString();
+        try{localStorage.setItem('mh_measurement_consent',JSON.stringify({...choice,at:selectedAt}));}catch(_){}
         consent();load();signalReady();panel.remove();
       });document.body.appendChild(panel);
     }
@@ -60,6 +62,8 @@
     if(!choiceSaved)showChoices();
   }
   window.MHMeasurement={
+    // Operational enquiry metadata only. This snapshot is never an analytics payload.
+    consentSnapshot(){return Object.freeze({...choice,at:choiceAt,ad_personalization:false,notice_version:'mh-measurement-v1'});},
     leadAccepted(result){
       if(!live || !result.accepted || result.duplicate || conversionCounted)return;
       conversionCounted=true;
