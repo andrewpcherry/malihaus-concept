@@ -16,6 +16,7 @@
       ad_user_data:choice.advertising?'granted':'denied',
       ad_personalization:'denied'
     });
+    window.MHIntake?.rememberAttribution?.({...choice,at:choiceAt});
   }
   function load() {
     if(loaded || !live || !googleConfigured || (!choice.analytics && !choice.advertising))return;
