@@ -1,27 +1,18 @@
-# Example Cloudflare Workers settings for the intake handler. Copy to
-# wrangler.toml, fill in, and deploy with `wrangler deploy`. Not deployed yet.
-# Any host that runs Web-standard fetch handlers will work the same way.
+# Held deployment. Verify the intended account before applying changes.
 name = "malihaus-lead-intake"
 main = "worker.js"
-compatibility_date = "2026-11-01"
-
-[[kv_namespaces]]
-binding = "LEADS_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
-
+compatibility_date = "2026-11-16"
+compatibility_flags = ["nodejs_compat"]
+[[durable_objects.bindings]]
+name = "PPC_INTAKE"
+class_name = "PpcIntake"
+[[migrations]]
+tag = "ppc-intake-sqlite-v1"
+new_sqlite_classes = ["PpcIntake"]
 [vars]
 ALLOWED_ORIGINS = "https://www.malihaus.com"
-RESIMPLI_PIPELINE_ID = ""
-RESIMPLI_MAIN_STATUS_ID = ""
-RESIMPLI_MARKET_ID_FLORIDA = ""
-RESIMPLI_MARKET_ID_OHIO = ""
-RESIMPLI_CAMPAIGN_ID_FLORIDA = ""
-RESIMPLI_CAMPAIGN_ID_OHIO = ""
-# Optional
-# RESIMPLI_TAG_IDS_FLORIDA = "id1,id2"
-# RESIMPLI_TAG_IDS_OHIO = "id1,id2"
-# RESIMPLI_LEAD_ID_PATH = "data._id"
-# RESIMPLI_AUTH_PREFIX = "Bearer "
-
-# The API key is a secret, never a var and never committed:
-#   wrangler secret put RESIMPLI_API_KEY
+DELIVERY_ENABLED = "false"
+QA_ENABLED = "false"
+# Secrets: ZAPIER_INTAKE_HOOK, INTAKE_STORAGE_KEY (base64 of 32 random bytes),
+# QA_AUTH_TOKEN for private server-to-server acceptance tests.
+# REsimpli API credentials remain in their existing private Zapier connection.
