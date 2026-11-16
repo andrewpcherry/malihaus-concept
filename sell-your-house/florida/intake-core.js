@@ -52,8 +52,7 @@
     for (const k of allowed) if (['string','number','boolean'].includes(typeof extra[k])) clean[k] = extra[k];
     return clean;
   }
-  function positiveAck(body) { return !!body && body.status === 'ok'; }
-  const api = {attribution, fields, analytics, positiveAck, attributionKeys, measurementChoice};
+  const api = {attribution, fields, analytics, attributionKeys, measurementChoice};
   root.MHIntakeCore = api;
   if (typeof module !== 'undefined') module.exports = api;
 })(typeof window === 'undefined' ? globalThis : window);

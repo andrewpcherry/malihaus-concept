@@ -65,7 +65,7 @@
     // Operational enquiry metadata only. This snapshot is never an analytics payload.
     consentSnapshot(){return Object.freeze({...choice,at:choiceAt,ad_personalization:false,notice_version:'mh-measurement-v1'});},
     leadAccepted(result){
-      if(!live || !result.accepted || result.duplicate || conversionCounted)return;
+      if(!live || !result.accepted || result.crm_verified!==true || result.destination!=='resimpli' || result.duplicate || conversionCounted)return;
       conversionCounted=true;
       const payload=MHIntakeCore.analytics('generate_lead',{delivery_destination:result.destination});
       // Random event identity, never a contact identifier or a hash of contact data.
