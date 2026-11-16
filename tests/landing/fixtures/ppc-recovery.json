@@ -1,0 +1,23 @@
+{
+  "schema": "mh-ppc-intake-v1",
+  "event_id": "2d8fa651-7bdd-4940-9b58-7559159f8710",
+  "test_mode": "synthetic_qa",
+  "recovery_of": "mhqa_b3b52366a12970f3026092b8",
+  "fields": {
+    "first_name": "MaliHausQA",
+    "last_name": "DoNotContact",
+    "phone": "+12025550189",
+    "email": "malihaus-launch-qa-20261116@example.com",
+    "address": "123 MaliHaus QA Test Lane",
+    "city": "Boca Raton",
+    "state": "FL",
+    "postal_code": "33432",
+    "property_ownership": "I own the property",
+    "property_condition": "Needs major repairs",
+    "desired_selling_timeframe": "Within 30 days",
+    "phonetext_contact_permission": "Permission to call about this enquiry: 2026-11-16T17:03:35.997Z. Marketing SMS permission not given.",
+    "human_followup_requested": "Yes",
+    "lead_source": "Google Ads - Florida",
+    "conversation_summary": "Florida cash-offer enquiry\n{\n  \"page_id\": \"mh_google_cash_offer_florida_v1\",\n  \"market\": \"Florida\",\n  \"page\": \"/sell-your-house/florida/\",\n  \"enquiry_at\": \"2026-11-16T17:03:35.997Z\",\n  \"property_address\": \"123 MaliHaus QA Test Lane\",\n  \"city\": \"Boca Raton\",\n  \"state\": \"FL\",\n  \"zip\": \"33432\",\n  \"ownership\": \"I own the property\",\n  \"condition\": \"Needs major repairs\",\n  \"timeline\": \"Within 30 days\",\n  \"contact_permission\": {\n    \"enquiry_call\": true,\n    \"marketing_sms\": false,\n    \"at\": \"2026-11-16T17:03:35.997Z\"\n  },\n  \"measurement_choice\": {\n    \"analytics\": false,\n    \"advertising\": false,\n    \"ad_personalization\": false,\n    \"at\": \"2026-11-16T16:45:11.358Z\",\n    \"notice_version\": \"mh-measurement-v1\"\n  },\n  \"attribution\": {\n    \"utm_source\": \"qa\",\n    \"utm_medium\": \"controlled-test\",\n    \"utm_campaign\": \"MALIHAUS_QA_DO_NOT_IMPORT\",\n    \"gclid\": \"QA_BROWSER_20261117\",\n    \"gbraid\": \"QA_BRAID_20261117\",\n    \"wbraid\": \"QA_WBRAID_20261117\",\n    \"landing_at\": \"2026-11-16T17:02:42.666Z\"\n  }\n}"
+  }
+}

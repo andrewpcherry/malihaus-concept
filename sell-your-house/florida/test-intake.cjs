@@ -105,3 +105,6 @@ test('consent changes notify GTM without duplicating its loader or direct conver
   const set=e.c.dataLayer.find(x=>x[0]==='set');
   assert.equal(set[1].page_location,'https://www.malihaus.com/sell-your-house/florida/');
 });
+
+test('a later distinct enquiry is sent, while same-page repeats reuse the verified receipt',async()=>{const e=environment();await e.ctx.MHIntake.send(values);const repeated=await e.ctx.MHIntake.send(values);assert.equal(repeated.duplicate,true);await e.ctx.MHIntake.send({...values,condition:'Move-in ready'});assert.equal(e.requests.filter(x=>!x.url.endsWith('/status')).length,2);});
+test('a changed measurement choice is retained in a new enquiry rather than an old browser receipt',async()=>{const e=environment();let advertising=false;e.ctx.MHMeasurement={consentSnapshot:()=>({analytics:advertising,advertising,at:new Date(Date.now()-1000).toISOString()})};await e.ctx.MHIntake.send(values);advertising=true;await e.ctx.MHIntake.send(values);const sent=e.requests.filter(x=>!x.url.endsWith('/status'));assert.equal(sent.length,2);assert.equal(JSON.parse(JSON.parse(sent[1].options.body).fields.conversation_summary.split('\n').slice(1).join('\n')).measurement_choice.advertising,true);});

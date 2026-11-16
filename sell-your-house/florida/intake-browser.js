@@ -15,11 +15,12 @@
     if(inFlight)return inFlight;
     inFlight=(async()=>{
       const initial=core.fields(values,source,new Date().toISOString(),location.pathname,window.MHMeasurement?.consentSnapshot?.()||{});
-      const identity=JSON.stringify([initial.first_name.toLowerCase(),initial.last_name.toLowerCase(),initial.phone,initial.email.toLowerCase(),initial.address.toLowerCase(),initial.city.toLowerCase(),initial.postal_code,initial.property_ownership,initial.property_condition,initial.desired_selling_timeframe]);
+      const identity=JSON.stringify([initial.first_name.toLowerCase(),initial.last_name.toLowerCase(),initial.phone,initial.email.toLowerCase(),initial.address.toLowerCase(),initial.city.toLowerCase(),initial.postal_code,initial.property_ownership,initial.property_condition,initial.desired_selling_timeframe,JSON.parse(initial.conversation_summary.slice(initial.conversation_summary.indexOf('{'))).measurement_choice.analytics,JSON.parse(initial.conversation_summary.slice(initial.conversation_summary.indexOf('{'))).measurement_choice.advertising]);
       const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(identity));
       const key='mh_ppc_'+Array.from(new Uint8Array(digest),x=>x.toString(16).padStart(2,'0')).join('');
-      let record=storage.get(key),duplicate=!!record;
+      let record=storage.get(key);
       if(record&&Date.now()-record.at>=86400000)record=null;
+      let duplicate=!!record;
       if(record?.state==='accepted')return {accepted:true,duplicate:true,destination:'resimpli',crm_verified:true};
       if(record&&!record.read_token)throw new Error(pendingMessage);
       const endpoint=new URL(cfg.intakeEndpoint,location.origin);
@@ -47,7 +48,7 @@
         }
         throw new Error(pendingMessage);
       }catch(error){if(error.message?.includes('have not been sent'))throw error;throw new Error(pendingMessage);}finally{clearTimeout(deadline);}
-    })();return inFlight;
+    })().finally(()=>{inFlight=undefined;});return inFlight;
   }
   window.MHIntake=Object.freeze({send,live,production,nativeSubmitting:false,get attribution(){return {...source};}});
 })();
