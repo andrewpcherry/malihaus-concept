@@ -4,7 +4,7 @@ export default async function main({inputData,connections}) {
  const envelope=typeof inputData.payload==='string'?JSON.parse(inputData.payload||'{}'):inputData.payload;
  const p=typeof envelope?.ppc_payload==='string'?JSON.parse(envelope.ppc_payload):(envelope?.ppc_payload||envelope);
  if(!p.receipt||p.receipt.url!==CALLBACK_ORIGIN+'/api/intake/callback'||!/^[a-f0-9]{64}$/.test(p.receipt.callback_token||''))throw Error('TRUSTED_CALLBACK_REQUIRED');
- const e=prepare(p,Date.now(),{productionEnabled:false,allowStaleReadOnly:p.reconcile_only===true});
+ const e=prepare(p,Date.now(),{productionEnabled:false,productionQaEnabled:false,allowStaleReadOnly:p.reconcile_only===true});
  if(p.enquiry_key!==e.enquiry_key)throw Error('EVENT_KEY_MISMATCH');
  if(p.qa_scenario&&!['before_provider_failure','after_write_ack_loss'].includes(p.qa_scenario))throw Error('QA_SCENARIO_INVALID');
  if(p.qa_scenario&&!e.qa)throw Error('QA_ONLY');

@@ -13,6 +13,7 @@ new_sqlite_classes = ["PpcIntake"]
 ALLOWED_ORIGINS = "https://www.malihaus.com"
 DELIVERY_ENABLED = "false"
 QA_ENABLED = "false"
+PRODUCTION_QA_ENABLED = "false"
 # Secrets: ZAPIER_INTAKE_HOOK, INTAKE_STORAGE_KEY (base64 of 32 random bytes),
 # QA_AUTH_TOKEN for private server-to-server acceptance tests.
 # REsimpli API credentials remain in their existing private Zapier connection.
