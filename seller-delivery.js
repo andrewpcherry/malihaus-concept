@@ -104,7 +104,7 @@
         ['property_condition','Property Condition',answers.issue],
         ['desired_selling_timeframe','Desired Selling Timeframe',answers.timeline || answers.dateset],
         ['important_circumstances__notes','Important Circumstances / Notes',lead.notes],
-        ['conversation_summary','Conversation Summary',lead.summary+'\n\n'+lead.answers.map(function(a){return a.q+': '+a.a;}).join('\n')+'\n\nConsent: '+JSON.stringify(lead.consent)+'\nAttribution: '+JSON.stringify(lead.attribution)],
+        ['conversation_summary','Conversation Summary',lead.summary+'\n\n'+lead.answers.map(function(a){return a.q+': '+a.a;}).join('\n')+'\nSubmission: '+JSON.stringify({schema:'mh-website-fields-v1',contact:lead.contact,answers:answers})+'\n\nConsent: '+JSON.stringify(lead.consent)+'\nAttribution: '+JSON.stringify(lead.attribution)],
         ['lead_source','Lead Source',lead.leadSource],
         ['lead_tier','Lead Tier',lead.leadTier]
       ].forEach(function(f){ field(details, f[0], f[1], f[2]); });

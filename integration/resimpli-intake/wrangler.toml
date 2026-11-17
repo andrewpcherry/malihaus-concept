@@ -12,6 +12,7 @@ new_sqlite_classes = ["PpcIntake"]
 [vars]
 ALLOWED_ORIGINS = "https://www.malihaus.com"
 DELIVERY_ENABLED = "false"
+WEBSITE_DELIVERY_ENABLED = "false"
 QA_ENABLED = "false"
 PRODUCTION_QA_ENABLED = "false"
 # Secrets: ZAPIER_INTAKE_HOOK, INTAKE_STORAGE_KEY (base64 of 32 random bytes),

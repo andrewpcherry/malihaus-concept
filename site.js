@@ -57,15 +57,11 @@
     privacyUrl: 'https://www.malihaus.com/privacy-policy/',
     termsUrl: 'https://www.malihaus.com/terms-of-use/',
 
-    /* ---- A2P consent ----
-       Michael's approved wording, used verbatim. Do not reword it.
-       The HELP number inside it is the A2P REGISTERED number and is
-       deliberately NOT the public website number above. It stays at
-       (321) 655-2099 unless Michael, Rocky or the REsimpli team
-       confirms in writing that it should change. Never swap it
-       automatically for the public number. */
+    /* ---- Consent ----
+       Preserve Michael's wording. Michael requested the HELP number
+       change to (407) 917-3347 in his November 16/17 email. */
     consentCheckboxLabel: 'I agree to the Terms & Conditions and Privacy Policy.',
-    consentDisclosure: 'By submitting this form, you consent to receive marketing/notification messages from MaliHaus Capital. Message frequency varies, MSG and data rates may apply. Reply HELP for help at (321) 655-2099, reply STOP to unsubscribe. We will not share or sell mobile data to third parties for promotional or marketing purposes.',
+    consentDisclosure: 'By submitting this form, you consent to receive marketing/notification messages from MaliHaus Capital. Message frequency varies, MSG and data rates may apply. Reply HELP for help at (407) 917-3347, reply STOP to unsubscribe. We will not share or sell mobile data to third parties for promotional or marketing purposes.',
 
     /* ---- Review proof ----
        Michael's figures, supplied by him. Wording is the approved wording. */
