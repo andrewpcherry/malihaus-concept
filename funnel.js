@@ -481,8 +481,8 @@
       + '<div class="mhf-form">'
       + f('First name','firstName','text','given-name')
       + f('Last name','lastName','text','family-name')
-      + f('Phone','phone','tel','tel')
-      + f('Email','email','email','email')
+      + f('Phone (required for a callback)','phone','tel','tel','aria-required="true"')
+      + f('Email (optional)','email','email','email')
       + '<div class="mhf-f mhf-full">' + f('Street Address','address','text','street-address').replace(/^<div class="mhf-f">|<\/div>$/g,'') + '</div>'
       + f('City','city','text','address-level2')
       + f('ZIP code','zip','text','postal-code','inputmode="numeric" maxlength="10" oninput="MHF.zip(this.value)"')
@@ -615,7 +615,7 @@
       var need = [];
       if (!first) need.push('your first name');
       if (!last) need.push('your last name');
-      if (!phone && !email) need.push('a phone number or an email address');
+      if (!phone) need.push('a callback phone number');
       if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) need.push('a valid email address');
       if (phone && !/^(1\d{10}|\d{10})$/.test(phone.replace(/\D/g,''))) need.push('a valid US phone number');
       if (!addr) need.push('the property address');
