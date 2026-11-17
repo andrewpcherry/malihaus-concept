@@ -13,7 +13,7 @@ export default async function main({inputData,connections}) {
  let readRequests=0,writeRequests=0;
  const api=async(path,body)=>{
   if(p.qa_scenario==='before_provider_failure'&&!readOnly)throw Error('CONTROLLED_QA_PROVIDER_UNAVAILABLE');
-  const write=/\/add$/.test(path);
+  const write=['lead/add','activity/add','lead/addTag'].includes(path);
   if(write&&readOnly)throw Error('RECONCILIATION_MUST_BE_READ_ONLY');
   if(write)writeRequests++;else readRequests++;
   const r=await zapier.fetch(C.base+'/'+path,{connection:connections.resimpli,method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),...(write?{idempotencyKey:hash(e.enquiry_key+':'+path)}:{}),maxTimeSeconds:12});

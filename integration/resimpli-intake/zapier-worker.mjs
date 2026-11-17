@@ -4,7 +4,7 @@ const zapier=createZapierSdk();
 'use strict';
 // PPC enquiry contract and REsimpli worker. No credentials, SDKs or GHL dependency.
 
-const C=Object.freeze({base:'https://api.resimpli.com/api/v6/openapi',qaCampaign:'6af9d9050330f0ab2cd920d7',ppcCampaign:'6aa4e0be6006b0594f25d6f1',market:'67cb2775cdac00bfc44449ad',pipeline:'6aa4dcb1d18014f8fc607d1b',status:'6aa4dcb1d18014f8fc607d1c'});
+const C=Object.freeze({base:'https://api.resimpli.com/api/v6/openapi',qaCampaign:'6af9d9050330f0ab2cd920d7',ppcCampaign:'6aa4e0be6006b0594f25d6f1',market:'67cb2775cdac00bfc44449ad',pipeline:'6aa4dcb1d18014f8fc607d1b',status:'6aa4dcb1d18014f8fc607d1c',repeatTag:'6afba66bdbf777ed4e6128d8'});
 const parse=x=>typeof x==='string'?JSON.parse(x):x;
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const norm=x=>String(x||'').normalize('NFKC').toLowerCase().replace(/[.,]/g,' ').replace(/\s+/g,' ').trim();
@@ -106,6 +106,7 @@ async function deliver(e,api,{writeEnabled=false,reconcileOnly=false}={}){
   if(operation==='create'){const l=ack.data;if(!l||!oid(l._id)||norm(l.address)!==norm(e.address)||l.marketingCampignId!==e.create.marketingCampignId||l.pipelineId!==C.pipeline||l.mainStatusId!==C.status||l.isHotLead!==false)return result('uncertain_review_required',{error_code:'CREATE_RECEIPT_MISMATCH'});id=l._id;verifyLead(e,id,await api('lead/details',{leadId:id}));}
   const found=receipt(e,id,complete(await api('activity/list',{moduleId:1,subModuleId:id,type:1,page:1,limit:100})));
   if(!found)return result('uncertain_review_required',{error_code:'WRITE_ACKNOWLEDGED_RECEIPT_MISSING'});
+  if(e.website&&operation==='append'){response(await api('lead/addTag',{leadId:id,tagIds:[C.repeatTag]}));}
   return result(operation==='append'?'crm_existing_enquiry_appended_verified':'crm_created_verified',{source_activity_id:found.activity_id,duplicate:false,receipt_enquiry_at:found.original_enquiry_at});
  }catch(error){return result(writeAttempted?'uncertain_review_required':'manual_review_required',{error_code:/^[A-Z_]+$/.test(error.message)?error.message:'READ_OR_VALIDATION_ERROR'});}
 }
@@ -125,7 +126,7 @@ export default async function main({inputData,connections}) {
  let readRequests=0,writeRequests=0;
  const api=async(path,body)=>{
   if(p.qa_scenario==='before_provider_failure'&&!readOnly)throw Error('CONTROLLED_QA_PROVIDER_UNAVAILABLE');
-  const write=/\/add$/.test(path);
+  const write=['lead/add','activity/add','lead/addTag'].includes(path);
   if(write&&readOnly)throw Error('RECONCILIATION_MUST_BE_READ_ONLY');
   if(write)writeRequests++;else readRequests++;
   const r=await zapier.fetch(C.base+'/'+path,{connection:connections.resimpli,method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),...(write?{idempotencyKey:hash(e.enquiry_key+':'+path)}:{}),maxTimeSeconds:12});
