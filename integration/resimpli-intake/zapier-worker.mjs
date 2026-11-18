@@ -106,7 +106,7 @@ async function deliver(e,api,{writeEnabled=false,reconcileOnly=false}={}){
   if(operation==='create'){const l=ack.data;if(!l||!oid(l._id)||norm(l.address)!==norm(e.address)||l.marketingCampignId!==e.create.marketingCampignId||l.pipelineId!==C.pipeline||l.mainStatusId!==C.status||l.isHotLead!==false)return result('uncertain_review_required',{error_code:'CREATE_RECEIPT_MISMATCH'});id=l._id;verifyLead(e,id,await api('lead/details',{leadId:id}));}
   const found=receipt(e,id,complete(await api('activity/list',{moduleId:1,subModuleId:id,type:1,page:1,limit:100})));
   if(!found)return result('uncertain_review_required',{error_code:'WRITE_ACKNOWLEDGED_RECEIPT_MISSING'});
-  if(e.website&&operation==='append'){response(await api('lead/addTag',{leadId:id,tagIds:[C.repeatTag]}));}
+  if(operation==='append'&&(e.website||e.destinationCampaign===C.ppcCampaign)){response(await api('lead/addTag',{leadId:id,tagIds:[C.repeatTag]}));}
   return result(operation==='append'?'crm_existing_enquiry_appended_verified':'crm_created_verified',{source_activity_id:found.activity_id,duplicate:false,receipt_enquiry_at:found.original_enquiry_at});
  }catch(error){return result(writeAttempted?'uncertain_review_required':'manual_review_required',{error_code:/^[A-Z_]+$/.test(error.message)?error.message:'READ_OR_VALIDATION_ERROR'});}
 }
@@ -117,7 +117,7 @@ export default async function main({inputData,connections}) {
  const envelope=typeof inputData.payload==='string'?JSON.parse(inputData.payload||'{}'):inputData.payload;
  const p=typeof envelope?.ppc_payload==='string'?JSON.parse(envelope.ppc_payload):(envelope?.ppc_payload||envelope);
  if(!p.receipt||p.receipt.url!==CALLBACK_ORIGIN+'/api/intake/callback'||!/^[a-f0-9]{64}$/.test(p.receipt.callback_token||''))throw Error('TRUSTED_CALLBACK_REQUIRED');
- const e=prepare(p,Date.now(),{productionEnabled:false,websiteEnabled:true,productionQaEnabled:false,allowStaleReadOnly:p.reconcile_only===true});
+ const e=prepare(p,Date.now(),{productionEnabled:true,websiteEnabled:true,productionQaEnabled:false,allowStaleReadOnly:p.reconcile_only===true});
  if(p.enquiry_key!==e.enquiry_key)throw Error('EVENT_KEY_MISMATCH');
  if(p.qa_scenario&&!['before_provider_failure','after_write_ack_loss'].includes(p.qa_scenario))throw Error('QA_SCENARIO_INVALID');
  if(p.qa_scenario&&!e.qa)throw Error('QA_ONLY');

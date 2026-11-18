@@ -36,3 +36,10 @@ test('production-notification QA cannot expand identity, consent or addresses',(
 test('QA readback requires the exact campaign selected by the bounded route',()=>{const n=prepare(notificationFixture(),now,{productionQaEnabled:true});const l={_id:id,isDeleted:false,address:n.address,marketId:C.market,pipelineId:C.pipeline,isClosedManually:false,marketingCampignId:C.ppcCampaign,isHotLead:false,contactData:[n.contact]};assert.equal(verifyLead(n,id,ok({leadData:l}))._id,id);l.marketingCampignId=C.qaCampaign;assert.throws(()=>verifyLead(n,id,ok({leadData:l})),/QA_DESTINATION_MISMATCH/);});
 
 test('final team QA property stays privately gated and ordinary delivery remains held',()=>{const p=notificationFixture();const d=JSON.parse(p.fields.conversation_summary.split('\n').slice(1).join('\n'));d.property_address='133 MaliHaus QA Team Acceptance Lane';p.fields.address=d.property_address;p.fields.conversation_summary='Florida cash-offer enquiry\n'+JSON.stringify(d);assert.throws(()=>prepare(p,now),/PRODUCTION_QA_HOLD/);const n=prepare(p,now,{productionQaEnabled:true});assert.equal(n.create.marketingCampignId,C.ppcCampaign);assert.equal(n.google_export_allowed,false);assert.equal(n.create.isHotLead,false);delete p.test_mode;assert.throws(()=>prepare(p,now,{productionQaEnabled:true}),/PRODUCTION_QA_HOLD/);});
+
+test('verified PPC existing-property enquiry adds the team alert marker once and replay sends no alert',async()=>{
+ const n=e();n.destinationCampaign=C.ppcCampaign;const m=mock();let alerts=0;
+ const api=async(path,b)=>{if(path==='lead/addTag'){alerts++;assert.deepEqual(b,{leadId:id,tagIds:[C.repeatTag]});return ok({});}const r=await m.api(path,b);if(path==='lead/details')r.data.leadData.marketingCampignId=C.ppcCampaign;return r;};
+ assert.equal((await deliver(n,api,{writeEnabled:true})).delivery_state,'crm_existing_enquiry_appended_verified');assert.equal(alerts,1);
+ assert.equal((await deliver(n,api,{writeEnabled:true})).delivery_state,'crm_existing_receipt_verified');assert.equal(m.writes,1);assert.equal(alerts,1);
+});
